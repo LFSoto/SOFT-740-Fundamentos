@@ -17,8 +17,8 @@ Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraT
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/usuario/demo-calculadora.git
-   cd demo-calculadora
+   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
+   cd SOFT-740-Fundamentos
 
 2. **Restaurar dependencias**
 	```bash
