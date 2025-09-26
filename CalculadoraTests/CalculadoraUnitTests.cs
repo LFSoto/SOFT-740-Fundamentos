@@ -26,22 +26,22 @@ public class CalculadoraUnitTests
     public void Restar_DeberiaRetornarResultadoIncorrecto()
     {
         var resultado = _calc.Restar(2, 1);
-        Assert.AreEqual(5, resultado);
+        Assert.AreEqual(1, resultado);
 
     }
 
     [Test]
     public void Multiplicar_DeberiaRetornarResultadoIncorrecto()
     {
-        var resultado = _calc.Sumar(2, 6);
-        Assert.AreEqual(5, resultado);
+        var resultado = _calc.Multiplicar(2, 3);
+        Assert.AreEqual(6, resultado);
 
     }
 
     [Test]
     public void Dividir_DeberiaRetornarResultadoIncorrecto()
     {
-        var resultado = _calc.Sumar(2, 3);
+        var resultado = _calc.Dividir(2, 3);
         Assert.AreEqual(5, resultado);
 
     }
