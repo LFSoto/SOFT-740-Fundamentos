@@ -23,7 +23,7 @@ public class CalculadoraUnitTests
     }
 
     [Test]
-    public void Restar_DeberiaRetornarResultadoIncorrecto()
+    public void Restar_DeberiaRetornarResultadoCorrecto()
     {
         var resultado = _calc.Restar(2, 1);
         Assert.AreEqual(1, resultado);
@@ -31,7 +31,7 @@ public class CalculadoraUnitTests
     }
 
     [Test]
-    public void Multiplicar_DeberiaRetornarResultadoIncorrecto()
+    public void Multiplicar_DeberiaRetornarResultadoCorrecto()
     {
         var resultado = _calc.Multiplicar(2, 3);
         Assert.AreEqual(6, resultado);
@@ -39,10 +39,16 @@ public class CalculadoraUnitTests
     }
 
     [Test]
-    public void Dividir_DeberiaRetornarResultadoIncorrecto()
+    public void Dividir_DeberiaRetornarResultadoCorrecto()
     {
-        var resultado = _calc.Dividir(2, 3);
-        Assert.AreEqual(5, resultado);
+        var resultado = _calc.Dividir(6, 2);
+        Assert.AreEqual(3, resultado);
 
+    }
+
+    [Test]
+    public void ManejoError_Dividir_DeberiaRetornarResultadoCorrecto()
+    {
+        Assert.Throws<DivideByZeroException>(() => _calc.Dividir(10,0));
     }
 }
