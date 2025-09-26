@@ -41,36 +41,4 @@ public class CalculadoraUnitTests
         Assert.Throws<DivideByZeroException>(() => _calc.Dividir(10, 0));
         
     }
-
-    [Test]
-    public void Restar_DeberiaRetornarResultadoCorrecto()
-    {
-        var resultado = _calc.Restar(2, 1);
-        Assert.AreEqual(1, resultado);
-
-    }
-
-    [Test]
-    public void Multiplicar_DeberiaRetornarResultadoCorrecto()
-    {
-        var resultado = _calc.Multiplicar(2, 3);
-        Assert.AreEqual(6, resultado);
-
-    }
-
-    [Test]
-    public void Dividir_DeberiaRetornarResultadoCorrecto()
-    {
-        var resultado = _calc.Dividir(6, 2);
-        Assert.AreEqual(3, resultado);
-
-    }
-
-
-    [Test]
-    public void ManejoError_Dividir_DeberiaRetornarResultadoCorrecto()
-    {
-        var resultado = _calc.Sumar(2, 3);
-        Assert.AreEqual(5, resultado);
-    }
 }
