@@ -13,10 +13,36 @@ public class CalculadoraUnitTests
         _calc = new Calculadora();
     }
 
+
     [Test]
     public void Sumar_DeberiaRetornarResultadoCorrecto()
     {
         var resultado = _calc.Sumar(2, 3);
+        Assert.That(5, Is.EqualTo(resultado));
+        
+    }
+
+    [Test]
+    public void Restar_DeberiaRetornarResultadoIncorrecto()
+    {
+        var resultado = _calc.Restar(2, 1);
         Assert.AreEqual(5, resultado);
+
+    }
+
+    [Test]
+    public void Multiplicar_DeberiaRetornarResultadoIncorrecto()
+    {
+        var resultado = _calc.Sumar(2, 6);
+        Assert.AreEqual(5, resultado);
+
+    }
+
+    [Test]
+    public void Dividir_DeberiaRetornarResultadoIncorrecto()
+    {
+        var resultado = _calc.Sumar(2, 3);
+        Assert.AreEqual(5, resultado);
+
     }
 }
