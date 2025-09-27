@@ -7,13 +7,15 @@ namespace CalculadoraTests;
 [TestFixture]
 public class CalculadoraServiceTests
 {
+   
+
     [Test]
     public void SumarYGuardar_DeberiaGuardarOperacionEnRepositorio()
     {
         // Arrange
         var repoMock = new Mock<IOperacionRepository>();
         var timeMock = new Mock<ITimeProvider>();
-        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025,1,1,10,0,0));
         var calc = new Calculadora(timeMock.Object);
         var service = new CalculadoraService(calc, repoMock.Object);
 
@@ -28,29 +30,30 @@ public class CalculadoraServiceTests
     }
 
     [Test]
-    public void SumarDentroDeHorario_DeberiaPermitirse() 
+    public void Sumar_CasoValidoMoq()
     {
         // Arrange
         var timeMock = new Mock<ITimeProvider>();
-        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 17, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
-        var resultado = calc.Sumar(5, 4);
+        var resultado = calc.Sumar(2, 3);
+        var expected = 5;
+        Assert.That(expected, Is.EqualTo(resultado));
 
-        Assert.AreEqual(9, resultado);
     }
 
     [Test]
-    public void SumarFueraDeHorario_NoDeberiaPermitirse()
+    public void Restar_CasoInvalidoMoq()
     {
-        // Arrange
+        //Arrange
         var timeMock = new Mock<ITimeProvider>();
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
-        Assert.Throws<InvalidOperationException>(() => calc.Sumar(5, 4));
+        //Act
+        Assert.Throws<InvalidOperationException>(() => calc.Restar(2,5));
 
     }
+
 }
