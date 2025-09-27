@@ -1,47 +1,27 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+﻿# Calculadora Test
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
+## CalculadoraServiceTest.cs
+	Utilizamos esta clase para definir los métodos de los repositorios que queremos simular utilizan mocks.
+	Creamos los objetos mocks para las interfaces
+	Configuramos el mock usando setup
+	Utilizamos el object mock en nuestra prueba.
 
----
+##Repositorios
+- IOperacionRepository
+	Interface "GuardarOperacion" que recibe dos parámetros pero que no devuelve ningún resultado, por tanto debemos simular su acción.
 
-## Requisitos
+- ItimeProvider
+	Interface "ITimeProvider" que solamente obtiene la fecha y hora actual del sistema local.
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
+##CalculadoraUnitTest
+	Utilizamos esta clase para inicializar las variables, llamar los servicios y comprobar los resultados de los test.
 
----
+------------------------------------------------
+#Calculadora Lib
 
-## Pasos para empezar
+##Calculadora
+	Contiene los métodos a llamar desde el Service Test: Sumar, Restar, Multiplicar, Dividir, etc.
 
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-   cd SOFT-740-Fundamentos
+##CalculadoraService
+	Posee los métodos de SumarYGuardar retonando un resultado de la suma.
 
-2. **Restaurar dependencias**
-	```bash
-   dotnet restore
-
-3. **Compilar la solución**
-	```bash
-   dotnet build
-
-4. **Ejecutar las pruebas unitarias**
-	```bash
-   dotnet test
-
-  ## Comandos útiles
-
-1. Compilar:
-	```bash
-	dotnet build
-
-2. Ejecutar pruebas:
-	```bash
-	dotnet test
-
-3. Agregar nuevos paquetes (ejemplo: Moq):
-	```bash
-	dotnet add CalculadoraTests package Moq
