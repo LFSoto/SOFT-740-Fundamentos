@@ -19,7 +19,8 @@ public class CalculadoraServiceTests
         var resultado = service.SumarYGuardar(2, 3);
 
         // Assert
-        Assert.AreEqual(5, resultado);
+        //Assert.AreEqual(5, resultado);
+        Assert.That(resultado, Is.EqualTo(5));
 
         // Verificamos que se haya llamado al método GuardarOperacion
         repoMock.Verify(r => r.GuardarOperacion("2 + 3", 5), Times.Once);
