@@ -19,7 +19,7 @@ public class CalculadoraUnitTests
     {
         // Arrange
         var timeMock = new Mock<ITimeProvider>();
-        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 10, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
         var resultado = calc.Sumar(2, 3);
@@ -30,15 +30,36 @@ public class CalculadoraUnitTests
     [Test]
     public void RestarDeberiaRetornarResultadoCorrecto() 
     {
-        var resultado = _calc.Restar(10, 3);
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 12, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        var resultado = calc.Restar(10, 3);
         var expected = 7;
+        Assert.That(expected, Is.EqualTo(resultado));
+    }
+
+    [Test]
+    public void MultiplicarDeberiaRetornarResultadoCorrecto()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 13, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        var resultado = calc.Multiplicar(3, 5);
+        var expected = 15;
         Assert.That(expected, Is.EqualTo(resultado));
     }
 
     [Test]
     public void Division_Entre_Cero_DeberiaRetornarResultadoCorrecto() 
     {
-        Assert.Throws<DivideByZeroException>(() => _calc.Dividir(10, 0));
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 13, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+        Assert.Throws<DivideByZeroException>(() => calc.Dividir(10, 0));
         
     }
 }

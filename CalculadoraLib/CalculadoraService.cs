@@ -17,4 +17,24 @@ public class CalculadoraService
         _repo.GuardarOperacion($"{a} + {b}", resultado);
         return resultado;
     }
+
+    public int RestarYGuardar(int a, int b)
+    {
+        var resultado = _calculadora.Restar(a, b);
+        _repo.GuardarOperacion($"{a} - {b}", resultado);
+        return resultado;
+    }
+
+    public int MultiplicarYGuardar(int a, int b)
+    {
+        var resultado = _calculadora.Multiplicar(a, b);
+        _repo.GuardarOperacion($"{a} * {b}", resultado);
+        return resultado;
+    }
+    public double DividirYGuardar(int a, int b)
+    {
+        var resultado = _calculadora.Dividir(a, b);
+        _repo.GuardarOperacion($"{a} / {b}", resultado);
+        return resultado;
+    }
 }
