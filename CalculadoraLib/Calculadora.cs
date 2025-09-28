@@ -25,13 +25,22 @@ public class Calculadora
         return a + b;
     }
 
-    public int Restar(int a, int b) => a - b;
-
-    public int Multiplicar(int a, int b) => a * b;
-
+    public int Restar(int a, int b)
+    {
+        ValidarHoras();
+        return a - b;
+    }
+    public int Multiplicar(int a, int b)
+     {
+        ValidarHoras();
+        return a* b;
+    }
     public double Dividir(int a, int b)
     {
+        
         if (b == 0) throw new DivideByZeroException("No se puede dividir entre cero.");
+        ValidarHoras();
         return (double)a / b;
+        
     }
 }

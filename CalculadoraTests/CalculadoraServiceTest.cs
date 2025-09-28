@@ -76,7 +76,7 @@ public class CalculadoraServiceTests
         var calc = new Calculadora(timeMock.Object);
 
         // Act
-        Assert.Throws<InvalidOperationException>(() => calc.Sumar(9, 4));
+        Assert.Throws<InvalidOperationException>(() => calc.Restar(9, 4));
 
     }
     [Test]
@@ -103,6 +103,32 @@ public class CalculadoraServiceTests
 
         // Act
         Assert.Throws<InvalidOperationException>(() => calc.Multiplicar(2, 5));
+
+    }
+    [Test]
+    public void DividirDentroDeHorario_DeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        var resultado = calc.Dividir(5, 5);
+        Assert.That(resultado, Is.EqualTo(1));
+
+    }
+
+    [Test]
+    public void DividirFueraDeHorario_NoDeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 19, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        Assert.Throws<InvalidOperationException>(() => calc.Dividir(5, 5));
 
     }
 }
