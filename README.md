@@ -2,30 +2,30 @@
 
 ## Se realiza lo siguientes:
 
-**CalculadoraUnitTests**
+***CalculadoraUnitTests***
 ```
-```Sumar_DeberiaRetornarResultadoCorrecto
-```Sumar_DeberiaRetornarResultadoInorrecto
-```RestarDeberiaRetornarResultadoCorrecto
-```RestarDeberiaRetornarResultadoInorrecto
+Sumar_DeberiaRetornarResultadoCorrecto
+Sumar_DeberiaRetornarResultadoInorrecto
+RestarDeberiaRetornarResultadoCorrecto
+RestarDeberiaRetornarResultadoInorrecto
 MultiplicarDeberiaRetornarResultadoCorrecto
 MultiplicarDeberiaRetornarResultadoIncorrectoDivisionDeberiaRetornarResultadoCorrecto
 Division_Entre_Cero_DeberiaRetornarResultadoIncorrecto
 Division_DeberiaRetornarResultadoIncorrectoHORA
 ```
 
-**CalculadoraServiceTest.cs**
-
-```SumarDentroDeHorario_DeberiaPermitirse
-```SumarFueraDeHorario_NoDeberiaPermitirse()
-```RestarDentroDeHorario_DeberiaPermitirse
-```RestarFueraDeHorario_NoDeberiaPermitirse
-```MultiplicarDentroDeHorario_DeberiaPermitirse
-```MultiplicarFueraDeHorario_NoDeberiaPermitirse
-```DividirDentroDeHorario_DeberiaPermitirse
-```DividirFueraDeHorario_NoDeberiaPermitirse
-
-**Calculadora.cs**
+***CalculadoraServiceTest.cs***
+```
+SumarDentroDeHorario_DeberiaPermitirse
+SumarFueraDeHorario_NoDeberiaPermitirse()
+RestarDentroDeHorario_DeberiaPermitirse
+RestarFueraDeHorario_NoDeberiaPermitirse
+MultiplicarDentroDeHorario_DeberiaPermitirse
+MultiplicarFueraDeHorario_NoDeberiaPermitirse
+DividirDentroDeHorario_DeberiaPermitirse
+DividirFueraDeHorario_NoDeberiaPermitirse
+```
+***Calculadora.cs***
 Se agrego ValidarHoras() en todas las operaciones
 
 ## Pasos para empezar
