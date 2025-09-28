@@ -54,6 +54,18 @@ public class CalculadoraUnitTests
     }
 
     [Test]
+    public void Division_Normal_DeberiaRetornarResultadoCorrecto()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 13, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        var resultado = calc.Dividir(20, 2);
+        var expected = 10;
+        Assert.That(expected, Is.EqualTo(resultado));
+    }
+    [Test]
     public void Division_Entre_Cero_DeberiaRetornarResultadoCorrecto() 
     {
         var timeMock = new Mock<ITimeProvider>();
