@@ -3,24 +3,23 @@
 ## Se realiza lo siguientes:
 
 **CalculadoraUnitTests**
-
-Sumar_DeberiaRetornarResultadoCorrecto
-Sumar_DeberiaRetornarResultadoInorrecto
-RestarDeberiaRetornarResultadoCorrecto
-RestarDeberiaRetornarResultadoInorrecto
+```
+```Sumar_DeberiaRetornarResultadoCorrecto
+```Sumar_DeberiaRetornarResultadoInorrecto
+```RestarDeberiaRetornarResultadoCorrecto
+```RestarDeberiaRetornarResultadoInorrecto
 MultiplicarDeberiaRetornarResultadoCorrecto
-MultiplicarDeberiaRetornarResultadoIncorrecto
-DivisionDeberiaRetornarResultadoCorrecto
+MultiplicarDeberiaRetornarResultadoIncorrectoDivisionDeberiaRetornarResultadoCorrecto
 Division_Entre_Cero_DeberiaRetornarResultadoIncorrecto
 Division_DeberiaRetornarResultadoIncorrectoHORA
-
+```
 
 **CalculadoraServiceTest.cs**
 
-SumarDentroDeHorario_DeberiaPermitirse
-SumarFueraDeHorario_NoDeberiaPermitirse()
-RestarDentroDeHorario_DeberiaPermitirse
-RestarFueraDeHorario_NoDeberiaPermitirse
+```SumarDentroDeHorario_DeberiaPermitirse
+```SumarFueraDeHorario_NoDeberiaPermitirse()
+```RestarDentroDeHorario_DeberiaPermitirse
+```RestarFueraDeHorario_NoDeberiaPermitirse
 ```MultiplicarDentroDeHorario_DeberiaPermitirse
 ```MultiplicarFueraDeHorario_NoDeberiaPermitirse
 ```DividirDentroDeHorario_DeberiaPermitirse
