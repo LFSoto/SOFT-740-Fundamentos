@@ -97,6 +97,9 @@ public class CalculadoraServiceTests
 
         // Act
         var resultado = calc.Sumar(2, 3);
+
+        //Asserts
+        Assert.That(resultado, Is.EqualTo(5));
     }
 
     [Test]
@@ -107,7 +110,7 @@ public class CalculadoraServiceTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
+        // Act y Asserts
         Assert.Throws<InvalidOperationException>(() => calc.Sumar(2, 3));
     }
 
@@ -121,6 +124,9 @@ public class CalculadoraServiceTests
 
         // Act
         var resultado = calc.Restar(10, 6);
+
+        //Asserts
+        Assert.That(resultado, Is.EqualTo(4));
     }
 
     [Test]
@@ -131,7 +137,7 @@ public class CalculadoraServiceTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
+        // Act y Asserts
         Assert.Throws<InvalidOperationException>(() => calc.Restar(10, 6));
     }
 
@@ -145,6 +151,9 @@ public class CalculadoraServiceTests
 
         // Act
         var resultado = calc.Multiplicar(5, 2);
+
+        //Asserts
+        Assert.That(resultado, Is.EqualTo(10));
     }
 
     [Test]
@@ -155,7 +164,7 @@ public class CalculadoraServiceTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 19, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
+        // Act y Asserts
         Assert.Throws<InvalidOperationException>(() => calc.Restar(5, 2));
     }
 
@@ -169,6 +178,9 @@ public class CalculadoraServiceTests
 
         // Act
         var resultado = calc.Dividir(15, 3);
+
+        //Asserts
+        Assert.That(resultado, Is.EqualTo(5));
     }
 
     [Test]
@@ -179,7 +191,7 @@ public class CalculadoraServiceTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        // Act
+        // Act y Asserts
         Assert.Throws<InvalidOperationException>(() => calc.Sumar(15, 3));
     }
 }
