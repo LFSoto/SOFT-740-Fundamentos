@@ -1,47 +1,28 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+# Practica 1 - Melvin Marin Navarro
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
+Se agrega la **Parte 2** y **Parte 3** faltante.   
 
+## Test
+### Se agregaron los siguientes:
 ---
+* **CalculadoraUnitTests**
+    * Division_DeberiaRetornarResultadoCorrecto
+	* Multiplicar_DeberiaRetornarResultadoCorrecto
+	
+* **CalculadoraServiceTests**
+	* RestarDentroDeHorario_DeberiaPermitirse
+	* RestarFueraDeHorario_NoDeberiaPermitirse
+	* MultiplicarDentroDeHorario_DeberiaPermitirse
+	* MultiplicarFueraDeHorario_NoDeberiaPermitirse
+	* DividirDentroDeHorario_DeberiaPermitirse
+	* DividirFueraDeHorario_NoDeberiaPermitirse(
 
-## Requisitos
-
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
-
----
-
-## Pasos para empezar
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-   cd SOFT-740-Fundamentos
-
-2. **Restaurar dependencias**
-	```bash
-   dotnet restore
-
-3. **Compilar la solución**
-	```bash
-   dotnet build
-
-4. **Ejecutar las pruebas unitarias**
-	```bash
-   dotnet test
-
-  ## Comandos útiles
-
-1. Compilar:
-	```bash
-	dotnet build
-
-2. Ejecutar pruebas:
-	```bash
-	dotnet test
-
-3. Agregar nuevos paquetes (ejemplo: Moq):
-	```bash
-	dotnet add CalculadoraTests package Moq
+### Implementacion
+```
+var timeMock = new Mock<ITimeProvider>();
+timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+var calc = new Calculadora(timeMock.Object);
+```
+> A traves de la clase Mock y mediante la interface ITimeProvider se simula 
+una fecha y hora sobre la cual se realizan operaciones. 
+>
