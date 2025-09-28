@@ -21,7 +21,7 @@ public class CalculadoraServiceTests
         var resultado = service.SumarYGuardar(2, 3);
 
         // Assert
-        Assert.AreEqual(5, resultado);
+        Assert.That(resultado, Is.EqualTo(5));
 
         // Verificamos que se haya llamado al método GuardarOperacion
         repoMock.Verify(r => r.GuardarOperacion("2 + 3", 5), Times.Once);
@@ -37,8 +37,8 @@ public class CalculadoraServiceTests
 
         // Act
         var resultado = calc.Sumar(5, 4);
+        Assert.That(resultado, Is.EqualTo(9));
 
-        Assert.AreEqual(9, resultado);
     }
 
     [Test]
@@ -51,6 +51,58 @@ public class CalculadoraServiceTests
 
         // Act
         Assert.Throws<InvalidOperationException>(() => calc.Sumar(5, 4));
+
+    }
+    [Test]
+    public void RestarDentroDeHorario_DeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        var resultado = calc.Restar(9, 4);
+        Assert.That(resultado, Is.EqualTo(5));
+
+    }
+
+    [Test]
+    public void RestarFueraDeHorario_NoDeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 19, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        Assert.Throws<InvalidOperationException>(() => calc.Sumar(9, 4));
+
+    }
+    [Test]
+    public void MultiplicarDentroDeHorario_DeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        var resultado = calc.Multiplicar(2, 5);
+        Assert.That(resultado, Is.EqualTo(10));
+
+    }
+
+    [Test]
+    public void MultiplicarFueraDeHorario_NoDeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 19, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        Assert.Throws<InvalidOperationException>(() => calc.Multiplicar(2, 5));
 
     }
 }
