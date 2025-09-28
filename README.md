@@ -1,17 +1,33 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+﻿# Practica 1 Tamara Salazar - Fundamentos de Pruebas en .NET
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
+## Se realiza lo siguientes:
 
----
+**CalculadoraUnitTests**
 
-## Requisitos
+Sumar_DeberiaRetornarResultadoCorrecto
+Sumar_DeberiaRetornarResultadoInorrecto
+RestarDeberiaRetornarResultadoCorrecto
+RestarDeberiaRetornarResultadoInorrecto
+MultiplicarDeberiaRetornarResultadoCorrecto
+MultiplicarDeberiaRetornarResultadoIncorrecto
+DivisionDeberiaRetornarResultadoCorrecto
+Division_Entre_Cero_DeberiaRetornarResultadoIncorrecto
+Division_DeberiaRetornarResultadoIncorrectoHORA
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
 
----
+**CalculadoraServiceTest.cs**
+
+SumarDentroDeHorario_DeberiaPermitirse
+SumarFueraDeHorario_NoDeberiaPermitirse()
+RestarDentroDeHorario_DeberiaPermitirse
+RestarFueraDeHorario_NoDeberiaPermitirse
+MultiplicarDentroDeHorario_DeberiaPermitirse
+MultiplicarFueraDeHorario_NoDeberiaPermitirse
+DividirDentroDeHorario_DeberiaPermitirse
+DividirFueraDeHorario_NoDeberiaPermitirse
+
+**Calculadora.cs**
+Se agrego ValidarHoras() en todas las operaciones
 
 ## Pasos para empezar
 
