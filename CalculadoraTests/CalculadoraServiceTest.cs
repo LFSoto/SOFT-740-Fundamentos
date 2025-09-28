@@ -44,7 +44,7 @@ public class CalculadoraServiceTests
         // Act
         var resultado = calc.Sumar(5, 4);
         //Afirmamos que el resultado es el esperado.
-        Assert.That(resultado, Is.EqualTo(9));
+        Assert.That(resultado, Is.EqualTo(9));//9am
     }
 
     [Test]
@@ -56,7 +56,64 @@ public class CalculadoraServiceTests
         var calc = new Calculadora(timeMock.Object);
 
         // Act
-        Assert.Throws<InvalidOperationException>(() => calc.Sumar(5, 4));
+        Assert.Throws<InvalidOperationException>(() => calc.Sumar(5, 1));//7am
+
+    }
+
+    [Test]
+    public void RestarDentroDeHorario_DeberiaPermitirse()
+    {
+        // Arrange
+        //Se crean los objetos Mock para las interfaces.
+        var timeMock = new Mock<ITimeProvider>();
+        //Se configura el mock usando Setup.
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        //Usamos el objeto mock en nuestra prueba.
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        var resultado = calc.Restar(18, 8);
+        //Afirmamos que el resultado es el esperado.
+        Assert.That(resultado, Is.EqualTo(5));//10am
+    }
+    [Test]
+    public void RestarFueraDeHorario_NoDeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        Assert.Throws<InvalidOperationException>(() => calc.Restar(10, 4)); //6am
+
+    }
+    [Test]
+    public void MultiplicarDentroDeHorario_DeberiaPermitirse()
+    {
+        // Arrange
+        //Se crean los objetos Mock para las interfaces.
+        var timeMock = new Mock<ITimeProvider>();
+        //Se configura el mock usando Setup.
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        //Usamos el objeto mock en nuestra prueba.
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        var resultado = calc.Multiplicar(2, 5);
+        //Afirmamos que el resultado es el esperado.
+        Assert.That(resultado, Is.EqualTo(10)); //10 am
+    }
+    [Test]
+    public void MultiplicarFueraDeHorario_NoDeberiaPermitirse()
+    {
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 7, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        // Act
+        Assert.Throws<InvalidOperationException>(() => calc.Multiplicar(4, 5));//20hrs
 
     }
 }
