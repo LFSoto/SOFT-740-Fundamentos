@@ -21,10 +21,10 @@ SumarDentroDeHorario_DeberiaPermitirse
 SumarFueraDeHorario_NoDeberiaPermitirse()
 RestarDentroDeHorario_DeberiaPermitirse
 RestarFueraDeHorario_NoDeberiaPermitirse
-MultiplicarDentroDeHorario_DeberiaPermitirse
-MultiplicarFueraDeHorario_NoDeberiaPermitirse
-DividirDentroDeHorario_DeberiaPermitirse
-DividirFueraDeHorario_NoDeberiaPermitirse
+```MultiplicarDentroDeHorario_DeberiaPermitirse
+```MultiplicarFueraDeHorario_NoDeberiaPermitirse
+```DividirDentroDeHorario_DeberiaPermitirse
+```DividirFueraDeHorario_NoDeberiaPermitirse
 
 **Calculadora.cs**
 Se agrego ValidarHoras() en todas las operaciones
@@ -33,7 +33,7 @@ Se agrego ValidarHoras() en todas las operaciones
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
+   git clone https://github.com/LFSoto/SOFT-740-Fundamentos/tree/TamaraSalazar
    cd SOFT-740-Fundamentos
 
 2. **Restaurar dependencias**
