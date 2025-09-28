@@ -47,18 +47,3 @@ Este proyecto contiene la solución de la práctica1 **pruebas unitarias en .NET
 	Se hace uso del mismo Moq de Time Provider en los métodos de la clase CalculadoraServiceTest y CalculadoraUnitTest para validar si está o no fuera de horario y en el la clase Calculadora para el método ValidarHoras()
 	
 
-
-
-  ## Comandos útiles
-
-1. Compilar:
-	```bash
-	dotnet build
-
-2. Ejecutar pruebas:
-	```bash
-	dotnet test
-
-3. Agregar nuevos paquetes (ejemplo: Moq):
-	```bash
-	dotnet add CalculadoraTests package Moq
