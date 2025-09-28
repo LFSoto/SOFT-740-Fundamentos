@@ -1,36 +1,53 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+# Calculadora - Fundamentos de Pruebas en .NET
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
-
----
-
-## Requisitos
-
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
+Este proyecto contiene la solución de la práctica1 **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
+  
 
 ---
 
-## Pasos para empezar
+## Ajustes realizados
 
-1. **Clonar el repositorio**
+1. **Ajustes implementadas en clase Calculadora**
    ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-   cd SOFT-740-Fundamentos
+   Se ajustan los métodos:
+   Restar
+   Multiplicar
+   Dividir
+   En los que se agrega ValidarHoras();
 
-2. **Restaurar dependencias**
+2. **Pruebas implementadas en clase CalculadoraUnitTest**
 	```bash
-   dotnet restore
+   Se agregan los métodos de prueba
+   RestarDeberiaRetornarResultadoCorrecto()
+   MultiplicarDeberiaRetornarResultadoCorrecto()
+   Division_Normal_DeberiaRetornarResultadoCorrecto()
+   Division_Entre_Cero_DeberiaRetornarResultadoCorrecto() 
 
-3. **Compilar la solución**
+3. **Ajustes implementadas en clase CalculadoraService**
 	```bash
-   dotnet build
+   Se agregan los métodos:
+   RestarYGuardar
+   MultiplicarYGuardar
+   DividirYGuardar
 
-4. **Ejecutar las pruebas unitarias**
+4. **Pruebas implementadas en clase CalculadoraUnitTest**
 	```bash
-   dotnet test
+   Se agregan los métodos de prueba:
+   RestarDentroDeHorario_DeberiaPermitirse()
+   RestarFueraDeHorario_NoDeberiaPermitirse()
+   MultiplicarDentroDeHorario_DeberiaPermitirse()
+   MultiplicarFueraDeHorario_NoDeberiaPermitirse()
+   DividirDentroDeHorario_DeberiaPermitirse()
+   DividirFueraDeHorario_NoDeberiaPermitirse()
+
+  ## Uso del Moq
+
+1. Implementación del Moq:
+	```bash
+	Se hace uso del mismo Moq de Time Provider en los métodos de la clase CalculadoraServiceTest y CalculadoraUnitTest para validar si está o no fuera de horario y en el la clase Calculadora para el método ValidarHoras()
+	
+
+
 
   ## Comandos útiles
 
