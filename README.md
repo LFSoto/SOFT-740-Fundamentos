@@ -1,47 +1,40 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+# Práctica 1 - Dixon Chavarría Vargas
+**Resumen:** Se implementó la interfaz ItimeProvider, se realizó el uso de Moq para simular el uso de la interfaz en las pruebas unitarias de la clase CalculadoraUnitTests.cs
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
+## Se agregaron los siguientes métodos:
 
----
+- SumarDeberiaRetornarResultadoCorrecto()
+- RestarDeberiaRetornarResultadoCorrecto()
+- MultiplicarDeberiaRetornarResultadoCorrecto()
+- DividirDeberiaRetornarResultadoCorrecto()
+- DividirDeberiaRetornarError()
+- SumarDeberiaRetornarErrorPorHorario()
+- RestarDeberiaRetornarErrorPorHorario()
+- MultiplicarDeberiaRetornarErrorPorHorario()
+- DividirDeberiaRetornarErrorPorHorario()
+- DividirDeberiaErrorPorHorario()
 
-## Requisitos
+## Implmentación de la clase MOQ ejemplo:
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
+```
+Mock<ITimeProvider> _timeMockHoraHabil = new Mock<ITimeProvider>();
+Mock<ITimeProvider> _timeMockHoraNoHabil = new Mock<ITimeProvider>();
 
----
+[SetUp]
+public void Setup()
+{
+    _timeMockHoraHabil.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 28, 9, 30, 00));
+    _timeMockHoraNoHabil.Setup(tp => tp.Now).Returns(new DateTime(2025, 9, 27, 21, 30, 00));
+}
 
-## Pasos para empezar
+[Test]
+public void SumarDeberiaRetornarResultadoCorrecto()
+{
+    //Arrange
+    Calculadora calc = new Calculadora(_timeMockHoraHabil.Object);
 
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-   cd SOFT-740-Fundamentos
+    int resultado = calc.Sumar(2, 3);
 
-2. **Restaurar dependencias**
-	```bash
-   dotnet restore
-
-3. **Compilar la solución**
-	```bash
-   dotnet build
-
-4. **Ejecutar las pruebas unitarias**
-	```bash
-   dotnet test
-
-  ## Comandos útiles
-
-1. Compilar:
-	```bash
-	dotnet build
-
-2. Ejecutar pruebas:
-	```bash
-	dotnet test
-
-3. Agregar nuevos paquetes (ejemplo: Moq):
-	```bash
-	dotnet add CalculadoraTests package Moq
+    Assert.That(resultado, Is.EqualTo(5));
+}
+```
