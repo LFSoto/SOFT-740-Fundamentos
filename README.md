@@ -14,7 +14,7 @@
 - DividirDeberiaRetornarErrorPorHorario()
 - DividirDeberiaErrorPorHorario()
 
-## Implmentación de la clase MOQ ejemplo:
+## Implementación de la clase MOQ ejemplo:
 
 ```
 Mock<ITimeProvider> _timeMockHoraHabil = new Mock<ITimeProvider>();
