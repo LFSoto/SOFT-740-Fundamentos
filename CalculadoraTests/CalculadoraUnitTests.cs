@@ -93,5 +93,29 @@ public class CalculadoraUnitTests
     {
         Assert.Throws<DivideByZeroException>(() => _calc.Dividir(10, 0));
 
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        var resultado = _calc.Dividir(5, 2);
+        var expected = 2.5;
+        Assert.That(expected, Is.EqualTo(resultado));
+
+    }
+    [Test]
+    public void Division_Entre_Cero_DeberiaRetornarResultadoIncorrecto()
+    {
+        Assert.Throws<DivideByZeroException>(() => _calc.Dividir(10, 0));
+
+        // Arrange
+        var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 19, 0, 0));
+        var calc = new Calculadora(timeMock.Object);
+
+        var resultado = _calc.Dividir(5, 2);
+        var expected = 2.5;
+        Assert.That(expected, Is.EqualTo(resultado));
+
     }
 }
