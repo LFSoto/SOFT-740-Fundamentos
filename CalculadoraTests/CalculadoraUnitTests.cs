@@ -4,6 +4,11 @@ using NUnit.Framework;
 using System;
 namespace CalculadoraTests;
 
+
+/// <summary>
+/// Operaciones 1.a de la práctica - Pruebas Unitarias
+/// Sumar, Restar, Dividir, Multiplicar
+/// </summary>
 [TestFixture]
 public class CalculadoraUnitTests
 {
@@ -13,22 +18,14 @@ public class CalculadoraUnitTests
     public void Setup()
     {
         var timeMock = new Mock<ITimeProvider>();
+        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
         _calc = new Calculadora(timeMock.Object);
     }
 
-    /// <summary>
-    /// Operaciones 1.a de la práctica - Pruebas Unitarias
-    /// Sumar, Restar, Dividir, Multiplicar
-    /// </summary>
     [Test]
     public void Sumar_DeberiaRetornarResultadoCorrecto()
     {
-        // Arrange
-        var timeMock = new Mock<ITimeProvider>();
-        timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
-        var calc = new Calculadora(timeMock.Object);
-
-        var resultado = calc.Sumar(2, 3);
+        var resultado = _calc.Sumar(2, 3);
         var expected = 5;
         Assert.That(expected, Is.EqualTo(resultado));
     }

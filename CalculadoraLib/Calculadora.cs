@@ -15,7 +15,7 @@ public class Calculadora
     }
 
     /// <summary>
-    ///  Verrificar la hora actual está entre las 8:00 y las 18:00 horas.
+    ///  Verificar la hora actual está entre las 8:00 y las 18:00 horas.
     /// </summary>
     /// <exception cref="InvalidOperationException"></exception>
     private void ValidarHoras() 
@@ -32,12 +32,21 @@ public class Calculadora
         ValidarHoras();
         return a + b;
     }
-    public int Restar(int a, int b) => a - b;
+    public int Restar(int a, int b) 
+    {
+        ValidarHoras();
+        return a - b;
+    }
 
-    public int Multiplicar(int a, int b) => a * b;
+    public int Multiplicar(int a, int b)
+    {
+        ValidarHoras();
+        return a * b;
+    }
 
     public double Dividir(int a, int b)
     {
+        ValidarHoras();
         if (b == 0) throw new DivideByZeroException("No se puede dividir entre cero.");
         return (double)a / b;
     }
