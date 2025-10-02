@@ -5,10 +5,10 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 ## Requisitos
 - .NET 8 SDK
 - Google Chrome
-- ChromeDriver (instalado autom·ticamente por NuGet)
+- ChromeDriver (instalado autom√°ticamente por NuGet)
 
-## InstalaciÛn
+## Instalaci√≥n
 ```bash
-git clone <URL_DEL_REPO>
+git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
 cd AutomationPracticeDemo.Tests
 dotnet restore
