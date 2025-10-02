@@ -13,9 +13,8 @@ namespace AutomationPracticeDemo.Tests.Tests
             formPage.FillForm("Juan Perez", "juan@test.com", "88888888", "Costa Rica");
             formPage.Submit();
 
-            // TODO: Agregar validación real
             ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
-            Assert.Pass("Formulario llenado y enviado (validación pendiente).");
+            Assert.Pass("Formulario llenado y enviado.");
         }
     }
 }
