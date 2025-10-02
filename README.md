@@ -1,47 +1,14 @@
-﻿# Calculadora - Fundamentos de Pruebas en .NET
+# Proyecto de Pruebas Automatizadas - Automation Practice Demo
 
-Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
-Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
-
----
+Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/).
 
 ## Requisitos
+- .NET 8 SDK
+- Google Chrome
+- ChromeDriver (instalado autom�ticamente por NuGet)
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
-- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
-- Git instalado en el sistema  
-
----
-
-## Pasos para empezar
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-   cd SOFT-740-Fundamentos
-
-2. **Restaurar dependencias**
-	```bash
-   dotnet restore
-
-3. **Compilar la solución**
-	```bash
-   dotnet build
-
-4. **Ejecutar las pruebas unitarias**
-	```bash
-   dotnet test
-
-  ## Comandos útiles
-
-1. Compilar:
-	```bash
-	dotnet build
-
-2. Ejecutar pruebas:
-	```bash
-	dotnet test
-
-3. Agregar nuevos paquetes (ejemplo: Moq):
-	```bash
-	dotnet add CalculadoraTests package Moq
+## Instalaci�n
+```bash
+git clone <URL_DEL_REPO>
+cd AutomationPracticeDemo.Tests
+dotnet restore
