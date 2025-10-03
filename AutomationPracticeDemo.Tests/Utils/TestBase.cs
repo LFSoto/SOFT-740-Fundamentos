@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
@@ -22,6 +23,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
+                System.Threading.Thread.Sleep(10000);
                 Driver.Quit();
                 Driver.Dispose();
             }

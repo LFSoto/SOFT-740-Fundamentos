@@ -10,8 +10,9 @@ namespace AutomationPracticeDemo.Tests.Tests
         public void Should_FillAndSubmitForm()
         {
             var formPage = new FormPage(Driver);
-            formPage.FillForm("Juan Perez", "juan@test.com", "88888888", "Costa Rica");
+            formPage.FillForm("Yeison Rojas", "yeison@test.com", "88888888", "Costa Rica");
             formPage.Submit();
+           
 
             ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
             Assert.Pass("Formulario llenado y enviado.");
