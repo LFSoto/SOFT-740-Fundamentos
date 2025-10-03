@@ -36,7 +36,7 @@ public class CalculadoraUnitTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        var resultado = _calc.Restar(10, 5);
+        var resultado = calc.Restar(10, 5); // Acá se ocupa llamar a calc, no _calc -> calc es la que modificamos con el mock
         Assert.That(resultado, Is.EqualTo(5));//Valor actual, valor esperado
 
     }
@@ -48,7 +48,7 @@ public class CalculadoraUnitTests
         timeMock.Setup(tp => tp.Now).Returns(new DateTime(2025, 1, 1, 10, 0, 0));
         var calc = new Calculadora(timeMock.Object);
 
-        var resultado = _calc.Multiplicar(3, 5);
+        var resultado = calc.Multiplicar(3, 5);
         Assert.That(resultado, Is.EqualTo(15)); //Valor actual, valor esperado
     }
     [Test]

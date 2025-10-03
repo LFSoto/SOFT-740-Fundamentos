@@ -74,7 +74,7 @@ public class CalculadoraServiceTests
         // Act
         var resultado = calc.Restar(18, 8);
         //Afirmamos que el resultado es el esperado.
-        Assert.That(resultado, Is.EqualTo(5));//10am
+        Assert.That(resultado, Is.EqualTo(10));//10am -> el esperado debe ser 10
     }
     [Test]
     public void RestarFueraDeHorario_NoDeberiaPermitirse()
