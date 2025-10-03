@@ -29,6 +29,8 @@ namespace AutomationPracticeDemo.Tests.Pages
 
         private IWebElement AnimalDropdown => _driver.FindElement(By.Id("animals"));
 
+        private IWebElement dia => _driver.FindElement(By.XPath("//input[@id='start-date'] "));
+
 
         public void Frm_Complete(string name, string email, string phone, string address,string country)
         {
@@ -74,6 +76,14 @@ namespace AutomationPracticeDemo.Tests.Pages
 
             SelectElement selectColor = new SelectElement(AnimalDropdown);
             selectColor.SelectByText("Lion");
+
+        }
+
+        public void put_Date() {
+            
+            dia.Click();
+            dia.SendKeys("12/12/2025");
+            
 
         }
 

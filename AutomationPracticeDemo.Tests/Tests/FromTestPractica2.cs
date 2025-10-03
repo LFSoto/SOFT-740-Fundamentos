@@ -17,7 +17,9 @@ namespace AutomationPracticeDemo.Tests.Tests
             formpage.Ck_box_dia();
             formpage.drop_Color();
             formpage.drop_Animal();
-            
+
+            ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
+            Assert.Pass("Formulario llenado y enviado.");
 
         }
         
