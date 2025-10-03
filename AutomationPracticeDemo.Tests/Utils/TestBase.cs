@@ -22,6 +22,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
+                System.Threading.Thread.Sleep(10000);
                 Driver.Quit();
                 Driver.Dispose();
             }
