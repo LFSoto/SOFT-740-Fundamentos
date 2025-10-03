@@ -4,7 +4,7 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 
 ## Requisitos
 - .NET 8 SDK
-- Google Chrome
+- Google Chrome, el más reciente.
 - ChromeDriver (instalado automáticamente por NuGet)
 
 ## Instalación
@@ -12,3 +12,38 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
 cd AutomationPracticeDemo.Tests
 dotnet restore
+
+
+## Crear la rama a trabajar.
+Ir al repositorio de GIT
+Branches seleniumTema2
+Crear una rama con el nombre-SeleniumT2
+
+##Extraer los cambios al Vs
+Ir a VS
+Ver -> Cambios de GIT.
+Click en Fetch
+Abrimos la pestaña de branches -> Remotos -> Seleccionamos SeleniumT2
+Buscamos las ramas remotas y seleccionamos la rama con nuestro nombre.
+
+##Instalar dependencias
+En la solución buscamos la carpeta de dependencias y vemos si están cargadas.
+Compilar -> Compilar Solución
+
+
+##Ejecutar las pruebas
+Opción 1:
+	Abrir el explorador de pruebas (En el Vs seleccionar Ver-> Explorador de pruebas).
+	Click en "Ejecutar".
+Opción 2:
+	En la consola de Vs (PowerShell para desarrolladores) ejecutar: dotnet test
+
+
+##Visualizar los screenshots de las pruebas.
+  Ejecutar las pruebas.
+  En la ruta AutomationPracticeDemo.Tests\bin\Debug\net9.0\Evidencias se pueden visualizar las capturas.	
+
+
+
+
+
