@@ -22,8 +22,8 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
-                Driver.Quit();
-                Driver.Dispose();
+                //Driver.Quit();
+                //Driver.Dispose();
             }
         }
     }
