@@ -11,10 +11,11 @@ namespace AutomationPracticeDemo.Tests.Utils
         [SetUp]
         public void Setup()
         {
+            var url = "https://testautomationpractice.blogspot.com/";
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
-            Driver.Navigate().GoToUrl("https://testautomationpractice.blogspot.com/");
+            Driver.Navigate().GoToUrl(url);
         }
 
         [TearDown]
@@ -22,8 +23,8 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
-                Driver.Quit();
-                Driver.Dispose();
+               Driver.Quit();
+               Driver.Dispose();
             }
         }
     }
