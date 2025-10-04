@@ -7,7 +7,7 @@ namespace AutomationPracticeDemo.Tests.Tests
     public class FormTests : TestBase
     {
         [Test]
-        public void Should_FillAndSubmitForm()
+        public void Should_FillAndSubmitFormTest()
         {
             var formPage = new FormPage(Driver);
             formPage.FillForm("Juan Perez", "juan@test.com", "88888888", "Costa Rica");
@@ -18,7 +18,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }//Should_FillAndSubmitForm
 
         [Test]
-        public void FillAndSubmitForm()
+        public void FillAndSubmitFormClientTest()
         {
             var formPage = new FormPage(Driver);
             formPage.FillForm2("Melvin Marin", "mmarin@test.com", "88888888", "Shibuya, Tokyo", 
@@ -52,6 +52,6 @@ namespace AutomationPracticeDemo.Tests.Tests
             Assert.That(expectedCountry, Is.EqualTo(formPage.GetCountry()), "El CountryId actual: "+ formPage.GetCountry() + " no es el esperado: "+ expectedCountry);
             // Se agrega un assert para validar que el formulario se envió correctamente
             Assert.Pass("Formulario llenado y enviado.");
-        }//FillAndSubmitForm
+        }//FillAndSubmitFormClientTest
     }//class
 }//namespace
