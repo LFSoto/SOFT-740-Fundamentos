@@ -36,26 +36,32 @@ namespace AutomationPracticeDemo.Tests.Pages
         
    
 
-            public void FillForm(string name, string email, string phone, string country, string gender)
+            public void FillForm(string name, string email, string phone, string country)
         {
             NameInput.SendKeys(name);
             EmailInput.SendKeys(email);
             PhoneInput.SendKeys(phone);
             CountryDropdown.SendKeys(country);
+           
+                
+        }
+        public void Gender(string gender)
+        {
+
             if (gender.Equals("male"))
             {
                 maleGenderRadioButtons.Click();
             }
             else { femaleGenderRadioButtons.Click(); }
-                
         }
+
         public void Selectfile(string rutaImagen = @"C:\Users\Kenneth\OneDrive\Imágenes\Selenium_Logo.png")
         {
 
             selectfile.SendKeys(rutaImagen);
         }
 
-          public void field2Input(string Field,string Field2)
+        public void field2Input(string Field,string Field2)
         {
            
             Field2Input.SendKeys(Field);
@@ -99,6 +105,11 @@ namespace AutomationPracticeDemo.Tests.Pages
         public void Submit()
         {
             SubmitButton.Click();
+        }
+        public void Submit1()
+        {
+            maleGenderRadioButtons.Click();
+            femaleGenderRadioButtons.Click();
         }
         public void Submit2()
         {
