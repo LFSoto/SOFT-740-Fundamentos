@@ -22,6 +22,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
+                System.Threading.Thread.Sleep(5000); // Espera 2 segundos antes de cerrar el navegador
                 Driver.Quit();
                 Driver.Dispose();
             }
