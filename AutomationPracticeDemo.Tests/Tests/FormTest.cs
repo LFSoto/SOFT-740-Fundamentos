@@ -1,6 +1,8 @@
-using NUnit.Framework;
 using AutomationPracticeDemo.Tests.Pages;
 using AutomationPracticeDemo.Tests.Utils;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace AutomationPracticeDemo.Tests.Tests
 {
@@ -26,6 +28,33 @@ namespace AutomationPracticeDemo.Tests.Tests
 
             ScreenshotHelper.TakeScreenshot(Driver, "Selenium_Logo.png");
             Assert.Pass("Imagen cargada.");
+
+        }
+        [Test]
+        public void Should_FillAndSubmitForm3()
+        {
+            var formPage = new FormPage(Driver);
+            IJavaScriptExecutor? js = Driver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0, 500);");
+            Thread.Sleep(1000);
+            formPage.field2Input("Valor Inicial","Nuevo Valor");
+           
+            formPage.Submit3();
+
+            ScreenshotHelper.TakeScreenshot(Driver, "Selenium_Logo.png");
+            Assert.Pass("Se ingresa ´rimer valor, se limpia limpia campo y se ingresa segundo valor.");
+
+        }
+        [Test]
+        public void Should_FillAndSubmitForm4()
+       {
+            var formPage = new FormPage(Driver);
+            System.Threading.Thread.Sleep(500);
+            formPage.Colorsselect("white");
+            formPage.Submit();
+
+            ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
+            Assert.Pass("Color seleccionado correctamente.");
 
         }
     }
