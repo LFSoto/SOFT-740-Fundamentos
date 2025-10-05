@@ -16,13 +16,13 @@ Se interactua con:
 
 ```
 
-***Asserts**
+***Asserts***
 ```
 Se realizan asserts en cada una de las iteracciones se observan en FormTest.cs
 ```
 
 
-***CapturaPantallas**
+***CapturaPantallas***
 ```
 <img width="1094" height="895" alt="image" src="https://github.com/user-attachments/assets/f37d81f6-9e30-4dab-805c-d0cca4541929" />
 
