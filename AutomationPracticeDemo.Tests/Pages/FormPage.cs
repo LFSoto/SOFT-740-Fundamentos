@@ -13,6 +13,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             _driver = driver;
         }
+
         #region GUI Elements
         //Datos del formulario parte 1
         private IWebElement NameInput => _driver.FindElement(By.Id("name"));
@@ -25,14 +26,12 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement CountryDropdown => _driver.FindElement(By.Id("country"));
         private IWebElement ColorSelect => _driver.FindElement(By.Id("colors"));
         private IWebElement AnimalSelect => _driver.FindElement(By.Id("animals"));
-
         //Fechas del formulario
         private IWebElement DataPicker1 => _driver.FindElement(By.Id("datepicker"));
         private IWebElement DataPicker2 => _driver.FindElement(By.Id("txtDate"));
         private IWebElement DataPicker3 => _driver.FindElement(By.Id("start-date"));
         private IWebElement DataPicker4 => _driver.FindElement(By.Id("end-date"));
         private IWebElement ResultInput => _driver.FindElement(By.Id("result"));
-
         //Botón del formulario
         private IWebElement SubmitButton => _driver.FindElement(By.ClassName("submit-btn"));
 
@@ -124,6 +123,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             //Realiza un clic sobre el botón DynamicButton (STAR - STOP).
             DynamicButton.Click();
+                    
         }
 
         public string GetTextDynamicButton()

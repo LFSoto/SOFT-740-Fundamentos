@@ -5,6 +5,7 @@ namespace AutomationPracticeDemo.Tests.Tests
 {
     public class FormTests : TestBase
     {
+        //Casos de prueba con datos de prueba parametrizados
         [TestCase(
             "Juan Perez", "juan@test.com", "88888888", "Brasilia", "Brazil",
             "Male", "Monday,Wednesday", "Blue", "Dog", "10/10/2025", "11/11/2025"
@@ -40,7 +41,7 @@ namespace AutomationPracticeDemo.Tests.Tests
 
             //Validaciones y capturas
             Assert.That(result, Is.EqualTo(message));
-            ScreenshotHelper.TakeScreenshot(Driver, $"form_test_{fullName.Replace(" ", "_")}.png");
+            ScreenshotHelper.TakeScreenshot(Driver, $"Test_LLenado_Formulario_{fullName.Replace(" ", "_")}");
 
             // Marcar la prueba como exitosa
             Assert.Pass("Should Fill And Submit Form Test Success.");
@@ -54,21 +55,21 @@ namespace AutomationPracticeDemo.Tests.Tests
 
             // Validar que inicialmente el texto del botón sea "START"
             Assert.That(formPage.GetTextDynamicButton(), Is.EqualTo("START"));
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Dynamic_Button1.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Dynamic_Button_Capture1");
 
             // Hacer clic en el botón para cambiar su estado
             formPage.ClickDynamicButton();
 
             // Validar que ahora el texto sea "STOP"
             Assert.That(formPage.GetTextDynamicButton(), Is.EqualTo("STOP"));
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Dynamic_Button2.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Dynamic_Button_Capture2");
 
             // Hacer clic nuevamente para volver al estado inicial
             formPage.ClickDynamicButton();
 
             // Validar que el texto regresa a "START"
             Assert.That(formPage.GetTextDynamicButton(), Is.EqualTo("START"));
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Dynamic_Button3.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Dynamic_Button_Capture3");
 
             // Marcar la prueba como exitosa
             Assert.Pass("Dynamic Button Test Success.");
@@ -84,7 +85,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             var messageAlert = formPage.ClickSimpleAlert();
 
             // Tomar captura de pantalla tras mostrar la alerta
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Simple_Alert.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Simple_Alert");
 
             // Validar que el texto de la alerta sea el esperado
             Assert.That(messageAlert, Is.EqualTo("I am an alert box!"));
@@ -106,7 +107,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             Assert.That(messageAlert, Is.EqualTo("Press a button!"));
 
             // Tomar captura de pantalla tras mostrar la alerta
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Confirmation_Alert_Button_Test.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Confirmation_Alert");
 
             // Marcar la prueba como exitosa
             Assert.Pass("Confirmation Alert Button Test Success.");
@@ -128,10 +129,10 @@ namespace AutomationPracticeDemo.Tests.Tests
             Assert.That(diskValueBrowser, Is.EqualTo(diskValueResult));
 
             // Tomar captura de pantalla para evidencia visual
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Dynamic_Web_Table_Get_Disk_Value.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Dynamic_Web_Table");
 
             // Marcar la prueba como exitosa
-            Assert.Pass("Dynamic Web Table Get Disk Value by Browser  Test Success.");
+            Assert.Pass("Dynamic Web Table Get Disk Value by Browser Test Success.");
         }
         [Test]
         [TestCase("13/11/2025")]
@@ -145,16 +146,18 @@ namespace AutomationPracticeDemo.Tests.Tests
             formPage.SelectDateFromDatePicker(date);
 
             //Obtiene el valor de la fecha ingresado en los DatePickers
-            var convertedDate = formPage.ConvertDateFormat(date);
             var dateDatePicker1 = formPage.GetValueDateDatePicker1();
             var dateDatePicker2 = formPage.GetValueDateDatePicker2();
+
+            //Convierte el valor de la fecha y lo ordena en formato MM/DD/AAAA para la validación
+            var convertedDate = formPage.ConvertDateFormat(date);
 
             //Valida el valor de los DatePicker con los valores esperados
             Assert.That(convertedDate, Is.EqualTo(dateDatePicker1));
             Assert.That(date, Is.EqualTo(dateDatePicker2));
 
             // Tomar captura de pantalla del resultado
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test_Data_Picker_Test.png");
+            ScreenshotHelper.TakeScreenshot(Driver, "Test_Data_Picker_Date_Comparison");
 
             // Marcar la prueba como exitosa
             Assert.Pass("DatePicker Test Success.");

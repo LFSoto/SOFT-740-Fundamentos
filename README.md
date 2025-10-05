@@ -3,7 +3,7 @@
 Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/) y corresponde a la entrega de la práctica # 2 del curso de Automatización de pruebas en .NET.
 
 ## Escenarios de prueba
-Se realizaron las pruebas automatizadas de los elementos (Text boxes, RadioButtons, Buttons, DropDowns, DatePicker, Alerts y Dynamic Web Table).
+Se realizaron pruebas automatizadas de los elementos (Text boxes, RadioButtons, Buttons, DropDowns, DatePicker, Alerts y Dynamic Web Elemets).
 
 Se listan las pruebas realizadas:
 - Should_Fill_And_Submit_Form_Parametrized
@@ -11,7 +11,7 @@ Se listan las pruebas realizadas:
 - Simple_Alert_Button_Test
 - Confirmation_Alert_Button_Test
 - Dynamic_Web_Table_Get_Disk_Value_Test
-- Data_Pio_
+- Date_Picker_Test
 
 ## Requisitos
 - .NET 8 SDK
