@@ -106,27 +106,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             SubmitButton.Click();
         }
-        public void Submit1()
-        {
-            maleGenderRadioButtons.Click();
-            femaleGenderRadioButtons.Click();
-        }
-        public void Submit2()
-        {
-            buttonfile.Click();
-        }
-        public void Submit3()
-        {
-            Field2Input.Click();
-        }
-        public void Submit4()
-        {
-            colorRedsselect.Click();
-            colorBluesselect.Click();
-            colorGreensselect.Click();
-            colorYellowsselect.Click();
-            colorWhitesselect.Click();
-            
-        }
+       
     }
 }

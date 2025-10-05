@@ -23,10 +23,10 @@ namespace AutomationPracticeDemo.Tests.Tests
         public void Should_fillRadioButtonsGender()
         {
             var formPage = new FormPage(Driver);
+            IJavaScriptExecutor? js = Driver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0, 500);");
             formPage.Gender( "male");
-            formPage.Submit1();
-
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
+                       ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
             Assert.Pass("Gender seleccionado correctamente.");
 
         }
@@ -34,9 +34,10 @@ namespace AutomationPracticeDemo.Tests.Tests
         public void Should_uploadimage()
         {
             var formPage = new FormPage(Driver);
+            IJavaScriptExecutor? js = Driver as IJavaScriptExecutor;
+            js.ExecuteScript("window.scrollBy(0, 1600);");
+           // Thread.Sleep(1000);
             formPage.Selectfile("C:\\Users\\Kenneth\\OneDrive\\Imágenes\\Selenium_Logo.png");
-            formPage.Submit2();
-
             ScreenshotHelper.TakeScreenshot(Driver, "Selenium_Logo.png");
             Assert.Pass("Imagen cargada.");
 
@@ -49,7 +50,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             js.ExecuteScript("window.scrollBy(0, 500);");
             Thread.Sleep(1000);
             formPage.field2Input("Valor Inicial","Nuevo Valor");
-            formPage.Submit3();
+           
             ScreenshotHelper.TakeScreenshot(Driver, "Selenium_Logo.png");
             Assert.Pass("Se ingresa primer valor, se limpia limpia campo y se ingresa segundo valor.");
 
@@ -60,7 +61,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             var formPage = new FormPage(Driver);
             System.Threading.Thread.Sleep(500);
             formPage.Colorsselect("white");
-            formPage.Submit();
+           
 
             ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
             Assert.Pass("Color seleccionado correctamente.");
