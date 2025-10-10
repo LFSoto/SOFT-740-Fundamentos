@@ -14,7 +14,7 @@ namespace AutomationPracticeDemo.Tests.Utils
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
-            Driver.Navigate().GoToUrl("https://testautomationpractice.blogspot.com/");
+            Driver.Navigate().GoToUrl("https://automationexercise.com/");
         }
 
         [TearDown]
@@ -22,7 +22,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
-                System.Threading.Thread.Sleep(5000); // Espera 2 segundos antes de cerrar el navegador
+                System.Threading.Thread.Sleep(2000); // Espera 2 segundos antes de cerrar el navegador
                 Driver.Quit();
                 Driver.Dispose();
             }
