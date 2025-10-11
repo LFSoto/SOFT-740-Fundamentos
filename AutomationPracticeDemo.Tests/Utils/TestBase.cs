@@ -14,7 +14,8 @@ namespace AutomationPracticeDemo.Tests.Utils
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
-            Driver.Navigate().GoToUrl("https://testautomationpractice.blogspot.com/");
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            Driver.Navigate().GoToUrl("https://automationexercise.com/signup");
         }
 
         [TearDown]
