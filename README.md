@@ -1,6 +1,6 @@
-# Práctica 2 de Pruebas Automatizadas - Automation Practice Demo
+# Práctica 3 de Pruebas Automatizadas - Automation Practice Demo
 
-Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/).
+Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio https://automationexercise.com/
 
 ## Requisitos
 - .NET 8 SDK
@@ -17,7 +17,12 @@ dotnet build
 dotnet test
 
 ## Ajsutes realizados
-- Test Should_FillAndSubmitForm2()
-- Test Upload()
-- Métodos y constructores necesarios para el funcionamiento de los test mencionados
-- Asserts para verificar los datos ingresados y la subida de un archivo indivisual
+- Se agrega la clase AutomationPractice
+- Se crean los Test:
+-	signUpTest()
+-	loginTest()
+-	addProductsTest()
+-	contactUsTest()
+-	newsLetterSubscriptionTest()
+-	EmptyCart() El cual es un test adicional utilizado en el addProductsTest para limpiar el carrito antes de iniciar
+- Se agrega en el proyecto la imagen QA.jpeg utilizada en el contactUsTest
