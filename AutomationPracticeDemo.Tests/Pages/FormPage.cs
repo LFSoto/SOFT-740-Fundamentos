@@ -1,6 +1,5 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace AutomationPracticeDemo.Tests.Pages

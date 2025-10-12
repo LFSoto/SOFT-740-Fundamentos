@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -11,7 +10,9 @@ namespace AutomationPracticeDemo.Tests.Utils
         [SetUp]
         public void Setup()
         {
-            var url = "https://testautomationpractice.blogspot.com/";
+            //var url = "https://testautomationpractice.blogspot.com/";
+
+            var url = "https://automationexercise.com/";
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
