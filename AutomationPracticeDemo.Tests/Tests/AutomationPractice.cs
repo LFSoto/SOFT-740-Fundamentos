@@ -1,5 +1,6 @@
 ﻿using AutomationPracticeDemo.Tests.Utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi.Script;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -10,6 +11,8 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
+using static NUnit.Framework.Constraints.Tolerance;
 using static System.Collections.Specialized.BitVector32;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -22,6 +25,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         static readonly string email = "SOFT-740" + random + "@cenfotec.com";
         static readonly string password = "SOFT-740";
         const string name = "SOFT-740";
+        const string emailTest = "SOFT-740_SOFT@cenfotec.com";
 
         //1- Registro de usuario nuevo (. Click en Signup / Login. )
         [Test, Order(1)]
@@ -53,6 +57,8 @@ namespace AutomationPracticeDemo.Tests.Tests
             //se da click en el botón Signup
             submit.Click();
             //verificamos que haya ingresado al página de "enter account information"
+            Thread.Sleep(1000); // Esperamos para que el DOM se actualice
+
             var titleEnterAccount = Driver.FindElement(By.CssSelector("#form > div > div > div > div.login-form > h2 > b"));
             Assert.That(titleEnterAccount.Text, Is.EqualTo("ENTER ACCOUNT INFORMATION"));
         }
@@ -75,6 +81,8 @@ namespace AutomationPracticeDemo.Tests.Tests
             //se da click en el botón Signup
             submit.Click();
             //Completamos los campos del formulario Name, Password, DateOfBirth.
+            Thread.Sleep(1000); // Esperamos para que el DOM se actualice
+
             var titleRadButton = Driver.FindElement(By.Id("id_gender2"));
             var InputName = Driver.FindElement(By.CssSelector("input[data-qa=\"name\"]"));
             var InputPassword = Driver.FindElement(By.CssSelector("input[data-qa=\"password\"]"));
@@ -145,11 +153,12 @@ namespace AutomationPracticeDemo.Tests.Tests
             var submitLogin = Driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
 
             //Ingresamos el email, password y click en "Login".
-            emailInput.SendKeys("SOFT-740@cenfotec.com");
+            emailInput.SendKeys(emailTest);
             PasswordInput.SendKeys(password);
             submitLogin.Click();
 
             //Verificamos que el usuario se haya logueado de forma exitosa.
+            Thread.Sleep(1000); // Esperamos para que el DOM se actualice
             var userLoggued = Driver.FindElement(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b"));
             Assert.That(userLoggued.Text, Is.EqualTo(name));
         }
@@ -159,19 +168,8 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test, Order(5)]
         public void DeleteProductsCart()
         {
-            //Ingresamos al botón de Signup/Login
-            var LoginButton = Driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
-            //string actualStyle = LoginButton.GetCssValue("color");
-            LoginButton.Click();
-            //declaramos las variables a utilizar.
-            var emailInput = Driver.FindElement(By.CssSelector("input[data-qa='login-email']"));
-            var PasswordInput = Driver.FindElement(By.CssSelector("input[data-qa='login-password']"));
-            var submitLogin = Driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
-            //Ingresamos el email, password y click en "Login".
-            emailInput.SendKeys("SOFT-740@cenfotec.com");
-            PasswordInput.SendKeys(password);
-            submitLogin.Click();
-
+            //Nos logueamos reutilizando el código del test LoginWithUserAccount.
+            LoginWithUserAccount();
 
             var ViewcartBtn = Driver.FindElement(By.CssSelector("li a[href=\"/view_cart\"]"));
             ViewcartBtn.Click();
@@ -193,7 +191,7 @@ namespace AutomationPracticeDemo.Tests.Tests
                     js.ExecuteScript("arguments[0].scrollIntoView(true);", boton);
 
                     boton.Click();
-                    Thread.Sleep(1000); // Espera para que el DOM se actualice
+                    Thread.Sleep(1000); // Esperamos para que el DOM se actualice
                 }
 
             }
@@ -201,6 +199,9 @@ namespace AutomationPracticeDemo.Tests.Tests
             var filasDespués = Driver.FindElements(By.CssSelector("#cart_info_table tbody tr"));
             int cantidadFilasDespues = filasDespués.Count;
             Console.WriteLine($"Cantidad de productos en el carrito despues de eliminarlas: {cantidadFilasDespues}");
+
+            var logoutBtn = Driver.FindElement(By.CssSelector("li a[href=\"/logout\"]"));
+            logoutBtn.Click();
         }
 
 
@@ -208,27 +209,16 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test, Order(6)]
         public void AddToCart()
         {
+            //Nos aseguramos de que el carrito esté vacío antes de comenzar el test.
+            DeleteProductsCart();
+            //Nos logueamos reutilizando el código del test LoginWithUserAccount.
+            LoginWithUserAccount();
+
             //Definimos estas variables para agregar solamente 2 productos al carrito.
             int productoId = 0; //Este id cambia por producto, tiene una secuencia en la página.
             int productoId_1 = 3; 
             int productoId_2 = 6;
             int contador = 0;//Este campo cuenta las veces que se agrega un producto al carrito.
-
-            //Ingresamos al botón de Signup/Login
-            var LoginButton = Driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
-            string actualStyle = LoginButton.GetCssValue("color");
-            LoginButton.Click();
-            //declaramos las variables a utilizar.
-            var emailInput = Driver.FindElement(By.CssSelector("input[data-qa='login-email']"));
-            var PasswordInput = Driver.FindElement(By.CssSelector("input[data-qa='login-password']"));
-            var submitLogin = Driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
-            //Ingresamos el email, password y click en "Login".
-            emailInput.SendKeys("SOFT-740@cenfotec.com");
-            PasswordInput.SendKeys(password);
-            submitLogin.Click();
-
-
-
 
 
             //AGREGAMOS 2 PRODUCTOS AL CARRITO:
@@ -251,16 +241,11 @@ namespace AutomationPracticeDemo.Tests.Tests
                 //Ubicamos el botón dentro del overlay del producto a comprar.
                 wait.Until(driver => driver.FindElement(By.CssSelector($".overlay-content a[data-product-id='{productoId}']")).Displayed);
                 var button = Driver.FindElement(By.CssSelector($".overlay-content a[data-product-id='{productoId}']"));
-                //Hacemos scroll al botón para ubicarlo.
-                //Actions action = new Actions(Driver);
-                //actions.MoveToElement(button).Perform();
+
                 //Esperamos hasta que el botón sea clickeable
                 wait.Until(driver => button.Displayed && button.Enabled);
                 Thread.Sleep(1000);
-                //Hacemos scroll hasta el botón "Add to cart"
-                //IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
-                //js.ExecuteScript("arguments[0].scrollIntoView(true);", button);
-                //Damos click en el botón "Add to cart" del Hover.
+
                 button.Click();
 
 
@@ -322,20 +307,8 @@ namespace AutomationPracticeDemo.Tests.Tests
         public void contactUsForm()
         {
 
-            //Nos logueamos
-
-            //Ingresamos al botón de Signup/Login
-            var LoginButton = Driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
-            string actualStyle = LoginButton.GetCssValue("color");
-            LoginButton.Click();
-            //declaramos las variables a utilizar.
-            var emailInput = Driver.FindElement(By.CssSelector("input[data-qa='login-email']"));
-            var PasswordInput = Driver.FindElement(By.CssSelector("input[data-qa='login-password']"));
-            var submitLogin = Driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
-            //Ingresamos el email, password y click en "Login".
-            emailInput.SendKeys("SOFT-740@cenfotec.com");
-            PasswordInput.SendKeys(password);
-            submitLogin.Click();
+            //Nos logueamos reutilizando el código del test LoginWithUserAccount.
+            LoginWithUserAccount();
 
 
             //Ubicamos el botón "Contact Us" y damos click.
@@ -362,7 +335,8 @@ namespace AutomationPracticeDemo.Tests.Tests
             inputMessage.SendKeys("Hola, quisiera recibir más información sobre sus productos. Gracias.");
             //3.Adjuntar un archivo. 
             var uploadFileInput = Driver.FindElement(By.CssSelector("input[name='upload_file']"));
-            string rutaArchivo = @"C:\Users\angea\Documents\Practica3.pdf";
+            string rutaArchivo = @"C:\Users\angea\source\repos\SOFT-740-Fundamentos\Practica3.pdf";
+
 
             uploadFileInput.SendKeys(rutaArchivo);
             //4.Click en Submit. 
