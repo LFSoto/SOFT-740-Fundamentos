@@ -1,4 +1,4 @@
-##Proyecto de Automatización - AutomationPracticeDemo
+## Proyecto de Automatización - AutomationPracticeDemo
 
 Este proyecto contiene un conjunto de pruebas automatizadas desarrolladas en **C#**, utilizando **Selenium WebDriver**, **NUnit** y el patrón **Page Object Model (POM)**.  
 El objetivo principal es validar la interacción con diferentes elementos de un formulario web (text boxes, radio buttons, dropdowns, alertas, datepicker y botones).
