@@ -11,7 +11,8 @@ namespace AutomationPracticeDemo.Tests.Tests
         static readonly int random = new Random().Next(1, 1000);
         static readonly string email = "SOFT-740" + random + "@cenfotec.com";
         const string password = "SOFT-7400";
-
+        const string preciounitario = "Rs. 278";
+        const string preciototal = "Rs. 556";
 
 
         [Test]
@@ -103,7 +104,7 @@ namespace AutomationPracticeDemo.Tests.Tests
                 }
             }
         [Test]
-        public void Loginexistingemail()
+        public void NewUserLoginexistingemail()
         {
             //Se definen los WebElements
             var SignupLogin = Driver.FindElement(By.CssSelector("a[href='/login']"));
@@ -141,13 +142,54 @@ namespace AutomationPracticeDemo.Tests.Tests
             //click en Login
             Loginbutton.Click();
 
-            ScreenshotHelper.TakeScreenshot(Driver, "form_test.png");
-            Assert.Pass("Login exitoso");
+            //VALIDACION DE LOGIN
+            var loginMessage = Driver.FindElement(By.XPath("//a[i[@class='fa fa-user']]"));
+
+            Assert.That(loginMessage.Text, Is.EqualTo("Logged in as tamara"));
+            Assert.Pass("Login exitoso.");
+
+        }
+        [Test]
+        public void CART()
+        {
+
+            //Se definen los WebElements
+            var productos = Driver.FindElement(By.CssSelector("a[href='/products']"));
+            //Se da click en Signup/Login
+            productos.Click();
+
+            var addtocart1 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
+           // var addtocart2 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
+            var viewcartbutton = Driver.FindElement(By.CssSelector("a[href='/view_cart']"));
+            var continuebutton = Driver.FindElement(By.CssSelector("button[class='btn btn-success close-modal btn-block']"));
+            var cartbutton = Driver.FindElement(By.CssSelector("a[href='/view_cart']"));
+            //Se agrega primer articulo al carrito
+            addtocart1.Click();
+            Thread.Sleep(2000);
+            //se da click en continue shopping  
+            continuebutton.Click();
+            //se agrega segundo articulo al carrito
+            addtocart1.Click();
+            Thread.Sleep(500);
+            //se da click en view cart
+            cartbutton.Click();
+            
+
+            //validar precios unitarios de los productos estén en el carrito
+            var precioProductounitario = Driver.FindElement(By.XPath("//td[@class='cart_price']/p[contains(text(),'Rs. 278')]"));
+            Assert.That(precioProductounitario.Text, Is.EqualTo(preciounitario));
+
+            //validar precios totales de los productos estén en el carrito
+            var precioProductototal = Driver.FindElement(By.XPath("//td[@class='cart_total_price']/p[contains(text(),'Rs. 556')]"));
+            Assert.That(precioProductototal.Text, Is.EqualTo(preciototal));
+
+
+
+
 
         }
 
     }
-
 
 
 
