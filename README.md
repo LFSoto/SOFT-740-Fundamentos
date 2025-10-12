@@ -15,7 +15,7 @@ dotnet restore
 dotnet build
 dotnet test
 
-##Tests
+## Tests
 
 ## Se agregaron los siguientes tests:
 
@@ -23,3 +23,17 @@ dotnet test
 - Should_ClickStartStopButton()
 - Should_OpenAndCloseConfirmAlert()
 - Should_UploadSingleFile()
+
+# Práctica 3 Dixon Chavarria
+
+## Se agregaron las siguientes Pruebas
+
+- Should_RegisterNewUser()
+- Should_LoginExistingUser()
+- Should_AddItemsToCartAndVerifyTotal()
+- Should_SendContactForm()
+- Should_SubscribeToNewsletter()
+
+## Se agregaron los métodos
+- Login()
+- GetFilePathUpload()
