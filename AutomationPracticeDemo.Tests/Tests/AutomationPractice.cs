@@ -46,9 +46,9 @@ namespace AutomationPracticeDemo.Tests.Tests
             var stateinput = Driver.FindElement(By.Id("state"));
             var cityinput = Driver.FindElement(By.Id("city"));
             var zipcodeinput = Driver.FindElement(By.Id("zipcode"));
-            var mobilenumberinput = Driver.FindElement(By.Id("mobile_number")); 
+            var mobilenumberinput = Driver.FindElement(By.Id("mobile_number"));
             var createaccountbutton = Driver.FindElement(By.CssSelector("button[data-qa='create-account']"));
-          
+
             //Se ingresan los datos del formulario
             titleradio.Click();
             passwordinput.SendKeys(password);
@@ -85,22 +85,22 @@ namespace AutomationPracticeDemo.Tests.Tests
             }
 
             //click en continue
-           
+
             continuebutton.Click();
 
             //Validacion de login
-                var loggedinasmessage = Driver.FindElement(By.CssSelector("a[href='/logout']"));
-                if (loggedinasmessage.Displayed)
-                {
-                    ScreenshotHelper.TakeScreenshot(Driver, "logged_in.png");
-                    Assert.Pass("Login exitoso.");
-                }
-                else
-                {
-                    ScreenshotHelper.TakeScreenshot(Driver, "not_logged_in.png");
-                    Assert.Fail("No se inicio sesion de manera correcta.");
-                }
+            var loggedinasmessage = Driver.FindElement(By.CssSelector("a[href='/logout']"));
+            if (loggedinasmessage.Displayed)
+            {
+                ScreenshotHelper.TakeScreenshot(Driver, "logged_in.png");
+                Assert.Pass("Login exitoso.");
             }
+            else
+            {
+                ScreenshotHelper.TakeScreenshot(Driver, "not_logged_in.png");
+                Assert.Fail("No se inicio sesion de manera correcta.");
+            }
+        }
         [Test]
         public void NewUserLoginexistingemail()
         {
@@ -136,7 +136,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             //Se ingresan los datos  correo y password
             emailinput.SendKeys("SOFT-7401@cenfotec.com");
             passwordinput.SendKeys("SOFT-7400");
-            
+
             //click en Login
             Loginbutton.Click();
 
@@ -157,7 +157,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             productos.Click();
 
             var addtocart1 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
-           // var addtocart2 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
+            // var addtocart2 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
             var viewcartbutton = Driver.FindElement(By.CssSelector("a[href='/view_cart']"));
             var continuebutton = Driver.FindElement(By.CssSelector("button[class='btn btn-success close-modal btn-block']"));
             var cartbutton = Driver.FindElement(By.CssSelector("a[href='/view_cart']"));
@@ -168,23 +168,23 @@ namespace AutomationPracticeDemo.Tests.Tests
             continuebutton.Click();
             //se agrega segundo articulo al carrito
             addtocart1.Click();
-           // Thread.Sleep(500);
+            // Thread.Sleep(500);
             //se da click en view cart
             cartbutton.Click();
 
 
             //validar precios unitarios de los productos estén en el carrito
-          var precioProductounitario = Driver.FindElement(By.ClassName("cart_price"));
+            var precioProductounitario = Driver.FindElement(By.ClassName("cart_price"));
             Assert.That(precioProductounitario.Text, Is.EqualTo(preciounitario));
 
             //validar precios totales de los productos estén en el carrito
-          var precioProductototal = Driver.FindElement(By.ClassName("cart_total_price"));
+            var precioProductototal = Driver.FindElement(By.ClassName("cart_total_price"));
             Assert.That(precioProductototal.Text, Is.EqualTo(preciototal));
         }
-      [Test] 
-     public void contactUs()
+        [Test]
+        public void contactUs()
 
-            {
+        {
             //Se definen los WebElements
             var contactus = Driver.FindElement(By.CssSelector("a[href='/contact_us']"));
             //Se da click en Contact Us
@@ -197,25 +197,25 @@ namespace AutomationPracticeDemo.Tests.Tests
             var messageinput = Driver.FindElement(By.CssSelector("textarea[data-qa='message']"));
             var uploadfileinput = Driver.FindElement(By.CssSelector("input[name='upload_file']"));
             var submitbutton = Driver.FindElement(By.CssSelector("input[data-qa='submit-button']"));
-           
-           //Se ingresan los datos del formulario
+
+            //Se ingresan los datos del formulario
             nameinput.SendKeys("Tamara");
             emailinput.SendKeys("tsalazarzuniga@gmail.com");
             subjectinput.SendKeys("validar el envío correcto del formulario de contacto. ");
             messageinput.SendKeys("Este es un mensaje de prueba para validar el envío correcto del formulario de contacto.");
-                //Se adjunta un archivo
-                uploadfileinput.SendKeys("C:\\Users\\Kenneth\\OneDrive\\Documentos\\Curso automatización\\SOFT-740-Fundamentos\\AutomationPracticeDemo.Tests\\Selenium_Logo.png");
-                //click en Submit
-                submitbutton.Click();
-                //Validacion de mensaje de éxito
-                Thread.Sleep(2000);
-                //Alerta
-                Driver.SwitchTo().Alert().Accept();
-                //Validacion de mensaje de éxito
-                var successmessage = Driver.FindElement(By.CssSelector("div[class='status alert alert-success']"));
-                Assert.Pass("Success! Your details have been submitted successfully.");
-            
-                }
+            //Se adjunta un archivo
+            uploadfileinput.SendKeys("C:\\Users\\Kenneth\\OneDrive\\Documentos\\Curso automatización\\SOFT-740-Fundamentos\\AutomationPracticeDemo.Tests\\Selenium_Logo.png");
+            //click en Submit
+            submitbutton.Click();
+            //Validacion de mensaje de éxito
+            Thread.Sleep(2000);
+            //Alerta
+            Driver.SwitchTo().Alert().Accept();
+            //Validacion de mensaje de éxito
+            var successmessage = Driver.FindElement(By.CssSelector("div[class='status alert alert-success']"));
+            Assert.Pass("Success! Your details have been submitted successfully.");
+
+        }
 
         [Test]
         public void Suscripciónnewsletter()
@@ -239,8 +239,8 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
     }
 
-    }
+}
 
 
 
-    
+
