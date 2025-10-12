@@ -32,16 +32,22 @@ Compilar -> Compilar Solución
 
 
 ##Ejecutar las pruebas
-Opción 1:
-	Abrir el explorador de pruebas (En el Vs seleccionar Ver-> Explorador de pruebas).
-	Click en "Ejecutar".
-Opción 2:
-	En la consola de Vs (PowerShell para desarrolladores) ejecutar: dotnet test
+ Se pueden ejecutar todos los test de forma individual desde el explorador de pruebas:
+- AddToCart
+- contactUsForm
+- DeleteProductsCart
+- EnterAccountInfoTest
+- LoginWithUserAccount
+- newLetterTest
+- NewUserTest
+- SignupLoginTest
+También se puede ejecutar todas las pruebas en conjunto desde el AutomationPractice en donde los test tienen un orden para ejecutarse de forma automática.
+
+Nota: Se añade el test DeleteProductsCart para limpiar la lista de productos añadidos al carrito para realiza una prueba limpia con el test AddToCart y así verificar que se agregaron los dos productos solicitados.
 
 
-##Visualizar los screenshots de las pruebas.
-  Ejecutar las pruebas.
-  En la ruta AutomationPracticeDemo.Tests\bin\Debug\net9.0\Evidencias se pueden visualizar las capturas.	
+
+	
 
 
 

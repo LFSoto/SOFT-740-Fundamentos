@@ -1,12 +1,14 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
     public class TestBase
     {
         protected IWebDriver Driver;
+        protected WebDriverWait wait;
 
         [SetUp]
         public void Setup()
@@ -14,7 +16,9 @@ namespace AutomationPracticeDemo.Tests.Utils
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
-            Driver.Navigate().GoToUrl("https://testautomationpractice.blogspot.com/");
+            Driver.Navigate().GoToUrl("https://automationexercise.com/");
+            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+
         }
 
         [TearDown]
