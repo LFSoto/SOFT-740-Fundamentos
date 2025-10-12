@@ -1,7 +1,7 @@
 ## Proyecto de Automatización - AutomationPracticeDemo
 
-Este proyecto contiene un conjunto de pruebas automatizadas desarrolladas en **C#**, utilizando **Selenium WebDriver**, **NUnit** y el patrón **Page Object Model (POM)**.  
-El objetivo principal es validar la interacción con diferentes elementos de un formulario web (text boxes, radio buttons, dropdowns, alertas, datepicker y botones).
+Este proyecto contiene la práctica de automatización de flujos completos de usuario utilizando **Selenium WebDriver** en **C#**, sin aplicar aún el patrón **Page Object Model (POM)**.  
+Incluye pruebas automatizadas que cubren distintos tipos de interacciones: formularios, botones, listas, validaciones y archivos adjuntos.
 
 ---
 
@@ -76,14 +76,19 @@ Esto compilará el proyecto y ejecutará todas las pruebas definidas en la soluc
 
 ## Caso de Prueba Incluido
 
-El archivo [`FromTestPractica2.cs`](./Tests/Tests/FromTestPractica2.cs) contiene un caso de prueba que realiza las siguientes acciones:
+1. **Registro de usuario nuevo**  
+   Valida el flujo completo de registro y mensaje “Account Created!”.
 
-- Completar campos de texto (Nombre, Correo, Teléfono, Dirección)
-- Seleccionar radio buttons y checkboxes
-- Seleccionar valores de dropdown
-- Interactuar con un datepicker
-- Validar alertas
-- Ejecutar doble clic en un botón y validar resultado
-- Realizar aserciones para validar los datos ingresados y las acciones ejecutadas
+2. **Login con usuario existente**  
+   Verifica el inicio de sesión correcto mostrando “Logged in as [usuario]”.
+
+3. **Agregar productos al carrito y verificar total**  
+   Confirma la correcta adición de productos y el total mostrado.
+
+4. **Formulario Contact Us**  
+   Comprueba el envío exitoso del formulario y el mensaje de confirmación.
+
+5. **Suscripción al newsletter**  
+   Valida la suscripción correcta al boletín.
 
 ---
