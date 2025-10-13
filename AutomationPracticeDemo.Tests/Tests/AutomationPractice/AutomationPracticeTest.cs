@@ -6,7 +6,7 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
     public class AutomationPracticeTest : TestBase
     {
         [Test]
-        public void newUserSignupTest()
+        public void NewUserSignupTest()
         {
             var navBarPage = new NavBarPage(Driver);
             //Hacer click en Signup/Login
@@ -28,10 +28,10 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
             //Se valida que el usuario ha iniciado sesión
             var expectedLoggedInAs = "Logged in as "+loginPage.GetGeneratedUser();
             Assert.That(expectedLoggedInAs, Is.EqualTo(navBarPage.GetLoggedInAsText()), "El mensaje actual:" + navBarPage.GetLoggedInAsText() + " no es el esperado: " + expectedLoggedInAs);
-        }//newUserSignupTest
+        }//NewUserSignupTest
 
         [Test]
-        public void existingUserLoginTest()
+        public void ExistingUserLoginTest()
         {
             var navBarPage = new NavBarPage(Driver);
             //Hacer click en Signup/Login
@@ -45,7 +45,7 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
             //Se valida que el usuario ha iniciado sesión
             var expectedLoggedInAs = "Logged in as SOFT-740";
             Assert.That(expectedLoggedInAs, Is.EqualTo(navBarPage.GetLoggedInAsText()), "El mensaje actual:" + navBarPage.GetLoggedInAsText() + " no es el esperado: " + expectedLoggedInAs);
-        }//existingUserLoginTest
+        }//ExistingUserLoginTest
 
         [Test]
         public void AddProductsToCartTest()
@@ -87,7 +87,7 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
         }//ContactUsValidFormTest
 
         [Test]
-        public void newsLetterTest()
+        public void NewsLetterTest()
         {
             var footerPage = new FooterPage(Driver);
             //Suscribirse al newsletter
@@ -95,6 +95,6 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
             //Se valida el mensaje de confirmación
             var expectedMessage = "You have been successfully subscribed!";
             Assert.That(expectedMessage, Is.EqualTo(footerPage.GetConfirmationMessage()), "El mensaje actual:" + footerPage.GetConfirmationMessage() + " no es el esperado: " + expectedMessage);
-        }//newsLetterTest
+        }//NewsLetterTest
     }//class
 }//namespace
