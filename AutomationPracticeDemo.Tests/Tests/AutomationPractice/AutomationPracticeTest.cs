@@ -70,7 +70,7 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
 
 
         [Test]
-        public void CotactUsValidFormTest()
+        public void ContactUsValidFormTest()
         {
             var navBarPage = new NavBarPage(Driver);
             //Hacer click en Contact Us
@@ -84,7 +84,7 @@ namespace AutomationPracticeDemo.Tests.Tests.AutomationPractice
             //Se valida el alert de mensaje enviado correctamente
             var expectedAlertText = "Success! Your details have been submitted successfully.";
             Assert.That(expectedAlertText, Is.EqualTo(contactUsPage.GetSuccessMessage()), "El mensaje actual:" + contactUsPage.GetSuccessMessage() + " no es el esperado: " + expectedAlertText);
-        }//CotactUsValidFormTest
+        }//ContactUsValidFormTest
 
         [Test]
         public void newsLetterTest()
