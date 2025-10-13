@@ -1,4 +1,4 @@
-# Practica 2 - Melvin Marin Navarro
+# Practica 3 - Melvin Marin Navarro
 
 Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/).
 
@@ -20,4 +20,8 @@ dotnet test
 ## Test
 ### Se agregaron los siguientes:
 ---
-* **FillAndSubmitFormClientTest**
+* **NewUserSignupTest**
+* **ExistingUserLoginTest**
+* **AddProductsToCartTest**
+* **ContactUsValidFormTest**
+* **NewsLetterTest**
