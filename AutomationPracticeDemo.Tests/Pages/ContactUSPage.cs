@@ -43,7 +43,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
             wait.Until(driver => uploadFileInput.Displayed);
-            uploadFileInput.Click();
+            uploadFileInput.SendKeys(filePath);
         }
 
         //Enviar el formulario

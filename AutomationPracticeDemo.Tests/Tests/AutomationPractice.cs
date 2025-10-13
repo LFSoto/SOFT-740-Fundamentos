@@ -12,6 +12,9 @@ namespace AutomationPracticeDemo.Tests.Tests
         const string email = "SOFT-740@cenfotec.com";
         const string password = "SOFT-740";
 
+        /// <summary>
+        /// 
+        /// Validar la suscripción al newsletter en la página principal, Ejemplo hecho por el profesor
         [Test]
         public void newsLetterTest()
         {
@@ -90,7 +93,6 @@ namespace AutomationPracticeDemo.Tests.Tests
         /// <summary>
         /// Ejercicio 3: Agregar productos al carrito y verificar total
         /// </summary
-        /// 
         [Test]
         public void AddProductsToCartTest()
         {
@@ -118,7 +120,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             Assert.Multiple(() =>
             {
                 Assert.That(modalTitle, Is.EqualTo("Added!"));
-                Assert.That(modalMessage, Is.EqualTo("Product has been added to your cart."));
+                Assert.That(modalMessage, Is.EqualTo("Your product has been added to cart."));
             });
             ScreenshotHelper.TakeScreenshot(Driver, "ProductAddedModal_test.png");
             productsPage.ContinueShopping();
@@ -127,14 +129,20 @@ namespace AutomationPracticeDemo.Tests.Tests
             var (secondProductType, secondProductPrice) = productsPage.GetSecondProductDetails();
             Assert.Multiple(() =>
             {
-                Assert.That(firstProductType, Is.EqualTo("Men Tshirt"));
-                Assert.That(firstProductPrice, Is.EqualTo("Rs. 400"));
+                Assert.That(secondProductType, Is.EqualTo("Men Tshirt"));
+                Assert.That(secondProductPrice, Is.EqualTo("Rs. 400"));
             });
 
-            //Agregar el segundo producto al carrito y validar que se ha agregado correctamente
+            //Agregar el segundo producto al carrito
             productsPage.AddSecondProductToCart();
-            productsPage.SummitViewCart();
 
+            //visualizar el carrito
+            productsPage.SummitViewCart();
+            ScreenshotHelper.TakeScreenshot(Driver, "ViewCart_test.png");
+
+            //Validar que los productos están en el carrito con el precio correcto y el total es correcto
+            productsPage.ValidateProductInCart(firstProductType);
+            productsPage.ValidateProductInCart(secondProductType);
         }
         /// <summary>
         /// Ejercicio 4: Contact Us form
@@ -146,12 +154,19 @@ namespace AutomationPracticeDemo.Tests.Tests
             var homePage = new HomePage(Driver);
             var contactUsPage = new ContactUSPage(Driver);
 
+            //Ruta del archivo a subir
+            string rutaImagen = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\Paisaje.jpg"));
+            
             // Navegación a la página de Contact Us
             homePage.ClickContactUsOption();
             Assert.That(contactUsPage.GetTitleContactUSPage, Is.EqualTo("CONTACT US"));
 
             //Llenado del formulario de Contact Us
             contactUsPage.FillContactForm("Maximino",email,"Practica #3","Se realizo la practica usando POM");
+
+            //Subir un archivo (opcional)
+            contactUsPage.UploadFile(rutaImagen);
+
             //contactUsPage.UploadFile("C:\\Users\\maxim");
             ScreenshotHelper.TakeScreenshot(Driver, "ContactUs_test.png");
             contactUsPage.SubmitContactForm();
@@ -166,15 +181,18 @@ namespace AutomationPracticeDemo.Tests.Tests
 
 
         /// <summary>
-        /// Ejercicio 5: Sucricpción al newsletter
+        /// Ejercicio 5: Sucripción al newsletter
         /// </summary
         [Test]
         public void suscriptionNewLetterTest()
         {
             var homePage = new HomePage(Driver);
+            // Suscripción al newsletter
             homePage.FillSuscribeInput(email);
             homePage.SumitSuscibeButton();
             ScreenshotHelper.TakeScreenshot(Driver, "Suscription_test.png");
+
+            //Validar mensaje de éxito
             Assert.That(homePage.GetSuscribeMessage(), Is.EqualTo("You have been successfully subscribed!"));
         }
 
