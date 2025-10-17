@@ -1,0 +1,42 @@
+{
+  "AddToCart": {
+    "Cases": [
+      { "Products": "1,2,3" },
+      { "Products": "1,2,3,1,11" },
+      { "Products": "1" }
+    ]
+  },
+  "ContactForm": {
+        "Name": "Johan",
+        "Email": "jmata@testQA.com",
+        "Subject": "Subject Test 1",
+        "Message": "Message Test 1",
+        "File": "Test_Image.jpg"
+  },
+  "ExistingUserLogin": {
+        "Email": "jmata@testQA.com",
+        "Password": "123456Aa",
+        "Usuario": "Johan"
+  },
+  "PurchaseOrder": {
+    "Email": "jmata@testQA.com",
+    "Password": "123456Aa",
+    "Products": "1,2,1",
+    "Name": "Johan Test QA",
+    "Card": "1234567890123456",
+    "Cvc": "123",
+    "Date": "12/2030"
+  },
+  "Subscription": {
+    "Cases": [
+      { "Email": "jmata@testQA.com" },
+      { "Email": "jmata1@testQA.com" }
+    ]
+  },
+  "Messages": {
+    "AccountCreated": "ACCOUNT CREATED!",
+    "ContactFormSuccess": "Success! Your details have been submitted successfully.",
+    "SubscriptionSuccess": "You have been successfully subscribed!",
+    "OrderConfirmed": "Congratulations! Your order has been confirmed!"
+  }
+}
