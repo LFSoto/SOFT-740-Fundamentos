@@ -1,9 +1,9 @@
 # Proyecto de Pruebas Automatizadas - Automation Practice Demo
 
-Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/) y corresponde a la entrega de la práctica # 3 del curso de Automatización de pruebas en .NET.
+Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/) y corresponde a la entrega de la práctica # 4 del curso de Automatización de pruebas en .NET.
 
 ## Escenarios de prueba
-Se realizaron pruebas automatizadas, interactuando con diferentes elementos web, adicionalmente se utilizó la librería Bogus.Faker para generar los datos de pruebas, así como métodos que permiten obtener la información de las tablas de manera dinámica, sin importar la cantidad de productos, así como la eliminación de estos.
+Se realizaron pruebas automatizadas con datos parametrizados, interactuando con diferentes elementos web, adicionalmente se utilizó la librería Bogus.Faker para generar los datos de pruebas, así como métodos que permiten obtener la información de las tablas de manera dinámica, sin importar la cantidad de productos, así como la eliminación de estos.
 
 Se listan las pruebas realizadas:
 - Register_New_Random_User.

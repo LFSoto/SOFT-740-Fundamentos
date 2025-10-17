@@ -85,7 +85,7 @@ namespace AutomationPracticeDemo.Tests.Pages
             //Genera e ingresa un Password aleatorio
             string password = faker.Internet.Password();
 
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(15));
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
             var messageElement = wait.Until(driver =>
             {
                 return PasswordInpunt.Displayed ? PasswordInpunt : null;

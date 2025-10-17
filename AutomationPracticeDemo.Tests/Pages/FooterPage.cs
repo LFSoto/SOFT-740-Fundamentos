@@ -1,8 +1,5 @@
-using Bogus;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System.Globalization;
-using System.Text.RegularExpressions;
 
 
 namespace AutomationPracticeDemo.Tests.Pages
