@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Ale F",
+    "Email": "SOFT-7401@cenfotec.com",
+    "Password": "SOFT-740",
+    "Day": "10",
+    "Month": "May",
+    "Year": "1990",
+    "SpecialOffers": true,
+    "FirstName": "Ale",
+    "LastName": "F",
+    "Company": "Cenfotec",
+    "Address1": "Heredia",
+    "Country": "Canada",
+    "State": "Heredia",
+    "City": "Heredia",
+    "ZipCode": "00000",
+    "MobileNumber": "88888844"
+  },
+  {
+    "Name": "Usuario 2",
+    "Email": "SOFT-7402@cenfotec.com",
+    "Password": "SOFT-740",
+    "Day": "11",
+    "Month": "Jun",
+    "Year": "1991",
+    "SpecialOffers": false,
+    "FirstName": "User",
+    "LastName": "Two",
+    "Company": "Company",
+    "Address1": "Ciudad",
+    "Country": "Costa Rica",
+    "State": "State",
+    "City": "City",
+    "ZipCode": "11111",
+    "MobileNumber": "88000011"
+  }
+]

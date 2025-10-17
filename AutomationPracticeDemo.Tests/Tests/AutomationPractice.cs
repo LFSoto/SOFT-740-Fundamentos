@@ -13,6 +13,7 @@ namespace AutomationPracticeDemo.Tests.Tests
 {
     public class AutomationPractice:TestBase
     {
+        //constantes y variables
         static readonly int random = new Random().Next(1, 1000);
         static readonly string email = "SOFT-740" + random + "@cenfotec.com";
         const string password = "SOFT-740";

@@ -27,7 +27,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement UploadButton => _driver.FindElement(By.CssSelector("#singleFileForm button"));
         private IWebElement UploadSuccessMessage => _driver.FindElement(By.Id("singleFileStatus"));
 
-
+        //
         public void FillForm(string name, string email, string phone, string country)
         {
             NameInput.SendKeys(name);
