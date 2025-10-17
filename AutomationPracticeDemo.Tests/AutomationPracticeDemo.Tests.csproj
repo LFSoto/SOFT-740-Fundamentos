@@ -20,6 +20,12 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="141.0.7390.5400" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Include="Tests\SignUp\Data\signups.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
   <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
