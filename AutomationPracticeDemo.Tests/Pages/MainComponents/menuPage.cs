@@ -1,11 +1,11 @@
 ﻿using OpenQA.Selenium;
 
-namespace AutomationPracticeDemo.Tests.Pages
+namespace AutomationPracticeDemo.Tests.Pages.MainComponents
 {
-    public class HomePage
+    public class menuPage
     {
         private readonly IWebDriver _driver;
-        public HomePage(IWebDriver driver)
+        public menuPage(IWebDriver driver)
         {
             _driver = driver;
         }
@@ -16,11 +16,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement productOption => _driver.FindElement(By.CssSelector("li a[href=\"/products\"]"));
         private IWebElement logoutOption => _driver.FindElement(By.CssSelector("li a[href=\"/logout\"]"));
         private IWebElement contactUsOption => _driver.FindElement(By.CssSelector("li a[href=\"/contact_us\"]"));
-
-        // Elementos del newsletter subscription
-        private IWebElement subscribreElementInput => _driver.FindElement(By.Id("susbscribe_email"));
-        private IWebElement suscribeButton => _driver.FindElement(By.Id("subscribe"));
-        private IWebElement susbscribreMessage => _driver.FindElement(By.CssSelector("div[class=\"alert-success alert\"]"));
 
 
         // Declaración de metodos para interactuar con los elementos del menu de navegación
@@ -45,18 +40,5 @@ namespace AutomationPracticeDemo.Tests.Pages
             return logoutOption.Text;
         }
 
-        // Métodos para la suscripción al newsletter
-        public void FillSuscribeInput(string email)
-        {
-            subscribreElementInput.SendKeys(email);
-        }
-        public string GetSuscribeMessage()
-        {
-            return susbscribreMessage.Text;
-        }
-        public void SumitSuscibeButton()
-        {
-            suscribeButton.Click();
-        }
     }
 }

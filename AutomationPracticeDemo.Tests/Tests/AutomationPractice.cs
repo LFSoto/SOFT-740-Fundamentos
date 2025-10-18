@@ -1,4 +1,5 @@
 ﻿using AutomationPracticeDemo.Tests.Pages;
+using AutomationPracticeDemo.Tests.Pages.MainComponents;
 using AutomationPracticeDemo.Tests.Utils;
 using OpenQA.Selenium;
 using System;
@@ -11,6 +12,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         string emailRandom = "PracticaAUT" + random + "@cenfotec.com";
         const string email = "SOFT-740@cenfotec.com";
         const string password = "SOFT-740";
+      
 
         /// <summary>
         /// 
@@ -33,38 +35,38 @@ namespace AutomationPracticeDemo.Tests.Tests
         public void SingupTest()
         {
             //Declaración de variables
-            var homePage = new HomePage(Driver);
-            var loginPage = new LoginPage(Driver);
+            var menuPage = new menuPage(Driver);
+            var signUpPage = new SignUpPage(Driver);
 
             // Navegación a la página de registro
-            homePage.ClickSignUpLogin();
-            Assert.That(loginPage.GetTitleNewUserSignup(), Is.EqualTo("New User Signup!"));
+            menuPage.ClickSignUpLogin();
+            Assert.That(signUpPage.GetTitleNewUserSignup(), Is.EqualTo("New User Signup!"));
 
             //Navegación al formulario de registro
-            loginPage.FillSignup("UsuarioPracticaAUT", emailRandom);
-            loginPage.SubmitSignup();
-            Assert.That(loginPage.GetTitleEnterAccountInfo(), Is.EqualTo("ENTER ACCOUNT INFORMATION"));
+            signUpPage.FillSignup("UsuarioPracticaAUT", emailRandom);
+            signUpPage.SubmitSignup();
+            Assert.That(signUpPage.GetTitleEnterAccountInfo(), Is.EqualTo("ENTER ACCOUNT INFORMATION"));
 
             //Llenado del formulario de registro
-            loginPage.FillAccountInformation("UsuarioPracticaAUT", "Mr", "ContraseñaTestAUT", "3", "November", "1993");
-            Assert.That(loginPage.ShouldValidatedTextEmailInput(), Is.EqualTo(emailRandom));
+            signUpPage.FillAccountInformation("UsuarioPracticaAUT", "Mr", "ContraseñaTestAUT", "3", "November", "1993");
+            Assert.That(signUpPage.ShouldValidatedTextEmailInput(), Is.EqualTo(emailRandom));
             ScreenshotHelper.TakeScreenshot(Driver, "AccountInformation_test.png");
 
-            loginPage.FillAddressInformation("José", "Arias", "Banco de Costa Rica", "San Jose, Perez Zeledon,San Isidro", "Pejibaye", "Canada", "San Jose", "San Isidro", "1191", "50612345678");
+            signUpPage.FillAddressInformation("José", "Arias", "Banco de Costa Rica", "San Jose, Perez Zeledon,San Isidro", "Pejibaye", "Canada", "San Jose", "San Isidro", "1191", "50612345678");
             ScreenshotHelper.TakeScreenshot(Driver, "AddressInformation_test.png");
-            loginPage.SubmitCreateAccount();
+            signUpPage.SubmitCreateAccount();
 
             //Validación de cuenta creada
-            Assert.That(loginPage.GetAccountCreatedTitle(), Is.EqualTo("ACCOUNT CREATED!"));
-            Assert.That(loginPage.GetAccountCreatedMessage, Does.Contain("Congratulations! Your new account has been successfully created! " +
+            Assert.That(signUpPage.GetAccountCreatedTitle(), Is.EqualTo("ACCOUNT CREATED!"));
+            Assert.That(signUpPage.GetAccountCreatedMessage, Does.Contain("Congratulations! Your new account has been successfully created! " +
             "You can now take advantage of member privileges to enhance your online shopping experience with us."));
             ScreenshotHelper.TakeScreenshot(Driver, "AccountCreated_test.png");
 
             //Continuar a la página principal
-            loginPage.SumitContinue();
+            signUpPage.SumitContinue();
 
             //Validar que el usuario se ha logueado correctamente
-            Assert.That(homePage.validatedUserLogout(), Is.EqualTo("Logout"));
+            Assert.That(menuPage.validatedUserLogout(), Is.EqualTo("Logout"));
         }
 
         /// <summary>
@@ -73,11 +75,11 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test]
         public void LoginTest()
         {
-            var homePage = new HomePage(Driver);
+            var menuPage = new menuPage(Driver);
             var loginPage = new LoginPage(Driver);
 
             // Navegación a la página de registro
-            homePage.ClickSignUpLogin();
+            menuPage.ClickSignUpLogin();
             Assert.That(loginPage.GetTitleLoginAccount, Is.EqualTo("Login to your account"));
 
             //Llenado del formulario de login
@@ -86,7 +88,7 @@ namespace AutomationPracticeDemo.Tests.Tests
             ScreenshotHelper.TakeScreenshot(Driver, "Login_test.png");
 
             //Validar que el usuario se ha logueado correctamente
-            Assert.That(homePage.validatedUserLogout(), Is.EqualTo("Logout"));
+            Assert.That(menuPage.validatedUserLogout(), Is.EqualTo("Logout"));
             ScreenshotHelper.TakeScreenshot(Driver, "Logout_test.png");
         }
 
@@ -96,11 +98,11 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test]
         public void AddProductsToCartTest()
         {
-            var homePage = new HomePage(Driver);
+            var menuPage = new menuPage(Driver);
             var productsPage = new ProductsPage(Driver);
 
             // Navegación a la página de productos
-            homePage.ClickProductOption();
+            menuPage.ClickProductOption();
             Assert.That(productsPage.ValidatedProductsPage, Is.EqualTo("ALL PRODUCTS"));
             ScreenshotHelper.TakeScreenshot(Driver, "ProductsPage_test.png");
 
@@ -151,14 +153,14 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test]
         public void ContactUsTest()
         {
-            var homePage = new HomePage(Driver);
+            var menuPage = new menuPage(Driver);
             var contactUsPage = new ContactUSPage(Driver);
 
             //Ruta del archivo a subir
             string rutaImagen = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\Paisaje.jpg"));
             
             // Navegación a la página de Contact Us
-            homePage.ClickContactUsOption();
+            menuPage.ClickContactUsOption();
             Assert.That(contactUsPage.GetTitleContactUSPage, Is.EqualTo("CONTACT US"));
 
             //Llenado del formulario de Contact Us
@@ -186,14 +188,15 @@ namespace AutomationPracticeDemo.Tests.Tests
         [Test]
         public void suscriptionNewLetterTest()
         {
-            var homePage = new HomePage(Driver);
+            var footerPage = new footerPage(Driver);
+
             // Suscripción al newsletter
-            homePage.FillSuscribeInput(email);
-            homePage.SumitSuscibeButton();
+            footerPage.FillSuscribeInput(email);
+            footerPage.SumitSuscibeButton();
             ScreenshotHelper.TakeScreenshot(Driver, "Suscription_test.png");
 
             //Validar mensaje de éxito
-            Assert.That(homePage.GetSuscribeMessage(), Is.EqualTo("You have been successfully subscribed!"));
+            Assert.That(footerPage.GetSuscribeMessage(), Is.EqualTo("You have been successfully subscribed!"));
         }
 
     }

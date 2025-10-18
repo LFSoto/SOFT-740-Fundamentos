@@ -41,6 +41,24 @@ Si prefieres instalar las dependencias de Selenium usando la terminal de Visual 
 2. Haz clic en Ejecutar todas las pruebas o selecciona pruebas individuales.
 3. Visualiza los resultados directamente en el panel.
 
+## Instalación de Newtonsoft.Json
+
+Puedes instalar Newtonsoft.Json de dos maneras:
+
+### Opción 1: Usando NuGet Package Manager
+
+1. Abre tu proyecto en Visual Studio.
+2. Ve a **Tools > NuGet Package Manager > Manage NuGet Packages for Solution**.
+3. Busca `Newtonsoft.Json`.
+4. Selecciona tu proyecto y haz clic en **Install**.
+
+### Opción 2: Usando la consola de NuGet
+
+Abre la consola de NuGet (**Tools > NuGet Package Manager > Package Manager Console**) y ejecuta:
+
+```bash
+Install-Package Newtonsoft.Json
+
 
 ## Se mantien la información agregada por el profesor
 
