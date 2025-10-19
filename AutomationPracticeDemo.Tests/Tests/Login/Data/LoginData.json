@@ -1,0 +1,12 @@
+[
+  {
+    "Email": "SOFT-740@cenfotec.com",
+    "Password": "SOFT-740",
+    "Result": "Logged in as SOFT-740"
+  },
+  {
+    "Email": "SOFTCenfo@cenfotec.com",
+    "Password": "abcd",
+    "Result": "Your email or password is incorrect!"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "Ale F",
+    "Password": "SOFT-740",
+    "Day": "10",
+    "Month": "May",
+    "Year": "1990",
+    "SpecialOffers": true,
+    "FirstName": "Ale",
+    "LastName": "F",
+    "Company": "Cenfotec",
+    "Address1": "Heredia",
+    "Country": "Canada",
+    "State": "Heredia",
+    "City": "Heredia",
+    "ZipCode": "00000",
+    "MobileNumber": "88888844"
+  }
+]

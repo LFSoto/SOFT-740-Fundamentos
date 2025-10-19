@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using NUnit.Framework;
@@ -7,8 +7,9 @@ namespace AutomationPracticeDemo.Tests.Tests.SignUp.Data
 {
     public class SignUpData
     {
+        static readonly int random = new Random().Next(1, 1000);
+        public string email = "SOFT-740" + random + "@cenfotec.com";
         public string Name { get; init; } = "";
-        public string Email { get; init; } = "";
         public string Password { get; init; } = "";
         public string Day { get; init; } = "";
         public string Month { get; init; } = "";
@@ -24,17 +25,21 @@ namespace AutomationPracticeDemo.Tests.Tests.SignUp.Data
         public string ZipCode { get; init; } = "";
         public string MobileNumber { get; init; } = "";
 
-        // Método estático que NUnit usará como TestCaseSource
+       
+
+        // MÃ©todo estÃ¡tico que NUnit usarÃ¡ como TestCaseSource
         public static IEnumerable<SignUpData> TestCases()
         {
-            // ruta relativa desde el directorio de ejecución de las pruebas
+            // ruta relativa desde el directorio de ejecuciÃ³n de las pruebas
             var baseDir = TestContext.CurrentContext.WorkDirectory;
-            var path = Path.Combine(baseDir, "Tests", "SignUp", "Data", "signups.json");
+            var path = Path.Combine(baseDir, "Tests", "SignUp", "Data", "SignUpData.json");
+
+
 
             if (!File.Exists(path))
             {
-                // intenta una ruta alternativa en el proyecto (útil al ejecutar desde IDE)
-                path = Path.Combine(Directory.GetCurrentDirectory(), "Tests", "SignUp", "Data", "signups.json");
+                // intenta una ruta alternativa en el proyecto (Ãºtil al ejecutar desde IDE)
+                path = Path.Combine(Directory.GetCurrentDirectory(), "Tests", "SignUp", "Data", "SignUpData.json");
             }
 
             var json = File.ReadAllText(path);

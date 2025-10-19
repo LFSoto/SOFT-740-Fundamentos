@@ -15,6 +15,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             _driver = driver;
         }
+        private IWebElement SignButtom => _driver.FindElement(By.CssSelector("a[href='/login']"));
         private IWebElement NameInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-name']"));
         private IWebElement EmailInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-email']"));
         private IWebElement SubmitButton => _driver.FindElement(By.CssSelector("button[data-qa='signup-button']"));
@@ -36,11 +37,20 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement CreateAccountButton => _driver.FindElement(By.CssSelector("button[data-qa='create-account']"));
         private IWebElement SuccessMessage => _driver.FindElement(By.CssSelector("h2[data-qa='account-created']"));
 
+        //Abre la página de sign up
+        public void SignupOpen()
+        {
+            SignButtom.Click();
+        }
         //Llena los datos básicos
         public void FillBasicData(string name, string email)
         {
             NameInput.SendKeys(name);
             EmailInput.SendKeys(email);
+        }
+
+        public void SubmitSignup()
+        {
             SubmitButton.Click();
         }
 
@@ -78,6 +88,11 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             return SuccessMessage.Text;
         }
-        
+        public void Continue()
+        {
+            var continueButton = _driver.FindElement(By.CssSelector("a[data-qa='continue-button']"));
+            continueButton.Click();
+
+        }
     }
 }

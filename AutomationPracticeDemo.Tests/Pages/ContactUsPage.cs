@@ -14,6 +14,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             _driver = driver;
         }
+        private IWebElement ContactUsButton => _driver.FindElement(By.CssSelector("a[href='/contact_us']"));
         private IWebElement NameImput => _driver.FindElement(By.CssSelector("input[data-qa='name']"));
         private IWebElement EmailImput => _driver.FindElement(By.CssSelector("input[data-qa='email']"));
         private IWebElement SubjectImput => _driver.FindElement(By.CssSelector("input[data-qa='subject']"));
@@ -21,6 +22,11 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement UploadFileImput => _driver.FindElement(By.CssSelector("input[name='upload_file']"));
         private IWebElement SubmitButton => _driver.FindElement(By.CssSelector("input[data-qa='submit-button']"));
         private IWebElement SuccessMessage => _driver.FindElement(By.CssSelector("div.status.alert.alert-success"));
+
+        public void OpenContactUsPage()
+        {
+            ContactUsButton.Click();
+        }
 
         //Llena los datos del formulario
         public void FillForm(string name, string email, string subject, string message, string filePath)
@@ -37,6 +43,10 @@ namespace AutomationPracticeDemo.Tests.Pages
         public void SubmitForm()
         {
             SubmitButton.Click();
+        }
+
+        public void AcceptAlert()
+        {
             _driver.SwitchTo().Alert().Accept();
         }
 

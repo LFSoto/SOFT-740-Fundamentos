@@ -28,32 +28,6 @@ namespace AutomationPracticeDemo.Tests.Utils
                 Driver.Dispose();
             }
         }
-        //protected void EmptyCart()
-        //{
-        //    try
-        //    {
-        //        // Ir al carrito
-        //        var cartButton = Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='/view_cart']")));
-        //        cartButton.Click();
-
-        //        // Si hay productos, eliminarlos todos
-        //        var deleteButtons = Driver.FindElements(By.CssSelector("a.cart_quantity_delete"));
-        //        foreach (var deleteButton in deleteButtons)
-        //        {
-        //            deleteButton.Click();
-        //            // pequeña espera entre clics
-        //            System.Threading.Thread.Sleep(500);
-        //        }
-
-        //        // Confirmar que el carrito esté vacío
-        //        var emptyMessage = Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(
-        //            By.CssSelector("#empty_cart > p")));
-        //        Assert.That(emptyMessage.Text.Contains("Cart is empty"), "El carrito no se vació correctamente");
-        //    }
-        //    catch (NoSuchElementException)
-        //    {
-        //        // Si no hay productos o botón de carrito, simplemente continuar
-        //    }
-        //}
+       
     }
 }
