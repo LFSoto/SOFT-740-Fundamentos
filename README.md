@@ -31,21 +31,6 @@ En la solución buscamos la carpeta de dependencias y vemos si están cargadas.
 Compilar -> Compilar Solución
 
 
-##Ejecutar las pruebas
- Se pueden ejecutar todos los test de forma individual desde el explorador de pruebas:
-- AddToCart
-- contactUsForm
-- DeleteProductsCart
-- EnterAccountInfoTest
-- LoginWithUserAccount
-- newLetterTest
-- NewUserTest
-- SignupLoginTest
-También se puede ejecutar todas las pruebas en conjunto desde el AutomationPractice en donde los test tienen un orden para ejecutarse de forma automática.
-
-Nota: Se añade el test DeleteProductsCart para limpiar la lista de productos añadidos al carrito para realiza una prueba limpia con el test AddToCart y así verificar que se agregaron los dos productos solicitados.
-
-
 
 	
 
