@@ -1,6 +1,6 @@
 using OpenQA.Selenium;
 
-namespace AutomationPracticeDemo.Tests.Pages
+namespace AutomationPracticeDemo.Tests.Pages.Form
 {
     public class FormPage
     {

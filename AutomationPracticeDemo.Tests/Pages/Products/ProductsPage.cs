@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace AutomationPracticeDemo.Tests.Pages.AutomationExercise
+namespace AutomationPracticeDemo.Tests.Pages.Products
 {
     public class ProductsPage
     {

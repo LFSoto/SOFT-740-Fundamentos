@@ -1,7 +1,6 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
-namespace AutomationPracticeDemo.Tests.Pages.AutomationExercise
+namespace AutomationPracticeDemo.Tests.Pages.Login
 {
     public class LoginPage
     {

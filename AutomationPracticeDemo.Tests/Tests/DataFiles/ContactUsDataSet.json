@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Melvin Marin",
+    "email": "SOFT-740@cenfotec.com",
+    "subject": "Test QA Automation",
+    "message": "Esto es una prueba de test script con Selenium WebDriver",
+    "fileName": "Ninja.png",
+    "expectedMessage": "Success! Your details have been submitted successfully.",
+    "testName": "TC05-ContactSuccesful"
+  },
+  {
+    "name": "Usuario Test",
+    "email": "user1@test.com",
+    "subject": "Test QA Automation",
+    "message": "Esto es una prueba de test script implementando DDT",
+    "fileName": "futbol-1.jpg",
+    "expectedMessage": "Success! Your details have been submitted successfully.",
+    "testName": "TC06-ContactSuccesful"
+  }
+]

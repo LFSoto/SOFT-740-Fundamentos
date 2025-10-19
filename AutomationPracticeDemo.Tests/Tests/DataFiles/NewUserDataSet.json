@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Melvin",
+    "lastname": "Marin",
+    "gender": "Mr",
+    "password": "password123",
+    "address": "123 Main St",
+    "country": "United States",
+    "state": "California",
+    "city": "Los Angeles",
+    "zipcode": "90001",
+    "mobileNumber": "1234567890",
+    "testName": "TC03-CreateMaleUserSuccessful"
+  },
+  {
+    "name": "Rashmi",
+    "lastname": "Test",
+    "gender": "Mrs",
+    "password": "pass2025",
+    "address": "New Delhi",
+    "country": "India",
+    "state": "New Delhi",
+    "city": "Lass",
+    "zipcode": "1234567",
+    "mobileNumber": "001122334455",
+    "testName": "TC04-CreateFemaleUserSuccessful"
+  }
+]

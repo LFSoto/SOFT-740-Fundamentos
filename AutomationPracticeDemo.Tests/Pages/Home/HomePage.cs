@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace AutomationPracticeDemo.Tests.Pages.AutomationExercise
+namespace AutomationPracticeDemo.Tests.Pages.Home
 {
     public class HomePage
     {
