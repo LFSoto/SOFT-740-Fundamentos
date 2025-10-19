@@ -1,0 +1,41 @@
+{
+    "ExistingUserLogin": [
+        {
+            "emailText": "SOFT-740_SOFT@cenfotec.com",
+            "password": "SOFT-740"
+        }
+    ],
+    "CreateNewUser": [
+        {
+            "password": "SOFT-740",
+            "dropDownDay": "21",
+            "dropDownMonth": "12",
+            "dropDownYear": "1989",
+            "inputFirstName": "Angelica",
+            "inputLastName": "Alvarez",
+            "inputCompanyName": "Cenfotec",
+            "inputAddress1": "Singapore",
+            "inputAddress2": "Texas",
+            "dropDownCountry": "Singapore",
+            "inputState": "Texas",
+            "inputCity": "Texas",
+            "inputZipCode": "12764",
+            "inputMobileNumb": "89789899"
+        }
+    ],
+    "ContactUs": [
+        {
+            "inputName": "Angelica Alvarez",
+            "inputEmail": "angelica@gmail.com",
+            "inputSubject": "Consulta de productos",
+            "inputMessage": "Hola, quisiera recibir más información sobre sus productos. Gracias.",
+            "emailText": "SOFT-740_SOFT@cenfotec.com",
+            "password": "SOFT-740"
+        }
+    ],
+    "NewLetter": [
+        {
+            "emailText": "SOFT-740_SOFT@cenfotec.com"
+        }
+    ]
+}
