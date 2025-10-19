@@ -16,7 +16,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         /// </summary>
         public static LoginData LoadLoginData()
         {
-            var fullPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Tests" "DataFiles", "LoginDataSet.json"));
+            var fullPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Tests", "DataFiles", "LoginDataSet.json"));
             if (!File.Exists(fullPath))
                 throw new FileNotFoundException($"Login data file not found: {fullPath}");
 
