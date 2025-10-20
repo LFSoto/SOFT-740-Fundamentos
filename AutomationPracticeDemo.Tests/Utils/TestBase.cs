@@ -14,7 +14,9 @@ namespace AutomationPracticeDemo.Tests.Utils
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+
+            // Configurar tiempo de espera implícito de 10 segundos
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             Driver.Navigate().GoToUrl("https://automationexercise.com/signup");
         }
 

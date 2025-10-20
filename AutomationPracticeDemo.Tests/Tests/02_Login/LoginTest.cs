@@ -2,7 +2,6 @@
 using AutomationPracticeDemo.Tests.Pages.MainComponents;
 using AutomationPracticeDemo.Tests.Tests.Login.Asserts;
 using AutomationPracticeDemo.Tests.Utils;
-using System.ComponentModel.Design;
 
 namespace AutomationPracticeDemo.Tests.Tests.Login
 {
@@ -10,7 +9,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Login
     /// <summary>
     /// Ejercicio 2: Login con usuario existente
     /// </summary>
-  
+
     [TestFixture]
     public class LoginTest : TestBase
     {
