@@ -16,6 +16,8 @@ namespace AutomationPracticeDemo.Tests.Pages.AutomationExercisePage
 
         private IWebElement SignupLogin => _driver.FindElement(By.CssSelector("a[href='/login']"));
         private IWebElement contactUs => _driver.FindElement(By.CssSelector("a[href='/contact_us']"));
+        private IWebElement productos => _driver.FindElement(By.CssSelector("a[href='/products']"));
+       
         private readonly By loggedInText = By.XPath("//a[contains(.,'Logged in as')]");
 
         public void signuplogin()
@@ -28,6 +30,13 @@ namespace AutomationPracticeDemo.Tests.Pages.AutomationExercisePage
             contactUs.Click();
 
         }
+        public void carrito()
+        {
+            productos.Click();
+
+        }
+
+
         public bool IsLoggedInAs(string name) => _driver.FindElement(loggedInText).Text.Contains(name, StringComparison.OrdinalIgnoreCase);
 
     }
