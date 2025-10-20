@@ -9,24 +9,15 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 
 ## Instalación
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout DixonChavarria-SeleniumT2 
+git checkout DixonChavarria-SeleniumPOM-DDT 
 cd AutomationPracticeDemo.Tests
 dotnet restore
 dotnet build
 dotnet test
 
-## Tests
+# Práctica 4 Dixon Chavarria
 
-## Se agregaron los siguientes tests:
-
-- Should_FillAndSubmitWikipediaInput()
-- Should_ClickStartStopButton()
-- Should_OpenAndCloseConfirmAlert()
-- Should_UploadSingleFile()
-
-# Práctica 3 Dixon Chavarria
-
-## Se agregaron las siguientes Pruebas
+## Se agregaron las siguientes Pruebas (Carpeta Tests/Practica4)
 
 - Should_RegisterNewUser()
 - Should_LoginExistingUser()
@@ -34,6 +25,5 @@ dotnet test
 - Should_SendContactForm()
 - Should_SubscribeToNewsletter()
 
-## Se agregaron los métodos
-- Login()
-- GetFilePathUpload()
+## Data Driven Testing
+** Se implementó en la clase Tests/Practica4/Login/LoginTest **

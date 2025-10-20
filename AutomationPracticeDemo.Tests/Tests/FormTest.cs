@@ -4,6 +4,8 @@ using AutomationPracticeDemo.Tests.Utils;
 
 namespace AutomationPracticeDemo.Tests.Tests
 {
+    [TestFixture]
+    [Ignore("Esto es de una práctica anterior")]
     public class FormTests : TestBase
     {
         [Test]
