@@ -1,7 +1,18 @@
-{
-  "email": "SOFT-7401@cenfotec.com",
-  "password": "SOFT-7400",
-  "displayName": "Tamara"
-}
+[
+  {
+    "email": "SOFT-7401@cenfotec.com",
+    "password": "SOFT-7400",
+    "Name": "Tamara",
+    "IdentificadorTest": "PruebaLoginExitoso",
+    "textoEsperado": "Logged in as tamara"
+  },
 
 
+  {
+    "email": "tsalazarzuniga@gmail.com",
+    "password": "x3ctA6Z@UvV7Ns",
+    "Name": "Tamara",
+    "IdentificadorTest": "PruebaLoginFallido",
+    "textoEsperado": "Your email or password is incorrect!"
+  }
+]

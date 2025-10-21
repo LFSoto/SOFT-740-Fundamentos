@@ -16,64 +16,55 @@ namespace AutomationPracticeDemo.Tests.Tests.Login.Tets
 
     public class LoginTest : TestBase
     {
-        /* [Test, TestCaseSource(typeof(TestData), nameof(TestData.LoginUsers))]
-         public void TestLoginexitoso(dynamic user)
-
-         {
-             var home = new  InicioPage(Driver);
-             home.signuplogin();
-
-             var loginPage = new LoginPage(Driver);
-
-             loginPage.Login((string)user.email, (string)user.password);
-
-
-             Assert.Multiple(() =>
-             {
-                 Assert.That(new InicioPage(Driver).IsLoggedInAs((string)user.displayName), Is.True,
-                             "No se mostró 'Logged in as [usuario]'.");
-             });
-        */
+     
 
         [Test]
-        public void loginexistente()
+        [TestCaseSource(typeof(dataSources), nameof(dataSources.TestCaseLogin))]
+        public void loginExitoso(string email, string password, string textoEsperado)
+        {
+            var inicioPage = new InicioPage(Driver);
+            inicioPage.signuplogin();
+
+            var loginPage = new LoginPage(Driver);
+            loginPage.Login(email, password);
+
+            // Intentamos primero obtener el texto de éxito. Si no existe, capturamos la excepción
+            // y validamos el mensaje de error.
+            try
+            {
+                var textoObtenido = loginPage.getTexto();
+                Assert.That(textoObtenido, Is.EqualTo(textoEsperado), "Se esperaba texto de login exitoso pero no coincide.");
+            }
+            catch (NoSuchElementException)
+            {
+                var textoObtenido2 = loginPage.getTextoFallido();
+                Assert.That(textoObtenido2, Is.EqualTo(textoEsperado), "Se esperaba texto de error de login pero no coincide.");
+            }
+
+        /*[Test]
+        
+        [TestCaseSource(typeof(dataSources), nameof(dataSources.TestCaseLogin))]
+        public void loginFallido(string email, string password, string textoEsperado)
         {
             var inicioPage = new InicioPage(Driver);
             inicioPage.signuplogin();
             //INGRESO DE CREDENCIALES
             var loginPage = new LoginPage(Driver);
-            loginPage.Login("SOFT-7401@cenfotec.com", "SOFT-7400");
-
-
-            //VALIDACION DE LOGIN
-            var textoObtenido = loginPage.getTexto();
-
-            var textoEsperado = "Logged in as tamara";
-            Assert.That(textoObtenido, Is.EqualTo(textoEsperado));
-            Assert.Pass("Login exitoso.");
-
-        }
-        [Test]
-        public void loginFallido()
-        {
-            var inicioPage = new InicioPage(Driver);
-            inicioPage.signuplogin();
-            //INGRESO DE CREDENCIALES
-            var loginPage = new LoginPage(Driver);
-            loginPage.Login("SOFT-7401@cenfotec.com", "SOFT-7401");
+            loginPage.Login(email, password);
 
 
             //VALIDACION DE LOGIN
             var textoObtenido = loginPage.getTextoFallido();
 
-            var textoEsperado = "Your email or password is incorrect!";
-            Assert.That(textoObtenido, Is.EqualTo(textoEsperado));
+            var TextoEsperado = textoEsperado;
+            Assert.That(textoObtenido, Is.EqualTo(TextoEsperado));
             Assert.Pass("Usuario no existe.");
 
-        }
+       }
 
-
+         */
 
     }
+}
 }
 

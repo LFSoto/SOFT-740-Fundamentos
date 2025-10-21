@@ -1,25 +1,26 @@
-﻿using AutomationPracticeDemo.Tests.Pages;
-using AutomationPracticeDemo.Tests.Pages.AutomationExercisePage;
-using AutomationPracticeDemo.Tests.Utils;
-using Newtonsoft.Json;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using System.IO;
-using System.Collections;
+﻿
+using System.Text.Json.Serialization;
+
 namespace AutomationPracticeDemo.Tests.Tests.Login.Data
 {
-    public class TestData
+    public class LoginData
     {
-        public static IEnumerable LoginUsers
-        {
-            get
-            {
-                //Cargar el archivo JSON
-                var json = File.ReadAllText("Test/Data/LoginUsers.json");
-                var users = JsonConvert.DeserializeObject<dynamic>(json);
-                foreach (var u in users) yield return new object[] { u };
-            }
-        }
+        [JsonPropertyName("Name")]
+        public string? TestName { get; set; }
 
+        [JsonPropertyName("email")]
+        public string? Email { get; set; }
+
+
+        [JsonPropertyName("password")]
+        public string? Password { get; set; }
+
+
+        [JsonPropertyName("textoEsperado")]
+        public string? textoEsperado { get; set; }
+
+        [JsonPropertyName("IdentificadorTest")]
+        public string? IdentificadorTest { get; set; }
     }
+
 }
