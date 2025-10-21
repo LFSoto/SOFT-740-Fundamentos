@@ -10,7 +10,7 @@ using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext
 
 
 
-namespace AutomationPracticeDemo.Tests.Tests.Login.Tets
+namespace AutomationPracticeDemo.Tests.Tests.Tets
 {
     [TestFixture]
 

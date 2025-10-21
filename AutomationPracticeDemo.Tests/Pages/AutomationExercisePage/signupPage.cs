@@ -7,10 +7,10 @@ using System.Xml.Linq;
 namespace AutomationPracticeDemo.Tests.Pages
 {
 
-    public class signupPage
+    public class SignupPage
     {
         private readonly IWebDriver _driver;
-        public signupPage(IWebDriver driver)
+        public SignupPage(IWebDriver driver)
         {
             _driver = driver;
         }

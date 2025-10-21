@@ -1,6 +1,5 @@
 ﻿using AutomationPracticeDemo.Tests.Pages;
 using AutomationPracticeDemo.Tests.Pages.AutomationExercisePage;
-using AutomationPracticeDemo.Tests.Tests.Login.Data;
 using AutomationPracticeDemo.Tests.Utils;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -10,7 +9,7 @@ using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext
 
 
 
-namespace AutomationPracticeDemo.Tests.Tests.Login.Tets
+namespace AutomationPracticeDemo.Tests.Tests.Login.Data
 {
     [TestFixture]
 
@@ -28,8 +27,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Login.Tets
             var loginPage = new LoginPage(Driver);
             loginPage.Login(email, password);
 
-            // Intentamos primero obtener el texto de éxito. Si no existe, capturamos la excepción
-            // y validamos el mensaje de error.
+           
             try
             {
                 var textoObtenido = loginPage.getTexto();

@@ -21,6 +21,9 @@ namespace AutomationPracticeDemo.Tests.Tests.Login.Data
 
         [JsonPropertyName("IdentificadorTest")]
         public string? IdentificadorTest { get; set; }
+
+        [JsonPropertyName("firstName")]
+        public string? FirstName { get; set; }
     }
 
 }

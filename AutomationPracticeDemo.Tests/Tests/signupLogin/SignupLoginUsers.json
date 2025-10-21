@@ -1,0 +1,27 @@
+[
+  {
+    "Address1": "Calle Mayor 10",
+    "Address2": "Piso 2, Puerta B",
+    "City": "Madrid",
+    "Company": "ACME S.A.",
+    "Country": "Spain",
+    "Day": "15",
+    "FirstName": "Tamara",
+    "IdentificadorTest": "PruebaSignupLoginExitoso",
+    "LastName": "Salazar",
+    "MobileNumber": "+34600111222",
+    "Month": "06",
+    "Name": "PruebaSignupLoginExitoso",
+    "password": "123456",
+    "State": "Comunidad de Madrid",
+    "textoEsperado": "ACCOUNT CREATED!",
+    "Year": "1990",
+    "Zipcode": "28001"
+  },
+
+  {
+    "email": "tsalazarzuniga@gmail.com",
+    "textoEsperado": "Tamara",
+    "IdentificadorTest": "PruebaSignupLoginfallida"
+  }
+]
