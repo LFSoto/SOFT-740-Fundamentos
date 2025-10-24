@@ -20,7 +20,7 @@ namespace AutomationPracticeDemo.Tests.Tests.ContactUs.Data
         public static IEnumerable<ContactUsData> TestCases()
         {
             // ruta relativa desde el directorio de ejecución de las pruebas
-            var baseDir = TestContext.CurrentContext.WorkDirectory;
+            var baseDir = TestContext.CurrentContext.TestDirectory;
             var path = Path.Combine(baseDir, "Tests", "ContactUs", "Data", "ContactUsData.json");
 
             if (!File.Exists(path))
