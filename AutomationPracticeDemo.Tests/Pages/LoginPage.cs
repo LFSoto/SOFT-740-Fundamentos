@@ -7,9 +7,11 @@ namespace AutomationPracticeDemo.Tests.Pages
     public class LoginPage
     {
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
         
         // Elementos del Login

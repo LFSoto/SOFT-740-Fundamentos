@@ -1,13 +1,16 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeDemo.Tests.Pages.MainComponents
 {
     public class menuPage
     {
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public menuPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
         // Declaración de los elementos de la página
 

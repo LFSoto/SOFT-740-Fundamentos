@@ -1,5 +1,4 @@
 ﻿
-using OpenQA.Selenium.DevTools.V137.Network;
 
 namespace AutomationPracticeDemo.Tests.Tests.Login.Asserts
 {

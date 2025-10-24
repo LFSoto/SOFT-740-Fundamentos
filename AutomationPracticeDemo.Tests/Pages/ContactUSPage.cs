@@ -7,9 +7,11 @@ namespace AutomationPracticeDemo.Tests.Pages
     public class ContactUSPage
     {
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public ContactUSPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
         // Declaración de los elementos de la página
