@@ -8,9 +8,6 @@ namespace AutomationPracticeDemo.Tests.Utils
     {
         public static LoginDataResult LoadLoginData()
         {
-            //GetPathHelper getPathHelper = new GetPathHelper();
-            //string jsonString = File.ReadAllText(getPathHelper.GetFilePathLoginData());
-
             string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
             string jsonFilePath = Path.Combine(assemblyPath, "Tests\\Practica4\\Login\\Data\\Login.json");
             string jsonString = File.ReadAllText(jsonFilePath);
