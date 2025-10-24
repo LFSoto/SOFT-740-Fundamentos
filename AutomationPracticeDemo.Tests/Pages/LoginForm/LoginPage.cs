@@ -30,7 +30,8 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
         private IWebElement nameInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-name']"));
         private IWebElement emailInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-email']"));
         private IWebElement submit => _driver.FindElement(By.CssSelector("button[data-qa='signup-button']"));
-        public string GetTexttitleEnterAccount => _driver.FindElement(By.CssSelector("#form > div > div > div > div.login-form > h2 > b")).Text;
+        //public string GetTexttitleEnterAccount => _driver.FindElement(By.CssSelector("#form > div > div > div > div.login-form > h2 > b")).Text;
+        public string GetTexttitleEnterAccount => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("#form > div > div > div > div.login-form > h2 > b"))).Text;
 
 
         private IWebElement titleRadButton => _driver.FindElement(By.Id("id_gender2"));
@@ -56,7 +57,9 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
         private IWebElement GetSuccessMessage => _driver.FindElement(By.XPath("//b[normalize-space()='Account Created!']"));
 
         private IWebElement ContinueButton => _driver.FindElement(By.CssSelector("div a[data-qa='continue-button']"));
-        private IWebElement GetuserLoggued => _driver.FindElement(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b"));
+        //private IWebElement GetuserLoggued => _driver.FindElement(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b"));
+        private IWebElement GetuserLoggued => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b")));
+
         private IWebElement userLogOut => _driver.FindElement(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(4) > a"));
 
         //Campos para ingresar con datos existentes "Login"

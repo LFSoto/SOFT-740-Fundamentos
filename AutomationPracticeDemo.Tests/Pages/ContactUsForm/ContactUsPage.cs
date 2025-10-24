@@ -60,7 +60,12 @@ namespace AutomationPracticeDemo.Tests.Pages.ContactUsForm
         public string Get_textAlert()
         {
             _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
-            return _driver.SwitchTo().Alert().Text;
+
+            var alert = _driver.SwitchTo().Alert();
+            return alert?.Text ?? string.Empty;
+
+
+           //return _driver.SwitchTo().Alert().Text;
         }
         public void AcceptAlert()
         {

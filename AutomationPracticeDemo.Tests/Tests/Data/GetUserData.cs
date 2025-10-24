@@ -17,8 +17,8 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
         /*===============================================================*/
         public class LoginData
         {
-            public string emailText { get; set; }
-            public string password { get; set; }
+            public string? emailText { get; set; }
+            public string? password { get; set; }
         }
 
         public static object[] UserLogin
@@ -29,11 +29,11 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                 var file = File.ReadAllText(path);
 
                 var jsonObject = JObject.Parse(file);
-                var userArray = jsonObject["ExistingUserLogin"].ToObject<List<LoginData>>();
+                var userArray = jsonObject["ExistingUserLogin"]?.ToObject<List<LoginData>>() ?? new List<LoginData>();
 
                 return userArray
                     .Where(x => x.emailText != null && x.password != null)
-                    .Select(x => new object[] { x.emailText, x.password })
+                    .Select(x => new object[] { x.emailText ?? "", x.password ?? "" })
                     .ToArray();
             }
         }
@@ -42,20 +42,20 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
         /*===============================================================*/
         public class NewUSerLoginData
         {
-            public string password { get; set; }
-            public string dropDownDay { get; set; }
-            public string dropDownMonth { get; set; }
-            public string dropDownYear { get; set; }
-            public string inputFirstName { get; set; }
-            public string inputLastName { get; set; }
-            public string inputCompanyName { get; set; }
-            public string inputAddress1 { get; set; }
-            public string inputAddress2 { get; set; }
-            public string dropDownCountry { get; set; }
-            public string inputState { get; set; }
-            public string inputCity { get; set; }
-            public string inputZipCode { get; set; }
-            public string inputMobileNumb { get; set; }
+            public string? password { get; set; }
+            public string? dropDownDay { get; set; }
+            public string? dropDownMonth { get; set; }
+            public string? dropDownYear { get; set; }
+            public string? inputFirstName { get; set; }
+            public string? inputLastName { get; set; }
+            public string? inputCompanyName { get; set; }
+            public string? inputAddress1 { get; set; }
+            public string? inputAddress2 { get; set; }
+            public string? dropDownCountry { get; set; }
+            public string? inputState { get; set; }
+            public string? inputCity { get; set; }
+            public string? inputZipCode { get; set; }
+            public string? inputMobileNumb { get; set; }
         }
 
 
@@ -67,7 +67,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                 var file = File.ReadAllText(path);
 
                 var jsonObject = JObject.Parse(file);
-                var getUserData = jsonObject["CreateNewUser"].ToObject<List<NewUSerLoginData>>();
+                var getUserData = jsonObject["CreateNewUser"]?.ToObject<List<NewUSerLoginData>>() ?? new List<NewUSerLoginData>();
 
                 return getUserData
                     .Where(x => x.password != null
@@ -84,20 +84,20 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                     && x.inputCity != null
                     && x.inputZipCode != null
                     && x.inputMobileNumb != null)
-                    .Select(x => new object[] { x.password,
-                    x.dropDownDay,
-                    x.dropDownMonth,
-                    x.dropDownYear,
-                    x.inputFirstName,
-                    x.inputLastName,
-                    x.inputCompanyName,
-                    x.inputAddress1,
-                    x.inputAddress2,
-                    x.dropDownCountry,
-                    x.inputState,
-                    x.inputCity,
-                    x.inputZipCode,
-                    x.inputMobileNumb})
+                    .Select(x => new object[] { x.password ?? "",
+                    x.dropDownDay ?? "",
+                    x.dropDownMonth ?? "",
+                    x.dropDownYear ?? "",
+                    x.inputFirstName ?? "",
+                    x.inputLastName ?? "",
+                    x.inputCompanyName ?? "",
+                    x.inputAddress1 ?? "",
+                    x.inputAddress2 ?? "",
+                    x.dropDownCountry ?? "",
+                    x.inputState ?? "",
+                    x.inputCity ?? "",
+                    x.inputZipCode ?? "" ,
+                    x.inputMobileNumb ?? ""})
                     .ToArray();
             }
         }
@@ -107,14 +107,14 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
         /*===============================================================*/
         public class ContactData
         {
-            public string inputName { get; set; }
-            public string inputEmail { get; set; }
-            public string inputSubject { get; set; }
-            public string inputMessage { get; set; }
+            public string? inputName { get; set; }
+            public string? inputEmail { get; set; }
+            public string? inputSubject { get; set; }
+            public string? inputMessage { get; set; }
 
             //Datos para el login para ingresar a Contact Us
-            public string emailText { get; set; }
-            public string password { get; set; }
+            public string? emailText { get; set; }
+            public string? password { get; set; }
         }
 
         public static object[] UserContactData
@@ -125,11 +125,11 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                 var file = File.ReadAllText(path);
 
                 var jsonObject = JObject.Parse(file);
-                var getContactUsData = jsonObject["ContactUs"].ToObject<List<ContactData>>();
+                var getContactUsData = jsonObject["ContactUs"]?.ToObject<List<ContactData>>() ?? new List<ContactData>();
 
                 return getContactUsData
                     .Where(x => x.inputName != null && x.inputEmail != null && x.inputSubject != null && x.inputMessage != null && x.emailText != null && x.password != null)
-                    .Select(x => new object[] { x.inputName, x.inputEmail, x.inputSubject, x.inputMessage, x.emailText, x.password })
+                    .Select(x => new object[] { x.inputName ?? "", x.inputEmail ?? "", x.inputSubject ?? "", x.inputMessage ?? "", x.emailText ?? "", x.password ?? "" })
                     .ToArray();
             }
         }
@@ -139,7 +139,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
         /*===============================================================*/
         public class NewLetterData
         {
-            public string emailText { get; set; }
+            public string? emailText { get; set; }
         }
 
         public static object[] UserNewLetterData
@@ -150,11 +150,11 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                 var file = File.ReadAllText(path);
 
                 var jsonObject = JObject.Parse(file);
-                var getNewLetterData = jsonObject["NewLetter"].ToObject<List<ContactData>>();
+                var getNewLetterData = jsonObject["NewLetter"]?.ToObject<List<ContactData>>() ?? new List<ContactData>();
 
                 return getNewLetterData
                     .Where(x => x.emailText != null)
-                    .Select(x => new object[] { x.emailText })
+                    .Select(x => new object[] { x.emailText ?? "" })
                     .ToArray();
             }
         }
