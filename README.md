@@ -1,94 +1,47 @@
-## Proyecto de Automatización - AutomationPracticeDemo
+﻿# Calculadora - Fundamentos de Pruebas en .NET
 
-Este proyecto contiene la práctica de automatización de flujos completos de usuario utilizando **Selenium WebDriver** en **C#**, sin aplicar aún el patrón **Page Object Model (POM)**.  
-Incluye pruebas automatizadas que cubren distintos tipos de interacciones: formularios, botones, listas, validaciones y archivos adjuntos.
-
----
-
-## Requisitos Previos
-
-Antes de clonar y ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
-
-- [✅ .NET SDK 6.0 o superior](https://dotnet.microsoft.com/download)
-- [✅ Google Chrome](https://www.google.com/chrome/)
-- [✅ Visual Studio 2022](https://visualstudio.microsoft.com/) con la carga de trabajo de **.NET Desktop Development**
-- [✅ Git](https://git-scm.com/) para clonar el repositorio
+Este proyecto es una base para practicar **pruebas unitarias en .NET** usando **NUnit** y **Moq**.  
+Incluye una librería (`CalculadoraLib`) y un proyecto de pruebas (`CalculadoraTests`).  
 
 ---
 
-## Clonar el Repositorio
+## Requisitos
 
-Ejecuta el siguiente comando en tu terminal o consola:
-
-```bash
-git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-```
-
-> Reemplaza `C:\Curso-Automatizacion-Repositorio\Semana2\SOFT-740-Fundamentos` con la URL real de tu repositorio.
+- [Visual Studio 2022](https://visualstudio.microsoft.com/es/)
+- [.NET 6 SDK o superior](https://dotnet.microsoft.com/en-us/download/dotnet)  
+- Git instalado en el sistema  
 
 ---
 
-## Ingresar al Proyecto
+## Pasos para empezar
 
-```bash
-cd AutomationPracticeDemo
-```
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
+   cd SOFT-740-Fundamentos
 
----
+2. **Restaurar dependencias**
+	```bash
+   dotnet restore
 
-## Restaurar Dependencias
+3. **Compilar la solución**
+	```bash
+   dotnet build
 
-El proyecto utiliza paquetes NuGet para Selenium, NUnit y WebDriverManager.  
-Para instalarlos automáticamente, ejecuta:
+4. **Ejecutar las pruebas unitarias**
+	```bash
+   dotnet test
 
-```bash
-dotnet restore
-```
+  ## Comandos útiles
 
-O bien desde Visual Studio:
+1. Compilar:
+	```bash
+	dotnet build
 
-1. Ve a **Herramientas → Administrador de paquetes NuGet → Administrar paquetes NuGet para la solución**  
-2. Haz clic en **Restaurar**.
+2. Ejecutar pruebas:
+	```bash
+	dotnet test
 
----
-
-## Ejecutar las Pruebas
-
-Puedes ejecutar las pruebas de dos formas:
-
-### Opción 1: Desde la Terminal (recomendado)
-
-```bash
-dotnet test
-```
-
-Esto compilará el proyecto y ejecutará todas las pruebas definidas en la solución.
-
----
-
-### Opción 2: Desde Visual Studio
-
-1. Abre la solución `AutomationPracticeDemo.sln`.
-2. Ve al menú **Test → Test Explorer**.
-3. Haz clic en **Run All Tests**.
-
----
-
-## Caso de Prueba Incluido
-
-1. **Registro de usuario nuevo**  
-   Valida el flujo completo de registro y mensaje “Account Created!”.
-
-2. **Login con usuario existente**  
-   Verifica el inicio de sesión correcto mostrando “Logged in as [usuario]”.
-
-3. **Agregar productos al carrito y verificar total**  
-   Confirma la correcta adición de productos y el total mostrado.
-
-4. **Formulario Contact Us**  
-   Comprueba el envío exitoso del formulario y el mensaje de confirmación.
-
-5. **Suscripción al newsletter**  
-   Valida la suscripción correcta al boletín.
-
----
+3. Agregar nuevos paquetes (ejemplo: Moq):
+	```bash
+	dotnet add CalculadoraTests package Moq

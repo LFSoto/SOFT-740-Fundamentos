@@ -6,13 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
+using AutomationPracticeDemo.Tests.Tests.Data.LoginUsuarioExistente;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
     public class TestBasePractica3
     {
         protected IWebDriver Driver;
-        
+        private object[] dataLogin;
+
 
         [SetUp]
         public void Setup()
@@ -21,6 +23,11 @@ namespace AutomationPracticeDemo.Tests.Utils
             options.AddArgument("--start-maximized");
             Driver = new ChromeDriver(options);
             Driver.Navigate().GoToUrl("https://automationexercise.com/");
+        }
+
+        public void ReloadData()
+        {
+            dataLogin = new LoginData().getLoginData;
         }
 
         [TearDown]

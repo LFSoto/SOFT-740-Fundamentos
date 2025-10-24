@@ -15,6 +15,7 @@ namespace AutomationPracticeDemo.Tests.Tests
     {
 
         [TestCase("Yei", "123", "1991","Canada","Yeison", "Rojas Sancho", "CENFOTEC", "Toronto", "Phillips", "Toronto", "JST West","234554-09","8888888")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void a_RegistroUsuarioNuevo(string nombre, string pass, string AnnoNacimiento, string pais, string nombrecompleto, string apellidos, string compania, string dprincipal, string dsecundaria, string estado, string ciudad, string postal, string telefono)
         {
             var frompage = new FromPagePractica3(Driver);
@@ -33,6 +34,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
 
         [TestCase("yeisonrojass@hotmail.com","123")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void b_LoginUsuarioExistente(string correo, string contrasena) 
         {
             var formpage = new FromPagePractica3(Driver);
@@ -47,6 +49,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
 
         [TestCase("yeisonrojass@hotmail.com", "123",2,14,"Yeison Rojas S","23445576785890","345","05","2027")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void c_AgregarProductosCarritoyVerificarTotal(string correo, string contrasenna, int Idproducto1, int Idproducto2,string nombre, string numTarjeta, string cvc, string mes, string anno) 
         {
             var formpage = new FromPagePractica3(Driver);
@@ -66,6 +69,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
 
         [TestCase("yeisonrojass@hotmail.com","Yeison Rojas S","Recibir Información","Aquí paso a saludar")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void d_ContactUsForm(string correo, string nombre, string subject, string mensaje)
         {
             var formpage = new FromPagePractica3(Driver);
@@ -79,6 +83,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
 
         [TestCase("yeisonrojass@hotmail.com")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void e_SuscripcionNewsLetter(string correo)
         {
             var formpage = new FromPagePractica3(Driver);

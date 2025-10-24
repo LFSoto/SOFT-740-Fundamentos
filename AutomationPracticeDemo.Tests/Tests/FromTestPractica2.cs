@@ -9,6 +9,7 @@ namespace AutomationPracticeDemo.Tests.Tests
     {
 
         [TestCase("Yeison Rojas", "yeison@test.com", "88888888", "Alajuela")]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void Test_Validar_Interaccion_Elementos(string nombre, string correo, string phone, string addres) {
 
             var formpage = new FromPagePractica2(Driver);

@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Imagen\" />
+    <Folder Include="Tests\Data\LoginUsuario\JsonData\" />
   </ItemGroup>
 
 </Project>

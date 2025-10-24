@@ -36,12 +36,21 @@ namespace AutomationPracticeDemo.Tests.Pages
         public string ValorTotalEsperadoXFormula { get; private set; }
         public string ValorTxtNombreProducto1 { get; private set; }
         public string ValorConfirmarOrdenFinalizada { get; private set; }
+        public int IdProductoTabla1 { get; private set; }
+        public int IdProductoTabla2 { get; private set; }
 
         //Variables locales que sirven de auxiliares
         private readonly IWebDriver _driver;
         private WebDriverWait _wait;
+        //Variables para hacer la practica semana 5 Waits
         private string XpathTitleForm = "//section[@id='form']/div[@class='container']/div[@class='row']/div[@class='col-sm-4 col-sm-offset-1']/div[@class='login-form']/h2[@class='title text-center']/b";
         private string cssTextLogin = "//div[@class=\"shop-menu pull-right\"]//ul[@class=\"nav navbar-nav\"]//a//b";
+        private string txtLoginXpath = "//header[@id='header']/div[@class='header-middle']/div[@class='container']/div[@class='row']/div[@class='col-sm-8']/div[@class='shop-menu pull-right']/ul[@class='nav navbar-nav']/li[10]/a";
+        private string txtNombreLogginXpath = "//div[@class=\"shop-menu pull-right\"]//ul[@class=\"nav navbar-nav\"]//a//b";
+        private string titleProductoAgregadoXpath = "//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [1]";
+        private string linkViewXpath ="//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [2]";
+        private string table_totalXpath ="//div[@id='cart_info']/table[@class='table table-condensed']/tbody/tr[3]/td[4]/p[@class='cart_total_price']";
+
         private string diaActual = DateTime.Now.Day.ToString();
         private string mesActual = DateTime.Now.Month.ToString();
 
@@ -90,6 +99,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement TitleFormLogin => _driver.FindElement(By.CssSelector("div.login-form h2"));
         private IWebElement btnLoggin => _driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
         private IWebElement txtNombreLoggin => _driver.FindElement(By.XPath("//div[@class=\"shop-menu pull-right\"]//ul[@class=\"nav navbar-nav\"]//a//b"));
+        private IWebElement txtLoginFail => _driver.FindElement(By.CssSelector("form[action='/login'] p"));
 
         //Variables -> Agregar Productos al Carrito y Totales
         private IWebElement iconProductos => _driver.FindElement(By.CssSelector("a i.material-icons.card_travel"));
@@ -100,12 +110,12 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement linkView => _driver.FindElement(By.XPath("//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [2]"));
         private IWebElement ScrollProducto1 => _driver.FindElement(By.CssSelector("div.product-image-wrapper div.single-products div.productinfo.text-center a[data-product-id='5']"));
         private IWebElement ScrollProducto2 => _driver.FindElement(By.CssSelector("div.product-image-wrapper div.single-products div.productinfo.text-center a[data-product-id='18']"));
-        private IWebElement precioProducto1 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-2'] td.cart_price"));
-        private IWebElement precioProducto2 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-14'] td.cart_price"));
-        private IWebElement cantidadProducto1 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-2'] button.disabled"));
-        private IWebElement cantidadProducto2 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-14'] button.disabled"));
-        private IWebElement descripcionProducto1 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-2'] td.cart_description a"));
-        private IWebElement descripcionProducto2 => _driver.FindElement(By.CssSelector("table.table.table-condensed tr[id='product-14'] td.cart_description a"));
+        private IWebElement precioProducto1 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla1}'] td.cart_price"));
+        private IWebElement precioProducto2 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla2}'] td.cart_price"));
+        private IWebElement cantidadProducto1 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla1}'] button.disabled"));
+        private IWebElement cantidadProducto2 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla2}'] button.disabled"));
+        private IWebElement descripcionProducto1 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla1}'] td.cart_description a"));
+        private IWebElement descripcionProducto2 => _driver.FindElement(By.CssSelector($"table.table.table-condensed tr[id='product-{IdProductoTabla2}'] td.cart_description a"));
         private IWebElement btn_procesarCompra => _driver.FindElement(By.CssSelector("a.btn.btn-default.check_out"));
         private IWebElement table_total => _driver.FindElement(By.XPath("//div[@id='cart_info']/table[@class='table table-condensed']/tbody/tr[3]/td[4]/p[@class='cart_total_price']"));
         private IWebElement btn_placeOrder => _driver.FindElement(By.CssSelector("a.btn.btn-default.check_out"));
@@ -186,10 +196,16 @@ namespace AutomationPracticeDemo.Tests.Pages
 
         //Metodo para verificar que el titulo de la pantalla de ingreso de datos para el registro se encuentre presenta
         //por aquello que tarde en cargar la pagina cuando el usuario hace el ingreso para el registro del usuario
-        public void waitforExist(string elemento) 
+        public void UsarWaitElementExists(string elemento) 
         {
             var wait = new WebDriverWait(_driver,TimeSpan.FromSeconds(3));
-            wait.Until(ExpectedConditions.ElementExists(By.XPath(elemento)));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(elemento)));
+        }
+
+        public void UsarWaitElementIsVisible(string elemento)
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(elemento)));
         }
 
         //Metodo timer para esperar a que el elemento sea visible
@@ -244,7 +260,9 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             this.ValorAnnoNacimiento = anno;
             this.ValorPais = pais;
-            waitforExist(XpathTitleForm);
+            ///Usar wait practica semana 5
+            UsarWaitElementExists(XpathTitleForm);
+            UsarWaitElementIsVisible(XpathTitleForm);
             ValorTitleForm = txtTitleForm.Text;
             rd_gender.Click();
             txtPass.SendKeys(pass);
@@ -274,6 +292,9 @@ namespace AutomationPracticeDemo.Tests.Pages
             ValorValidarMensajeConfirmar = lblConfirmarMensaje.Text;
             QuitarPublicidad();
             btnContinuar.Click();
+            //Se usa el wait practica semana 5
+            UsarWaitElementExists(txtLoginXpath);
+            UsarWaitElementIsVisible(txtLoginXpath);
             ValorLoggin = txtLoggin.Text;
         }
 
@@ -285,32 +306,65 @@ namespace AutomationPracticeDemo.Tests.Pages
             txtEmail.SendKeys(correo);
             txtContrasena.SendKeys(contrasena);
             btnLoggin.Click();
-            waitforExist(cssTextLogin);
+            ///se usa el wait practica semana 5
+            UsarWaitElementExists(cssTextLogin);
+            UsarWaitElementExists(cssTextLogin);
+            UsarWaitElementExists(txtNombreLogginXpath);
+            UsarWaitElementIsVisible(txtNombreLogginXpath);
             ValorNombreLogin = txtNombreLoggin.Text;
+            //se usa el wait practica semana 5
+            UsarWaitElementIsVisible(txtLoginXpath);
+            UsarWaitElementIsVisible(txtLoginXpath);
             ValorLoggin = txtLoggin.Text;
+        }
+
+        //Metodo que se encarga de realizar las acciones para el ingreso del sistema solicitado en el punto 2
+        public void IngresarPlataformaFail(string correo, string contrasena)
+        {
+            iconLogin.Click();
+            ValorUserLogin = TitleFormLogin.Text;
+            txtEmail.SendKeys(correo);
+            txtContrasena.SendKeys(contrasena);
+            btnLoggin.Click();
+            ValorLoggin = txtLoginFail.Text;
+            
         }
 
         //Metodo para hacer el proceso de compra
         public void LlenarCarritoyTotales(string correo, string contrasena, int Idproducto1, int Idproducto2,string nombre, string numTarjeta, string cvc, string mes, string anno) 
-        {    
+        {
+            IdProductoTabla1 = Idproducto1;
+            IdProductoTabla2 = Idproducto2;
             IngresarPlataforma(correo, contrasena);
             iconProductos.Click();
             ValorTituloFormularioProductos = titleFormularioProductos.Text;
             HacerScrollElemento(ScrollProducto1);
             ColocarCursorSobreElemento(Idproducto1);
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(titleProductoAgregadoXpath);
+            UsarWaitElementIsVisible(titleProductoAgregadoXpath);
             waitforDisplayed(titleProductoAgregado);
             ValorTitleProductoAgregado = titleProductoAgregado.Text;
             btnProductoAgregadoMensaje.Click();
             HacerScrollElemento(ScrollProducto2);
             ColocarCursorSobreElemento(Idproducto2);
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(titleProductoAgregadoXpath);
+            UsarWaitElementIsVisible(titleProductoAgregadoXpath);
             waitforDisplayed(titleProductoAgregado);
             ValorTitleProductoAgregado = titleProductoAgregado.Text;
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(linkViewXpath);
+            UsarWaitElementIsVisible(linkViewXpath);
             linkView.Click();
             ValorDescripcionproducto1 = descripcionProducto1.Text;
             ValorDescripcionproducto2 = descripcionProducto2.Text;
             SumarCompra();
             btn_procesarCompra.Click();
             HacerScrollElemento(btn_placeOrder);
+            //Usar wait de la practica semana 5
+            UsarWaitElementIsVisible(table_totalXpath);
+            UsarWaitElementExists(table_totalXpath);
             ValorTotalDesdeElSistema = table_total.Text;
             string Aux = ValorTotalDesdeElSistema.Replace("Rs. ","");
             ValorTotalDesdeElSistema = Aux;
@@ -322,6 +376,8 @@ namespace AutomationPracticeDemo.Tests.Pages
             txt_annoTarjeta.SendKeys(anno);
             HacerScrollElemento(btnSus);
             btnPagar.Click();
+            System.Threading.Thread.Sleep(2000);
+            waitforDisplayed(txtConfirmacionCompra);
             ValorConfirmarOrdenFinalizada = txtConfirmacionCompra.Text;
             btnFinalizarOrden.Click();
         }
@@ -368,6 +424,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             txtEmailSuscipcion.SendKeys(correo);
             btn_suscripcion.Click();
+
             ValorMensajeExitoSuscripcion = MensajeExitoSuscripcion.Text;
         }
 

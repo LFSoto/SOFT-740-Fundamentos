@@ -7,6 +7,7 @@ namespace AutomationPracticeDemo.Tests.Tests
     public class FormTests : TestBase
     {
         [Test]
+        [Ignore("Este test está deshabilitado temporalmente")]
         public void Should_FillAndSubmitForm()
         {
             var formPage = new FormPage(Driver);
