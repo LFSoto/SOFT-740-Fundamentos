@@ -241,7 +241,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         public string GenerarCorreoAleatorio()
         {
             Random random = new Random();
-            int numero = random.Next(100, 999);
+            int numero = random.Next(1, 999999);
             return $"SOFT-{numero}@cenfotec.com";
         }
 
