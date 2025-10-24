@@ -42,8 +42,15 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Variables locales que sirven de auxiliares
         private readonly IWebDriver _driver;
         private WebDriverWait _wait;
+        //Variables para hacer la practica semana 5 Waits
         private string XpathTitleForm = "//section[@id='form']/div[@class='container']/div[@class='row']/div[@class='col-sm-4 col-sm-offset-1']/div[@class='login-form']/h2[@class='title text-center']/b";
         private string cssTextLogin = "//div[@class=\"shop-menu pull-right\"]//ul[@class=\"nav navbar-nav\"]//a//b";
+        private string txtLoginXpath = "//header[@id='header']/div[@class='header-middle']/div[@class='container']/div[@class='row']/div[@class='col-sm-8']/div[@class='shop-menu pull-right']/ul[@class='nav navbar-nav']/li[10]/a";
+        private string txtNombreLogginXpath = "//div[@class=\"shop-menu pull-right\"]//ul[@class=\"nav navbar-nav\"]//a//b";
+        private string titleProductoAgregadoXpath = "//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [1]";
+        private string linkViewXpath ="//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [2]";
+        private string table_totalXpath ="//div[@id='cart_info']/table[@class='table table-condensed']/tbody/tr[3]/td[4]/p[@class='cart_total_price']";
+
         private string diaActual = DateTime.Now.Day.ToString();
         private string mesActual = DateTime.Now.Month.ToString();
 
@@ -189,10 +196,16 @@ namespace AutomationPracticeDemo.Tests.Pages
 
         //Metodo para verificar que el titulo de la pantalla de ingreso de datos para el registro se encuentre presenta
         //por aquello que tarde en cargar la pagina cuando el usuario hace el ingreso para el registro del usuario
-        public void waitforExist(string elemento, int time) 
+        public void UsarWaitElementExists(string elemento) 
         {
-            var wait = new WebDriverWait(_driver,TimeSpan.FromSeconds(time));
-            wait.Until(ExpectedConditions.ElementExists(By.XPath(elemento)));
+            var wait = new WebDriverWait(_driver,TimeSpan.FromSeconds(3));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(elemento)));
+        }
+
+        public void UsarWaitElementIsVisible(string elemento)
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(elemento)));
         }
 
         //Metodo timer para esperar a que el elemento sea visible
@@ -247,7 +260,9 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             this.ValorAnnoNacimiento = anno;
             this.ValorPais = pais;
-            waitforExist(XpathTitleForm, 3);
+            ///Usar wait practica semana 5
+            UsarWaitElementExists(XpathTitleForm);
+            UsarWaitElementIsVisible(XpathTitleForm);
             ValorTitleForm = txtTitleForm.Text;
             rd_gender.Click();
             txtPass.SendKeys(pass);
@@ -277,6 +292,9 @@ namespace AutomationPracticeDemo.Tests.Pages
             ValorValidarMensajeConfirmar = lblConfirmarMensaje.Text;
             QuitarPublicidad();
             btnContinuar.Click();
+            //Se usa el wait practica semana 5
+            UsarWaitElementExists(txtLoginXpath);
+            UsarWaitElementIsVisible(txtLoginXpath);
             ValorLoggin = txtLoggin.Text;
         }
 
@@ -288,8 +306,15 @@ namespace AutomationPracticeDemo.Tests.Pages
             txtEmail.SendKeys(correo);
             txtContrasena.SendKeys(contrasena);
             btnLoggin.Click();
-            waitforExist(cssTextLogin,3);
+            ///se usa el wait practica semana 5
+            UsarWaitElementExists(cssTextLogin);
+            UsarWaitElementExists(cssTextLogin);
+            UsarWaitElementExists(txtNombreLogginXpath);
+            UsarWaitElementIsVisible(txtNombreLogginXpath);
             ValorNombreLogin = txtNombreLoggin.Text;
+            //se usa el wait practica semana 5
+            UsarWaitElementIsVisible(txtLoginXpath);
+            UsarWaitElementIsVisible(txtLoginXpath);
             ValorLoggin = txtLoggin.Text;
         }
 
@@ -315,19 +340,31 @@ namespace AutomationPracticeDemo.Tests.Pages
             ValorTituloFormularioProductos = titleFormularioProductos.Text;
             HacerScrollElemento(ScrollProducto1);
             ColocarCursorSobreElemento(Idproducto1);
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(titleProductoAgregadoXpath);
+            UsarWaitElementIsVisible(titleProductoAgregadoXpath);
             waitforDisplayed(titleProductoAgregado);
             ValorTitleProductoAgregado = titleProductoAgregado.Text;
             btnProductoAgregadoMensaje.Click();
             HacerScrollElemento(ScrollProducto2);
             ColocarCursorSobreElemento(Idproducto2);
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(titleProductoAgregadoXpath);
+            UsarWaitElementIsVisible(titleProductoAgregadoXpath);
             waitforDisplayed(titleProductoAgregado);
             ValorTitleProductoAgregado = titleProductoAgregado.Text;
+            //Usar wait de la practica semana 5
+            UsarWaitElementExists(linkViewXpath);
+            UsarWaitElementIsVisible(linkViewXpath);
             linkView.Click();
             ValorDescripcionproducto1 = descripcionProducto1.Text;
             ValorDescripcionproducto2 = descripcionProducto2.Text;
             SumarCompra();
             btn_procesarCompra.Click();
             HacerScrollElemento(btn_placeOrder);
+            //Usar wait de la practica semana 5
+            UsarWaitElementIsVisible(table_totalXpath);
+            UsarWaitElementExists(table_totalXpath);
             ValorTotalDesdeElSistema = table_total.Text;
             string Aux = ValorTotalDesdeElSistema.Replace("Rs. ","");
             ValorTotalDesdeElSistema = Aux;

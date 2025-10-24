@@ -1,0 +1,42 @@
+﻿[
+  {
+    "nombre": "Yeison01",
+    "pass": "123",
+    "AnnoNacimiento": "1991",
+    "pais": "Canada",
+    "nombrecompleto": "Yeison",
+    "apellidos": "Rojas Sancho",
+    "compania": "CENFOTEC",
+    "dprincipal": "Casa Calabaza",
+    "dsecundaria": "Calle Rojas",
+    "estado": "Alajuela",
+    "ciudad": "San Ramón",
+    "postal": "229829",
+    "telefono": "888888",
+    "valorHome": "Home",
+    "valorUsuario": "New User Signup!",
+    "valorTituloFormulario": "ENTER ACCOUNT INFORMATION",
+    "valorMensajeConfirmar": "ACCOUNT CREATED!",
+    "valorLogin": "Logged in as "
+  },
+  {
+    "nombre": "Yeison02",
+    "pass": "123",
+    "AnnoNacimiento": "1991",
+    "pais": "Canada",
+    "nombrecompleto": "Yeison",
+    "apellidos": "Rojas Sancho",
+    "compania": "CENFOTEC",
+    "dprincipal": "Casa Calabaza",
+    "dsecundaria": "Calle Rojas",
+    "estado": "Alajuela",
+    "ciudad": "San Ramón",
+    "postal": "229829",
+    "telefono": "888888",
+    "valorHome": "Home",
+    "valorUsuario": "New User Signup!",
+    "valorTituloFormulario": "ENTER ACCOUNT INFORMATION",
+    "valorMensajeConfirmar": "ACCOUNT CREATED!",
+    "valorLogin": "Logged in as "
+  }
+]
