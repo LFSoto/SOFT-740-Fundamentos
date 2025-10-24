@@ -22,7 +22,7 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
         //Implementación de espera explícita para asegurar que los elementos estén presentes antes de interactuar con ellos
         private IWebElement subscribreElementInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("susbscribe_email")));
         private IWebElement suscribeButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("subscribe")));
-        private IWebElement susbscribreMessage => _driver.FindElement(By.CssSelector("div[class=\"alert-success alert\"]"));
+        private IWebElement susbscribreMessage => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("div[class=\"alert-success alert\"]")));
 
         // Métodos para la suscripción al newsletter
         public void FillSuscribeInput(string email)

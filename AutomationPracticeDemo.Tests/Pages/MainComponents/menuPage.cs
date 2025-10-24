@@ -15,10 +15,10 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
         // Declaración de los elementos de la página
 
         //Elementos del menu
-        private IWebElement signupLoginOption => _driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
-        private IWebElement productOption => _driver.FindElement(By.CssSelector("li a[href=\"/products\"]"));
-        private IWebElement logoutOption => _driver.FindElement(By.CssSelector("li a[href=\"/logout\"]"));
-        private IWebElement contactUsOption => _driver.FindElement(By.CssSelector("li a[href=\"/contact_us\"]"));
+        private IWebElement signupLoginOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/login\"]")));
+        private IWebElement productOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/products\"]")));
+        private IWebElement logoutOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/logout\"]")));
+        private IWebElement contactUsOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/contact_us\"]")));
 
 
         // Declaración de metodos para interactuar con los elementos del menu de navegación

@@ -15,26 +15,25 @@ namespace AutomationPracticeDemo.Tests.Pages
         }
 
         // Declaración de los elementos de la página
-        private IWebElement contactUsTitle => _driver.FindElement(By.CssSelector("#contact-page div.col-sm-12  h2.title.text-center"));
-        private IWebElement nameInput => _driver.FindElement(By.CssSelector("input[name=\"name\"]"));
-        private IWebElement emailInput => _driver.FindElement(By.CssSelector("input[name=\"email\"]"));
-        private IWebElement subjectInput => _driver.FindElement(By.Name("subject"));
-        private IWebElement messageInput => _driver.FindElement(By.Id("message"));
-        private IWebElement uploadFileInput => _driver.FindElement(By.CssSelector("input[name=\"upload_file\"]"));
-        private IWebElement submitButton => _driver.FindElement(By.Name("submit"));
-        private IWebElement successMessage => _driver.FindElement(By.CssSelector("div.status.alert.alert-success"));
+        //Se implementa un localizador relativo por medio de XPath para el título de la página de contacto
+        private IWebElement contactUsTitle => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@id=\"contact-page\"]/div[1]//h2")));
+        private IWebElement nameInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[name=\"name\"]")));
+        private IWebElement emailInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("input[name=\"email\"]"));
+        private IWebElement subjectInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Name("subject")));
+        private IWebElement messageInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("message")));
+        private IWebElement uploadFileInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[name=\"upload_file\"]")));
+        private IWebElement submitButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Name("submit")));
+        private IWebElement successMessage => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("div.status.alert.alert-success")));
 
         //Validar que estamos en la página de contacto
         public string GetTitleContactUSPage()
         {
+
             return contactUsTitle.Text;
         }
         //Llenar el formulario de contacto
         public void FillContactForm(string name, string email, string subject, string message)
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => nameInput.Displayed && emailInput.Displayed && subjectInput.Displayed && messageInput.Displayed);
-
             nameInput.SendKeys(name);
             emailInput.SendKeys(email);
             subjectInput.SendKeys(subject);

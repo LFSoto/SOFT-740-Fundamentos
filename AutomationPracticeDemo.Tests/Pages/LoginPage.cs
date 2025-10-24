@@ -16,9 +16,9 @@ namespace AutomationPracticeDemo.Tests.Pages
         
         // Elementos del Login
         private IWebElement titleLoginAccount => _driver.FindElement(By.CssSelector("div.login-form h2"));
-        private IWebElement emailLoginInput => _driver.FindElement(By.CssSelector("input[data-qa=\"login-email\"]"));
-        private IWebElement passwordLoginInput => _driver.FindElement(By.CssSelector("input[data-qa=\"login-password\"]"));
-        private IWebElement loginButton => _driver.FindElement(By.CssSelector("button[data-qa=\"login-button\"]"));
+        private IWebElement emailLoginInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[data-qa=\"login-email\"]")));
+        private IWebElement passwordLoginInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[data-qa=\"login-password\"]")));
+        private IWebElement loginButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("button[data-qa=\"login-button\"]")));
         private IWebElement messageIncorrectPassword => _driver.FindElement(By.CssSelector("div.login-form p"));
 
 
