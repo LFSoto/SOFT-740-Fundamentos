@@ -25,8 +25,10 @@ namespace AutomationPracticeDemo.Tests.Tests.Data.LoginUsuarioFail
         // Método auxiliar para leer el archivo JSON y convertirlo a object[]
         private static object[] CargarDatosDesdeJson()
         {
-            var projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
-            var filePath = Path.Combine(projectDir, "Tests", "Data", "LoginUsuarioFail", "JsonData", "DataLogin.json");
+            string basePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+            string filePath = Path.GetFullPath(Path.Combine(basePath, "Tests", "Data", "LoginUsuarioFail", "JsonData", "DataLogin.json"));
+            //var projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+            //var filePath = Path.Combine(projectDir, "Tests", "Data", "LoginUsuarioFail", "JsonData", "DataLogin.json");
             Console.WriteLine($"Ruta usada para el JSON: {filePath}");
 
             if (!File.Exists(filePath))
