@@ -22,7 +22,7 @@ namespace AutomationPracticeDemo.Tests.Tests.ContactUs.Test
             ScreenshotHelper.TakeScreenshot(Driver, "ContactUs.png");
             var successMessage = page.GetSuccessMessage();
             Assert.That(successMessage, Does.Contain(data.SuccessMessage));
-            //Assert.That(page.GetSuccessMessage(), Is.EqualTo(data.SuccessMessage));
+            
         }
     }
 }

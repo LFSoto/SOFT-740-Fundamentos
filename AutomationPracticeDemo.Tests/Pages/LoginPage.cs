@@ -31,11 +31,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement LoginButton => WaitAndFindElement(By.CssSelector("button[data-qa='login-button']"));
         private IWebElement LoggedInMsg => WaitAndFindElement(By.XPath("//a[i[@class='fa fa-user']]"));
         private IWebElement LoginError => WaitAndFindElement(By.XPath("//p[contains(text(),'Your email or password is incorrect!')]"), 5);
-        //private IWebElement LoginEmail => _driver.FindElement(By.CssSelector("input[data-qa='login-email']"));
-        //private IWebElement LoginPassword => _driver.FindElement(By.CssSelector("input[data-qa='login-password']"));
-        //private IWebElement LoginButton => _driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
-        //private IWebElement LoggedInMsg => _driver.FindElement(By.XPath("//a[i[@class='fa fa-user']]"));
-        //private IWebElement LoginError => _driver.FindElement(By.XPath("//p[contains(text(),'Your email or password is incorrect!')]"));
 
         public void Open()
         {

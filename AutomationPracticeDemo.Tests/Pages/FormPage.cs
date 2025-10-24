@@ -96,7 +96,7 @@ namespace AutomationPracticeDemo.Tests.Pages
 
         public string GetColors()
         {
-            //return ColorsDropdown.GetAttribute("value") ?? string.Empty;
+            
             return ColorsDropdown.Text;
         }
 
