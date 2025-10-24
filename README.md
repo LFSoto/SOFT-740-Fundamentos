@@ -1,4 +1,4 @@
-# Practica 4 - Melvin Marin Navarro
+# Practica 5 - Melvin Marin Navarro
 
 Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/).
 
@@ -10,18 +10,22 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 ## Instalación
 ```bash
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout Melvin-SeleniumPOM-DDT 
+git checkout Melvin-SeleniumGIT
 cd AutomationPracticeDemo.Tests
 dotnet restore
 dotnet build
 dotnet test
 ```
 
-## Test
-### Se agregaron los siguientes archivos:
+## Pages
+### Se implementaron esperas en las siguientes páginas:
 ---
-* **CartTest**
-* **ContactUsTest**
-* **LoginTest**
-* **NewsLetterTest**
-* **NewUserTest**
+* **AccountInformationPage**
+* **ContactUsPage**
+* **FooterPage**
+* **FormPage**
+* **HomePage**
+* **LoginPage**
+* **NavBarPage**
+* **ProductsPage**
+* **ShoppingCartPage**
