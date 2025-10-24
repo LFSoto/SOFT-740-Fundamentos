@@ -43,6 +43,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement loginMessageError => _driver.FindElement(By.XPath("//p[contains(text(), 'Email Address already exist!')]"));
 
 
+
         public void Signup(string name, string email)
         {
 

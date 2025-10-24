@@ -3,6 +3,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Xml.Linq;
+using System.Threading;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPracticeDemo.Tests.Pages
 {
@@ -10,6 +13,7 @@ namespace AutomationPracticeDemo.Tests.Pages
     public class CarritoPage
     {
         private readonly IWebDriver _driver;
+        private readonly TimeSpan _defaultTimeout = TimeSpan.FromSeconds(10);
         public CarritoPage(IWebDriver driver)
         {
             _driver = driver;
@@ -24,8 +28,25 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement continuebutton => _driver.FindElement(By.CssSelector("button[class='btn btn-success close-modal btn-block']"));
         private IWebElement cartbutton => _driver.FindElement(By.CssSelector("a[href='/view_cart']"));
 
-        private IWebElement precioProductounitario => _driver.FindElement(By.XPath("//p[contains(text(), 'Rs. 278')]"));
-        private IWebElement precioProductototal => _driver.FindElement(By.ClassName("cart_total_price"));
+        private readonly By _precioUnitarioRelative = By.XPath("//a[@data-product-id='13']/following::p[contains(normalize-space(.), 'Rs.')][1]");
+        private readonly By _precioUnitarioGeneric = By.XPath("//p[contains(normalize-space(.), 'Rs.')]");
+        private readonly By _precioTotalBy = By.ClassName("cart_total_price");
+
+        // Helper: espera explícita para elemento visible y habilitado
+        private IWebElement FindVisible(By by, TimeSpan? timeout = null)
+        {
+            var wait = new WebDriverWait(_driver, timeout ?? _defaultTimeout);
+            return wait.Until(d =>
+            {
+                try
+                {
+                    var el = d.FindElement(by);
+                    return (el != null && el.Displayed && el.Enabled) ? el : null;
+                }
+                catch (NoSuchElementException) { return null; }
+                catch (StaleElementReferenceException) { return null; }
+            });
+        }
 
 
 
@@ -53,20 +74,39 @@ namespace AutomationPracticeDemo.Tests.Pages
 
         public string Unitario()
         {
-
-            string texto = precioProductounitario.Text;
-            return texto;
-
+            // Intento localizador relativo al producto, si falla uso genérico
+            try
+            {
+                var el = FindVisible(_precioUnitarioRelative, TimeSpan.FromSeconds(5));
+                return el.Text?.Trim() ?? string.Empty;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                try
+                {
+                    var el2 = FindVisible(_precioUnitarioGeneric, TimeSpan.FromSeconds(5));
+                    return el2.Text?.Trim() ?? string.Empty;
+                }
+                catch (WebDriverTimeoutException)
+                {
+                    return string.Empty;
+                }
+            }
         }
         public string precioTotal()
         {
+            try
+            {
+                var el = FindVisible(_precioTotalBy, TimeSpan.FromSeconds(5));
+                return el.Text?.Trim() ?? string.Empty;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                return string.Empty;
+            }
 
-            string texto = precioProductototal.Text;
-            return texto;
+
 
         }
-
-
-
-    }
+}
 }
