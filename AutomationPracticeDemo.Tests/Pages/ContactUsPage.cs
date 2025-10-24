@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPracticeDemo.Tests.Pages
 {
@@ -20,6 +21,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         public IWebElement MessageTextbox => _driver.FindElement(By.Id("message"));
         public IWebElement UploadFileInput => _driver.FindElement(By.Name("upload_file"));
         public IWebElement SubmitButton => _driver.FindElement(By.Name("submit"));
-        public string AlertSuccessActualText => _wait.Until(d => d.FindElement(By.ClassName("alert-success")).Text);
+        public string AlertSuccessActualText => _wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("alert-success"))).Text;
     }
 }

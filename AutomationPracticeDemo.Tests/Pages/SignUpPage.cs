@@ -1,14 +1,18 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPracticeDemo.Tests.Pages
 {
     public class SignUpPage
     {
-        private readonly IWebDriver _driver;      
+        private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
 
         public SignUpPage(IWebDriver driver)
         {
-            _driver = driver;            
+            _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
         public IWebElement MrRadioButton => _driver.FindElement(By.Id("id_gender1"));
@@ -16,8 +20,8 @@ namespace AutomationPracticeDemo.Tests.Pages
         public IWebElement DaySelect => _driver.FindElement(By.Id("days"));
         public IWebElement MonthSelect => _driver.FindElement(By.Id("months"));
         public IWebElement YearSelect => _driver.FindElement(By.Id("years"));
-        public IWebElement NewsLetterCheckBox => _driver.FindElement(By.Id("newsletter"));
-        public IWebElement SpecialOffersCheckBox => _driver.FindElement(By.Id("optin"));
+        public IWebElement NewsLetterCheckBox => _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("newsletter")));
+        public IWebElement SpecialOffersCheckBox => _wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("optin")));
         public IWebElement FirstNameTextbox => _driver.FindElement(By.Id("first_name"));
         public IWebElement LastNameTextbox => _driver.FindElement(By.Id("last_name"));
         public IWebElement CompanyTextbox => _driver.FindElement(By.Id("company"));

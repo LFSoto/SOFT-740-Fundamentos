@@ -27,3 +27,11 @@ dotnet test
 
 ## Data Driven Testing
 ** Se implementó en la clase Tests/Practica4/Login/LoginTest **
+
+# Práctica 5 Dixon Chavarria
+
+## Se agregó el manejo de elementos dinámicos en las siguientes clases /Pages
+- MainComponents/HeaderNav.cs
+- ContactUsPage
+- ProductsPage
+- SignUpPage
