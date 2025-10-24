@@ -4,7 +4,7 @@
     "Email": "SOFT-7401@cenfotec.com",
     "Subject": "SOFT-740",
     "Message": "Please contact me",
-    "FilePath": "C:\\RepositorioCursoAutomatizacion\\Semana2\\SOFT-740-Fundamentos\\Resources\\QA.jpeg",
+    "FilePath": "/Resources/QA.jpeg",
     "SucessMessage": "Success! Your details have been submitted successfully."
   },
   {
@@ -12,7 +12,7 @@
     "Email": "SOFT-7402@cenfotec.com",
     "Subject": "SOFT-740",
     "Message": "Please contact me",
-    "FilePath": "C:\\RepositorioCursoAutomatizacion\\Semana2\\SOFT-740-Fundamentos\\Resources\\QA.jpeg",
+    "FilePath": "/Resources/QA.jpeg",
     "SucessMessage": "Success! Your details have been submitted successfully."
   }
 ]

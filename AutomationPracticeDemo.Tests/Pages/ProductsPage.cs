@@ -22,7 +22,6 @@ namespace AutomationPracticeDemo.Tests.Pages
        
         private IWebElement ProductsButtom => _driver.FindElement(By.CssSelector("a[href='/products']"));
         private IWebElement CartButton => _driver.FindElement(By.CssSelector("a[href='/view_cart']"));
-        //private IWebElement ContinueShoppingButton => _driver.FindElement(By.CssSelector("button.btn.btn-success.close-modal.btn-block"));
         private IWebElement ContinueShoppingButton => _wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.btn.btn-success.close-modal.btn-block")));
         private IWebElement PriceProd1 => _driver.FindElement(By.XPath("//td[@class='cart_price']/p[contains(text(),'Rs. 500')]"));
         private IWebElement PriceProd2 => _driver.FindElement(By.XPath("//td[@class='cart_price']/p[contains(text(),'Rs. 400')]"));

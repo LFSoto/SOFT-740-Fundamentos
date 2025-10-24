@@ -15,7 +15,8 @@ namespace AutomationPracticeDemo.Tests.Tests.ContactUs.Test
             var page = new Pages.ContactUsPage(Driver);
             //abrir la página de contacto
             page.OpenContactUsPage();
-            page.FillForm(data.Name, data.Email, data.Subject, data.Message, data.FilePath);
+            var path = TestContext.CurrentContext.TestDirectory + data.FilePath;
+            page.FillForm(data.Name, data.Email, data.Subject, data.Message, path);
             page.SubmitForm();
             page.AcceptAlert();
             ScreenshotHelper.TakeScreenshot(Driver, "ContactUs.png");
