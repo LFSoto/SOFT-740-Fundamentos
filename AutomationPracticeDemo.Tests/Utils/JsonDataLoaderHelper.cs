@@ -14,7 +14,7 @@ namespace AutomationPracticeDemo.Tests.Utils
 
             var result = JsonConvert.DeserializeObject<LoginDataResult>(jsonString);
             if (result == null)
-                throw new InvalidOperationException("Failed to deserialize LoginDataResult from JSON.");
+                throw new InvalidOperationException("Failed to deserialize LoginDataResult from JSON."); //C:\Users\dixon\OneDrive\Documentos\Curso automatizacion\Selenium2\AutomationPracticeDemo.Tests\Tests\Practica4\Login\Data\Login.json
             return result;
         }
     }
