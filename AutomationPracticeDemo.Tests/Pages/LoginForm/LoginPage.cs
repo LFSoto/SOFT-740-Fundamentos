@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -14,13 +15,15 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
     public class LoginPage
     {
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
         //SignupLoginTest()
-        private IWebElement LoginButton => _driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
+        private IWebElement LoginButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("li a[href=\"/login\"]")));
         public string LoginButtonColor => _driver.FindElement(By.CssSelector("li a[href=\"/login\"]")).GetCssValue("color");
 
         //NewUserTest() - Signup

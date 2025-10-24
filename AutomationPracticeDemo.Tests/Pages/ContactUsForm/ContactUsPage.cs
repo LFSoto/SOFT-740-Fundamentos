@@ -12,22 +12,22 @@ namespace AutomationPracticeDemo.Tests.Pages.ContactUsForm
     {
 
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public ContactUsPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
 
-        private IWebElement contactUsFormBtn => _driver.FindElement(By.CssSelector("li a[href=\"/contact_us\"]"));
-
+        private IWebElement contactUsFormBtn => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("li a[href=\"/contact_us\"]")));
         private IWebElement tituloContactUs => _driver.FindElement(By.CssSelector("h2.title.text-center"));
-
+        
         //2. Completar nombre, email, asunto y mensaje. 
 
         private IWebElement _inputName => _driver.FindElement(By.CssSelector("input[data-qa='name']"));
         private IWebElement _inputEmail => _driver.FindElement(By.CssSelector("input[data-qa='email']"));
         private IWebElement _inputSubject => _driver.FindElement(By.CssSelector("input[data-qa='subject']"));
-        private IWebElement _inputMessage => _driver.FindElement(By.CssSelector("textarea[data-qa='message']"));
-
+        private IWebElement _inputMessage => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("textarea[data-qa='message']")));
 
         public void contactUsForm()
         {
@@ -59,14 +59,12 @@ namespace AutomationPracticeDemo.Tests.Pages.ContactUsForm
         }
         public string Get_textAlert()
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
+            _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
             return _driver.SwitchTo().Alert().Text;
         }
         public void AcceptAlert()
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
+            _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
             _driver.SwitchTo().Alert().Accept();
         }
         public string validateSuccessMesaje()
