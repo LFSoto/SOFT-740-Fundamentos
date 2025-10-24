@@ -17,7 +17,7 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
 
         public IWebElement LoginLink => _driver.FindElement(By.CssSelector("li a[href=\"/login\"]"));
         public IWebElement LogoutLink => _wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("a[href=\"/logout\"]")));
-        public IWebElement ProductsLink => _driver.FindElement(By.CssSelector("a[href=\"/products\"]"));
+        public IWebElement ProductsLink => _wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("a[href=\"/products\"]")));
         public IWebElement ContactUsLink => _driver.FindElement(By.CssSelector("a[href=\"/contact_us\"]"));
     }
 }
