@@ -101,7 +101,8 @@ namespace AutomationPracticeDemo.Tests.Pages
                 {
                     deleteButton.Click();
                     // pequeña espera entre clics
-                    System.Threading.Thread.Sleep(500);
+                    _wait.Until(ExpectedConditions.StalenessOf(deleteButton));
+                    //System.Threading.Thread.Sleep(500);
                 }
 
                 // Confirmar que el carrito esté vacío
