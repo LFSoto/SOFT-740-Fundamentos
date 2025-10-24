@@ -16,40 +16,35 @@ namespace AutomationPracticeDemo.Tests.Pages
         }
 
         // Declaración de los elementos de la página
-        private IWebElement productsTitle => _driver.FindElement(By.CssSelector("div.features_items >h2.title.text-center"));
-        private IWebElement firstProductType => _driver.FindElement(By.CssSelector("div:nth-child(3) div.productinfo.text-center > p"));//div:nth-child(3) div.product-overlay p
-        private IWebElement firstProductPrice => _driver.FindElement(By.CssSelector("div:nth-child(3) div.productinfo.text-center h2"));
-        private IWebElement addFirstCartButton => _driver.FindElement(By.CssSelector("div.productinfo.text-center a[data-product-id=\"1\"]"));//div.product-overlay a[data-product-id=\"1\"]"
-        private IWebElement secondProductType => _driver.FindElement(By.CssSelector(" div:nth-child(4)  div.productinfo.text-center  p"));
-        private IWebElement secondProductPrice => _driver.FindElement(By.CssSelector("div:nth-child(4) div.productinfo.text-center h2"));
-        private IWebElement addSecondCartButton => _driver.FindElement(By.CssSelector("div.productinfo.text-center a[data-product-id=\"2\"]"));
-        private IWebElement modaAddedlTitle => _driver.FindElement(By.CssSelector("#cartModal h4"));
-        private IWebElement modaAddedlMessage => _driver.FindElement(By.CssSelector("#cartModal p"));
-        private IWebElement viewCartButton => _driver.FindElement(By.CssSelector("#cartModal a"));
-        private IWebElement continueShoppingButton => _driver.FindElement(By.CssSelector("#cartModal button[data-dismiss=\"modal\"]"));
-        private IWebElement tableCartInfo => _driver.FindElement(By.Id("cart_info_table"));
+        // Localizadores relativos a los productos
+        private IWebElement productsTitle => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("div.features_items >h2.title.text-center")));
+        private IWebElement firstProductType => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("div:nth-child(3) div.productinfo.text-center > p")));
+        private IWebElement firstProductPrice => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("div:nth-child(3) div.productinfo.text-center h2")));
+        private IWebElement addFirstCartButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("div.productinfo.text-center a[data-product-id=\"1\"]")));
+        private IWebElement secondProductType => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(" div:nth-child(4)  div.productinfo.text-center p")));
+        private IWebElement secondProductPrice => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("div:nth-child(4) div.productinfo.text-center h2")));
+        private IWebElement addSecondCartButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("div.productinfo.text-center a[data-product-id=\"2\"]")));
+        private IWebElement modaAddedlTitle => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#cartModal h4")));
+        private IWebElement modaAddedlMessage => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#cartModal p")));
+        private IWebElement viewCartButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#cartModal a")));
+        private IWebElement continueShoppingButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#cartModal button[data-dismiss=\"modal\"]")));
+        private IWebElement tableCartInfo => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("cart_info_table")));
 
         //Validar que estamos en la página de productos
         public string ValidatedProductsPage()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(driver => productsTitle.Displayed);
             return productsTitle.Text;
 
         }
         //Obtener el tipo y precio del primer producto
         public (string, string) GetFirstProductDetails()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(driver => firstProductType.Displayed && firstProductPrice.Displayed);
             return (firstProductType.Text, firstProductPrice.Text);
         }
 
         //Agregar el primer producto al carrito
         public void AddFirstProductToCart()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(driver => addFirstCartButton.Enabled && addFirstCartButton.Displayed);
 
             // Manejar posible excepción de click interceptado en caso de que el botón no sea clickeable directamente
             try
@@ -67,31 +62,23 @@ namespace AutomationPracticeDemo.Tests.Pages
         public (string, string) ValidateProductAddedModal()
         {
             //Implimentar una espera explícita para asegurar que el text del modal esté visible
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            wait.Until(driver => modaAddedlTitle.Displayed && modaAddedlMessage.Displayed);
             return (modaAddedlTitle.Text, modaAddedlMessage.Text);
         }
         //Continuar comprando
         public void ContinueShopping()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => continueShoppingButton.Enabled && continueShoppingButton.Displayed);
             continueShoppingButton.Click();
         }
 
         //Obtener el tipo y precio del segundo producto 
         public (string, string) GetSecondProductDetails()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => secondProductType.Displayed && secondProductPrice.Displayed);
             return (secondProductType.Text, secondProductPrice.Text);
         }
 
         //Agregar el segundo producto al carrito
         public void AddSecondProductToCart()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => addSecondCartButton.Enabled && addSecondCartButton.Displayed);
             try
             {
                 addSecondCartButton.Click();
@@ -104,8 +91,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Trasladarse el carrito de compras
         public void SummitViewCart()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => viewCartButton.Enabled && viewCartButton.Displayed);
             viewCartButton.Click();
         }
 

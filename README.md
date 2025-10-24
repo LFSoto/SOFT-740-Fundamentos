@@ -1,5 +1,6 @@
 # Práctica:Primeros Pasos - Selenium
 
+[![.NET 9 Selenium Tests](https://github.com/LFSoto/SOFT-740-Fundamentos/actions/workflows/dotnet-tests.yml/badge.svg?branch=MaximinoBejarano-SeleniumGIT)](https://github.com/LFSoto/SOFT-740-Fundamentos/actions/workflows/dotnet-tests.yml)
 # Clonar una rama desde GitHub
 1. Ve al repositorio en GitHub https://github.com/LFSoto/SOFT-740-Fundamentos.git.
 2. Haz clic en el botón **Code**, luego a la izquierda de la rama actual selecciona la lista de ramas **branches**.

@@ -18,7 +18,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Se implementa un localizador relativo por medio de XPath para el título de la página de contacto
         private IWebElement contactUsTitle => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@id=\"contact-page\"]/div[1]//h2")));
         private IWebElement nameInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[name=\"name\"]")));
-        private IWebElement emailInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("input[name=\"email\"]"));
+        private IWebElement emailInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("input[name=\"email\"]")));
         private IWebElement subjectInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Name("subject")));
         private IWebElement messageInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.Id("message")));
         private IWebElement uploadFileInput => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("input[name=\"upload_file\"]")));
@@ -42,16 +42,12 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Subir un archivo
         public void UploadFile(string filePath)
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => uploadFileInput.Displayed);
             uploadFileInput.SendKeys(filePath);
         }
 
         //Enviar el formulario
         public void SubmitContactForm()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => submitButton.Enabled && submitButton.Displayed);
             submitButton.Click();
         }
 
@@ -67,8 +63,6 @@ namespace AutomationPracticeDemo.Tests.Pages
         }
         public string GetSuccessMessage()
         {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(4));
-            wait.Until(driver => successMessage.Displayed);
             return successMessage.Text;
         }
     }
