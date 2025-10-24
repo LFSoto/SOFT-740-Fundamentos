@@ -4,17 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeDemo.Tests.Pages
 {
     public class ContactUsPage
     {
         private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
         public ContactUsPage(IWebDriver driver)
         {
             _driver = driver;
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
         }
-        private IWebElement ContactUsButton => _driver.FindElement(By.CssSelector("a[href='/contact_us']"));
+
+        private IWebElement ContactUsButton => _wait.Until(
+            SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("a[href='/contact_us']")));
         private IWebElement NameImput => _driver.FindElement(By.CssSelector("input[data-qa='name']"));
         private IWebElement EmailImput => _driver.FindElement(By.CssSelector("input[data-qa='email']"));
         private IWebElement SubjectImput => _driver.FindElement(By.CssSelector("input[data-qa='subject']"));
