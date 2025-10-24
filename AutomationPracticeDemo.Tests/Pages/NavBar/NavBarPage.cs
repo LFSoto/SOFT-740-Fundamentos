@@ -1,44 +1,48 @@
 ﻿using OpenQA.Selenium;
+using AutomationPracticeDemo.Tests.Utils;
 
 namespace AutomationPracticeDemo.Tests.Pages.NavBar
 {
     public class NavBarPage
     {
         private readonly IWebDriver driver;
-        private IWebElement SignupLoginLink => driver.FindElement(By.XPath("//a[@href='/login']"));
-        private IWebElement LabelLoggedInAs => driver.FindElement(By.XPath("//a[contains(text(),'Logged in as')]"));
-        private IWebElement LabelContacUs => driver.FindElement(By.XPath("//a[@href='/contact_us']"));
-        private IWebElement LabelProducts => driver.FindElement(By.XPath("//a[@href='/products']"));
-        private IWebElement LabelCart => driver.FindElement(By.XPath("//a[@href='/view_cart']"));
+        private readonly WaitHelper wait;
+        private readonly By SignupLoginLink = By.XPath("//a[@href='/login']");
+        private readonly By LabelLoggedInAs = By.XPath("//a[contains(text(),'Logged in as')]");
+        private readonly By LabelContacUs = By.XPath("//a[@href='/contact_us']");
+        private readonly By LabelProducts = By.XPath("//a[@href='/products']");
+        private readonly By LabelCart = By.XPath("//a[@href='/view_cart']");
         public NavBarPage(IWebDriver driver)
         {
             this.driver = driver;
+            this.wait = new WaitHelper(driver);
         }//ctor
 
         public void ClickSignupLogin()
         {
-            SignupLoginLink.Click();
+            wait.WaitForElementClickable(SignupLoginLink).Click();
         }//ClickSignupLogin
 
         public void ClickContactUs()
         {
-            LabelContacUs.Click();
+            wait.WaitForElementClickable(LabelContacUs).Click();
         }//ClickContactUs
 
         public void ClickProducts()
         {
-            LabelProducts.Click();
+            wait.WaitForElementClickable(LabelProducts).Click();
         }//ClickProducts
 
         public void ClickCart()
         {
-            LabelCart.Click();
+            wait.WaitForElementClickable(LabelCart).Click();
         }//ClickCart
 
         public string GetLoggedInAsText()
         {
-            Console.WriteLine("Logged in as text: " + LabelLoggedInAs.Text);
-            return LabelLoggedInAs.Text;
+            var el = wait.WaitForElementVisible(LabelLoggedInAs);
+            Console.WriteLine("Logged in as text: " + el.Text);
+            return el.Text;
         }//GetLoggedInAsText
     }//class
 }//namespace

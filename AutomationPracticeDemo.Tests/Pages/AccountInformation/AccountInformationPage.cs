@@ -1,30 +1,33 @@
 ﻿using OpenQA.Selenium;
+using AutomationPracticeDemo.Tests.Utils;
 
 namespace AutomationPracticeDemo.Tests.Pages.AccountInformation
 {
     public class AccountInformationPage
     {
         private readonly IWebDriver driver;
-        private IWebElement GenderRadio => driver.FindElement(By.Id(genderId));
+        private readonly WaitHelper wait;
+        private By GenderRadio => By.Id(genderId);
         private string genderId = "$";
-        private IWebElement PasswordInput => driver.FindElement(By.Id("password"));
-        private IWebElement FirstNameInput => driver.FindElement(By.Id("first_name"));
-        private IWebElement LastNameInput => driver.FindElement(By.Id("last_name"));
-        private IWebElement AddressInput => driver.FindElement(By.Id("address1"));
-        private IWebElement SelectCountry => driver.FindElement(By.Id("country"));
-        private IWebElement InputState => driver.FindElement(By.Id("state"));
-        private IWebElement InputCity => driver.FindElement(By.Id("city"));
-        private IWebElement InputZipcode => driver.FindElement(By.Id("zipcode"));
-        private IWebElement InputMobileNumber => driver.FindElement(By.Id("mobile_number"));
-        private IWebElement ButtonCreateAccount => driver.FindElement(By.XPath("//button[@data-qa='create-account']"));
+        private readonly By PasswordInput = By.Id("password");
+        private readonly By FirstNameInput = By.Id("first_name");
+        private readonly By LastNameInput = By.Id("last_name");
+        private readonly By AddressInput = By.Id("address1");
+        private readonly By SelectCountry = By.Id("country");
+        private readonly By InputState = By.Id("state");
+        private readonly By InputCity = By.Id("city");
+        private readonly By InputZipcode = By.Id("zipcode");
+        private readonly By InputMobileNumber = By.Id("mobile_number");
+        private readonly By ButtonCreateAccount = By.XPath("//button[@data-qa='create-account']");
 
         //ACCOUNT CREATED!
-        private IWebElement LabelAccountCreated => driver.FindElement(By.XPath("//h2[@data-qa='account-created']")); //Account Created!
-        private IWebElement ButtonContinue => driver.FindElement(By.XPath("//a[@data-qa='continue-button']")); //Continue
+        private readonly By LabelAccountCreated = By.XPath("//h2[@data-qa='account-created']"); //Account Created!
+        private readonly By ButtonContinue = By.XPath("//a[@data-qa='continue-button']"); //Continue
 
         public AccountInformationPage(IWebDriver driver)
         {
             this.driver = driver;
+            this.wait = new WaitHelper(driver);
         }//ctor
         public void SetGenderId(string gender)
         {
@@ -41,28 +44,28 @@ namespace AutomationPracticeDemo.Tests.Pages.AccountInformation
             string state, string city, string zipCode, string mobileNumber)
         {
             SetGenderId(gender);
-            GenderRadio.Click();
-            PasswordInput.SendKeys(password);
-            FirstNameInput.SendKeys(name);
-            LastNameInput.SendKeys(lastname);
-            AddressInput.SendKeys(address);
-            SelectCountry.SendKeys(country);
-            InputState.SendKeys(state);
-            InputCity.SendKeys(city);
-            InputZipcode.SendKeys(zipCode);
-            InputMobileNumber.SendKeys(mobileNumber);
+            wait.WaitForElementClickable(GenderRadio).Click();
+            wait.WaitForElementVisible(PasswordInput).SendKeys(password);
+            wait.WaitForElementVisible(FirstNameInput).SendKeys(name);
+            wait.WaitForElementVisible(LastNameInput).SendKeys(lastname);
+            wait.WaitForElementVisible(AddressInput).SendKeys(address);
+            wait.WaitForElementVisible(SelectCountry).SendKeys(country);
+            wait.WaitForElementVisible(InputState).SendKeys(state);
+            wait.WaitForElementVisible(InputCity).SendKeys(city);
+            wait.WaitForElementVisible(InputZipcode).SendKeys(zipCode);
+            wait.WaitForElementVisible(InputMobileNumber).SendKeys(mobileNumber);
             // Se hace click en Create Account
-            ButtonCreateAccount.Click();
+            wait.WaitForElementClickable(ButtonCreateAccount).Click();
         }//FillAccountInformation
 
         public string GetAccountCreatedMessage()
         {
-            return LabelAccountCreated.Text;
+            return wait.WaitForElementVisible(LabelAccountCreated).Text;
         }//GetAccountCreatedMessage
 
         public void ClickContinueButton()
         {
-            ButtonContinue.Click();
+            wait.WaitForElementClickable(ButtonContinue).Click();
         }//ClickContinueButton
     }//class
 }//namespace

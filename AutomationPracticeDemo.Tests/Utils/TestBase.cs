@@ -16,6 +16,9 @@ namespace AutomationPracticeDemo.Tests.Utils
             Driver = new ChromeDriver(options);
             //Driver.Navigate().GoToUrl("https://testautomationpractice.blogspot.com/");
             Driver.Navigate().GoToUrl("https://automationexercise.com/");
+
+            // Configure a global timeout for waits used across pages (seconds)
+            WaitHelper.GlobalDefaultTimeoutSeconds = 15; // <-- change this value to adjust global timeout
         }
 
         [TearDown]
