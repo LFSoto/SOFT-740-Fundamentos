@@ -8,8 +8,8 @@ namespace AutomationPracticeDemo.Tests.Utils
     {
         public static LoginDataResult LoadLoginData()
         {
-            string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
-            string jsonFilePath = Path.Combine(assemblyPath, "Tests\\Practica4\\Login\\Data\\Login.json");
+            string baseDirectory = AppContext.BaseDirectory;
+            string jsonFilePath = Path.Combine(baseDirectory, "../../../Tests/Practica4/Login/Data/Login.json");
             string jsonString = File.ReadAllText(jsonFilePath);
 
             var result = JsonConvert.DeserializeObject<LoginDataResult>(jsonString);
