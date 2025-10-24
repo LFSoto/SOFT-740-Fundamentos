@@ -2,7 +2,7 @@ name: .NET 9 Selenium Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, MaximinoBejarano-SeleniumGIT, Melvin-SeleniumGIT, YeisonRojas-SeleniumGIT, DixonChavarria-SeleniumGIT, TamaraSalazar-SeleniumGIT, AngelicaAlvarez-SeleniumGIT, AlejandraFonseca-SeleniumGIT]
   pull_request:
     branches: [ main, develop ]
 
