@@ -50,6 +50,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private string titleProductoAgregadoXpath = "//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [1]";
         private string linkViewXpath ="//div[@class='modal-content']//div[@class='modal-body']//p[@class='text-center'] [2]";
         private string table_totalXpath ="//div[@id='cart_info']/table[@class='table table-condensed']/tbody/tr[3]/td[4]/p[@class='cart_total_price']";
+        private string txtConfirmacionCompraXpath = "//section[@id='form']/div[@class='container']/div[@class='row']/div[@class='col-sm-9 col-sm-offset-1']/p";
 
         private string diaActual = DateTime.Now.Day.ToString();
         private string mesActual = DateTime.Now.Month.ToString();
@@ -126,7 +127,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement txt_annoTarjeta => _driver.FindElement(By.Name("expiry_year"));
         private IWebElement btnPagar => _driver.FindElement(By.Id("submit"));
         private IWebElement btnSus => _driver.FindElement(By.CssSelector("p.pull-left"));
-        private IWebElement txtConfirmacionCompra => _driver.FindElement(By.CssSelector("div.col-sm-9.col-sm-offset-1 p"));
+        private IWebElement txtConfirmacionCompra => _driver.FindElement(By.XPath("//section[@id='form']/div[@class='container']/div[@class='row']/div[@class='col-sm-9 col-sm-offset-1']/p"));
         private IWebElement btnFinalizarOrden => _driver.FindElement(By.CssSelector("div.col-sm-9.col-sm-offset-1 a.btn.btn-primary"));
 
         //Variables -> Llenar y enviar formulario de contactar
@@ -377,6 +378,8 @@ namespace AutomationPracticeDemo.Tests.Pages
             HacerScrollElemento(btnSus);
             btnPagar.Click();
             System.Threading.Thread.Sleep(2000);
+            UsarWaitElementExists(txtConfirmacionCompraXpath);
+            UsarWaitElementIsVisible(txtConfirmacionCompraXpath);
             waitforDisplayed(txtConfirmacionCompra);
             ValorConfirmarOrdenFinalizada = txtConfirmacionCompra.Text;
             btnFinalizarOrden.Click();
@@ -385,8 +388,8 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Metodo que se encarga de realizar los pasos para el escenario de llenar el formulario para contactar
         public void LlenarFormularioContactar(string correo, string nombre, string subjet, string mensaje) 
         {
-            string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Imagen\Foto.jpg");
-            ruta = Path.GetFullPath(ruta);
+            string ruta = Path.GetFullPath(
+            Path.Combine(TestContext.CurrentContext.TestDirectory, @"..", @"..", @"..", "Imagen", "Foto.jpg"));
 
             btn_contacto.Click();
             txtNombre.SendKeys(nombre);
