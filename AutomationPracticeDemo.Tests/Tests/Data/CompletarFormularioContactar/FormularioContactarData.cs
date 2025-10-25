@@ -27,9 +27,9 @@ namespace AutomationPracticeDemo.Tests.Tests.Data.CompletarFormularioContactar
         // Método auxiliar para leer el archivo JSON y convertirlo a object[]
         private static object[] CargarDatosDesdeJson()
         {
-            var projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
-            var filePath = Path.Combine(projectDir, "Tests", "Data", "CompletarFormularioContactar", "JsonFormularioContactar", "DataFormularioContactar.json");
-
+            var filePath = Path.GetFullPath(
+            Path.Combine(TestContext.CurrentContext.TestDirectory, @"..", @"..", @"..", "Tests", "Data", "CompletarFormularioContactar", "JsonFormularioContactar", "DataFormularioContactar.json"));
+            
             if (!File.Exists(filePath))
                 throw new FileNotFoundException($"No se encontró el archivo de datos: {filePath}");
 

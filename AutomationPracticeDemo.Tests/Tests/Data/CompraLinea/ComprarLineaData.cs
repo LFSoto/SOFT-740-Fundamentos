@@ -36,11 +36,9 @@ namespace AutomationPracticeDemo.Tests.Tests.Data.CompraLinea
         // Método auxiliar para leer el archivo JSON y convertirlo a object[]
         private static object[] CargarDatosDesdeJson()
         {
-             string basePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
-             string filePath = Path.GetFullPath(Path.Combine(basePath, "Tests", "Data", "CompraLinea", "JsonComprarLinea", "DataCompraLinea.json"));
 
-            //var projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
-            //var filePath = Path.Combine(projectDir, "Tests", "Data", "CompraLinea", "JsonComprarLinea", "DataCompraLinea.json");
+            var filePath = Path.GetFullPath(
+            Path.Combine(TestContext.CurrentContext.TestDirectory, @"..", @"..", @"..", "Tests", "Data", "CompraLinea", "JsonComprarLinea", "DataCompraLinea.json"));
 
             if (!File.Exists(filePath))
                 throw new FileNotFoundException($"No se encontró el archivo de datos: {filePath}");
