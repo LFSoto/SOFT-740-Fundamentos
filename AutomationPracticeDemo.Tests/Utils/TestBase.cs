@@ -1,12 +1,14 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
     public class TestBase
     {
         protected IWebDriver Driver;
+        protected WebDriverWait? Wait;
 
         [SetUp]
         public void Setup()
@@ -23,10 +25,10 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             if (Driver != null)
             {
-                System.Threading.Thread.Sleep(2000);
                 Driver.Quit();
-               Driver.Dispose();
+                Driver.Dispose();
             }
         }
+       
     }
 }
