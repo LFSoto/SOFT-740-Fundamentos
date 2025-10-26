@@ -26,7 +26,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         // var addtocart2 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
         private IWebElement viewcartbutton => _driver.FindElement(By.XPath("//u[contains(text(), 'View Cart')]"));
         private IWebElement continuebutton => _driver.FindElement(By.CssSelector("button[class='btn btn-success close-modal btn-block']"));
-        private IWebElement cartbutton => _driver.FindElement(By.CssSelector("a[href='/view_cart']"));
+        private IWebElement cartbutton => _driver.FindElement(By.XPath("u[View Cart]"));
 
         private readonly By _precioUnitarioRelative = By.XPath("//a[@data-product-id='13']/following::p[contains(normalize-space(.), 'Rs.')][1]");
         private readonly By _precioUnitarioGeneric = By.XPath("//p[contains(normalize-space(.), 'Rs.')]");
@@ -68,7 +68,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         public void vercarrito()
         {
             //se da click en view cart
-            viewcartbutton.Click();
+            cartbutton.Click();
 
         }
 

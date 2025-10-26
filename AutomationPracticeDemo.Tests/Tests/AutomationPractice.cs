@@ -218,7 +218,7 @@ namespace AutomationPracticeDemo.Tests.Tests
         }
 
         [Test]
-        public void Suscripciónnewsletter()
+        public void Suscripcionnewsletter()
         {
             //Se definen los WebElements
             var subscribenElementInput = Driver.FindElement(By.Id("susbscribe_email"));
