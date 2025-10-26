@@ -1,5 +1,8 @@
-﻿using AutomationPracticeDemo.Tests.Tests.Login.Data;
+﻿
+using AutomationPracticeDemo.Tests.Tests.Login;
 using AutomationPracticeDemo.Tests.Tests.signupPage.TestDatasignup;
+using Newtonsoft.Json.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.IO;
@@ -12,7 +15,7 @@ namespace AutomationPracticeDemo.Tests.Utils
     {
         public static IEnumerable<TestCaseData> TestCaseLogin()
         {
-            var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Tests", "Login", "Data", "LoginUsers.json"));
+            var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Tests", "Login", "LoginUsers.json"));
             if (!File.Exists(path))
                 yield break;
 
@@ -120,5 +123,44 @@ namespace AutomationPracticeDemo.Tests.Utils
                     single.Name
                 ).SetName(single.Name ?? single.Email ?? "Signup");
         }//SignupDataCases
-    }
+        public static IEnumerable TestCaseCart
+        {
+            get
+            { ;
+                var workDir = TestContext.CurrentContext.WorkDirectory;
+                var filePath = Path.Combine(workDir, AppContext.BaseDirectory, "..", "..", "..", "Tests", "Carrito", "Productos.json");
+
+                if (!File.Exists(filePath))
+                    throw new FileNotFoundException($"No se encontró el fichero de datos: {filePath}");
+
+                var json = JArray.Parse(File.ReadAllText(filePath));
+
+                // Filtro opcional por identificadorTest (parámetro o variable de entorno)
+                var filter = TestContext.Parameters.Get("identificadorTest", null)
+                             ?? Environment.GetEnvironmentVariable("IDENTIFICADOR_TEST");
+
+                JToken selected = null;
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    selected = json.FirstOrDefault(t =>
+                        string.Equals(t["identificadorTest"]?.ToString(), filter, StringComparison.OrdinalIgnoreCase));
+                }
+
+                if (selected == null)
+                    selected = json.FirstOrDefault();
+
+                if (selected == null)
+                    yield break;
+
+                var precioUnitario = selected["precioUnitario"]?.ToString() ?? string.Empty;
+                var precioTotal = selected["precioTotal"]?.ToString() ?? string.Empty;
+                var identificador = selected["identificadorTest"]?.ToString() ?? string.Empty;
+
+                yield return new TestCaseData(precioUnitario, precioTotal, identificador)
+                    .SetName($"Cart_{identificador}");
+            }
+
+
+        }
+}
 }

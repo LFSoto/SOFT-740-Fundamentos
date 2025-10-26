@@ -1,7 +1,6 @@
-﻿
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace AutomationPracticeDemo.Tests.Tests.Login.Data
+namespace AutomationPracticeDemo.Tests.Tests.Login
 {
     public class LoginData
     {

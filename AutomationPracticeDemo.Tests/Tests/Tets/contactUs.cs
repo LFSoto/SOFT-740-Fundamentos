@@ -1,6 +1,6 @@
 ﻿using AutomationPracticeDemo.Tests.Pages;
 using AutomationPracticeDemo.Tests.Pages.AutomationExercisePage;
-using AutomationPracticeDemo.Tests.Tests.Login.Data;
+using AutomationPracticeDemo.Tests.Tests.Login;
 using AutomationPracticeDemo.Tests.Utils;
 using Newtonsoft.Json;
 using NUnit.Framework;

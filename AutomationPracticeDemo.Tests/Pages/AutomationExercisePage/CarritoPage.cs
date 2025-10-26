@@ -26,11 +26,12 @@ namespace AutomationPracticeDemo.Tests.Pages
         // var addtocart2 = Driver.FindElement(By.CssSelector("a[data-product-id='13']"));
         private IWebElement viewcartbutton => _driver.FindElement(By.XPath("//u[contains(text(), 'View Cart')]"));
         private IWebElement continuebutton => _driver.FindElement(By.CssSelector("button[class='btn btn-success close-modal btn-block']"));
-        private IWebElement cartbutton => _driver.FindElement(By.XPath("u[View Cart]"));
+        private IWebElement cartbutton => _driver.FindElement(By.ClassName("text-center"));
 
         private readonly By _precioUnitarioRelative = By.XPath("//a[@data-product-id='13']/following::p[contains(normalize-space(.), 'Rs.')][1]");
         private readonly By _precioUnitarioGeneric = By.XPath("//p[contains(normalize-space(.), 'Rs.')]");
         private readonly By _precioTotalBy = By.ClassName("cart_total_price");
+
 
         // Helper: espera explícita para elemento visible y habilitado
         private IWebElement FindVisible(By by, TimeSpan? timeout = null)
@@ -65,10 +66,10 @@ namespace AutomationPracticeDemo.Tests.Pages
             addtocart1.Click();
             Thread.Sleep(2000);
          }
-        public void vercarrito()
+        public void verCarrito()
         {
             //se da click en view cart
-            cartbutton.Click();
+            viewcartbutton.Click();
 
         }
 

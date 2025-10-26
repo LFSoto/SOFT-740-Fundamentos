@@ -1,6 +1,6 @@
-﻿using AutomationPracticeDemo.Tests.Pages;
+﻿
+using AutomationPracticeDemo.Tests.Pages;
 using AutomationPracticeDemo.Tests.Pages.AutomationExercisePage;
-using AutomationPracticeDemo.Tests.Tests.Login.Data;
 using AutomationPracticeDemo.Tests.Utils;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -9,15 +9,16 @@ using System.IO;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 
-namespace AutomationPracticeDemo.Tests.Tests.Tets
+namespace AutomationPracticeDemo.Tests.Tests.Carrito
 {
     [TestFixture]
 
     public class agregarProductos : TestBase
     {
 
-
+        
         [Test]
+        
         public void productoscarritoexitosa()
         {
             //Click en productos
@@ -27,57 +28,48 @@ namespace AutomationPracticeDemo.Tests.Tests.Tets
             var carritopage = new CarritoPage(Driver);
             carritopage.agregarcarrito();
             carritopage.agregarsegundocarrito();
-            carritopage.vercarrito();
+            carritopage.verCarrito();
             
 
 
         }
+
+
+
         [Test]
-        public void Montoproducto()
+        [TestCaseSource(typeof(dataSources), nameof(dataSources.TestCaseCart))]
+        public void Montoproducto(string textoEsperadoUnitario, string textoEsperadoTotal, string identificadorTest)
         {
-            //Click en productos
             var inicioPage = new InicioPage(Driver);
             inicioPage.carrito();
-            //AGREGAR PRODUCTOS AL CARRITO
             var carritopage = new CarritoPage(Driver);
             carritopage.agregarcarrito();
             carritopage.agregarsegundocarrito();
-            carritopage.vercarrito();
-            //VALIDACION DE LOGIN
+            carritopage.verCarrito();
 
-            var textoObtenido = carritopage.Unitario();
-            var textoEsperado = "Rs. 278";
-            Assert.That(textoObtenido, Is.EqualTo(textoEsperado));
-            Assert.Pass("Total unitario correcta");
+            var textoObtenidoUnitario = carritopage.Unitario();
+            var textoObtenidoTotal = carritopage.precioTotal();
 
-            
-
-
+            Assert.Multiple(() =>
+            {
+                Assert.That(textoObtenidoUnitario, Is.EqualTo(textoEsperadoUnitario), $"Unitario mismatch for {identificadorTest}");
+                Assert.That(textoObtenidoTotal, Is.EqualTo(textoEsperadoTotal), $"Total mismatch for {identificadorTest}");
+            });
         }
+
         [Test]
-        public void montoTotal()
+        [TestCaseSource(typeof(dataSources), nameof(dataSources.TestCaseCart))]
+        public void montoTotal(string textoEsperado2, string textoEsperadoTotal, string identificadorTest)
         {
-            //Click en productos
             var inicioPage = new InicioPage(Driver);
             inicioPage.carrito();
-            //AGREGAR PRODUCTOS AL CARRITO
             var carritopage = new CarritoPage(Driver);
             carritopage.agregarcarrito();
             carritopage.agregarsegundocarrito();
-            carritopage.vercarrito();
-            //VALIDACION DE LOGIN
-
-     
+            carritopage.verCarrito();
 
             var textoObtenido2 = carritopage.precioTotal();
-            var textoEsperado2 = "Rs. 556";
-            Assert.That(textoObtenido2, Is.EqualTo(textoEsperado2));
-            Assert.Pass("Monto total correcta");
-
-
+            Assert.That(textoObtenido2, Is.EqualTo(textoEsperadoTotal), $"Total mismatch for {identificadorTest}");
         }
-
-
     }
 }
-
