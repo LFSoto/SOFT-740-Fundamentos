@@ -139,55 +139,163 @@ namespace AutomationPracticeDemo.Tests.Pages
         /// </summary>
         public void DeleteCartItems()
         {
-            // Espera explícita: espera hasta que el botón de pago sea clickeable (máximo 10 segundos)
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(40));
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
-            IWebElement ContinueShoppingButton = wait.Until(
-                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(CartLink));
+            // 1. Ir al carrito de forma segura, con protección de stale.
+            //    Reintenta hasta que logre hacer clic en el link "/view_cart".
+            wait.Until(driver =>
+            {
+                try
+                {
+                    By cartLinkLocator = By.CssSelector("a[href='/view_cart']");
+                    var cartLinkEl = driver.FindElement(cartLinkLocator);
 
-            // Realiza clic en el link "Cart" del carrito de compras
-            CartLink.Click();
+                    // Si el DOM cambió entre FindElement y Displayed, esto lanzaría StaleElementReferenceException,
+                    // que capturamos abajo en catch y retornamos false para reintentar.
+                    if (cartLinkEl.Displayed && cartLinkEl.Enabled)
+                    {
+                        cartLinkEl.Click();
+                        return true; // success -> se sale del Until
+                    }
 
-            // Espera explícita: espera hasta 5 segundos a que la tabla del carrito sea visible
-            var wait1 = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            IReadOnlyCollection<IWebElement> rows = [];
+                    return false; // aún no clickable
+                }
+                catch (NoSuchElementException)
+                {
+                    return false; // todavía no apareció el link
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false; // el link se volvió stale, reintentar
+                }
+            });
+
+            // 2. Ahora ya hicimos click en "Cart". Esperamos que aparezca (o no) la tabla.
+            //    Si no aparece la tabla, asumimos carrito vacío y salimos sin fallar.
+            By cartTableLocator = By.Id("cart_info_table");
+
+            bool tablePresent = false;
+            IWebElement cartTable = null;
 
             try
             {
-                // Espera hasta que la tabla sea visible (si existe)
-                IWebElement cartTable = wait.Until(
-                    SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("cart_info_table"))
-                );
+                cartTable = wait.Until(driver =>
+                {
+                    try
+                    {
+                        var table = driver.FindElement(cartTableLocator);
+                        if (table.Displayed)
+                        {
+                            return table;
+                        }
+                        return null;
+                    }
+                    catch (NoSuchElementException)
+                    {
+                        return null;
+                    }
+                    catch (StaleElementReferenceException)
+                    {
+                        return null;
+                    }
+                });
 
-                // Obtiene las filas de la tabla (tbody > tr)
-                rows = cartTable.FindElements(By.CssSelector("tbody tr"));
+                tablePresent = cartTable != null;
             }
             catch (WebDriverTimeoutException)
             {
-                // Si no se encuentra la tabla, significa que el carrito está vacío
-                Console.WriteLine("No hay productos en el carrito. Ninguna acción requerida.");
-                return; // Sale del método
+                tablePresent = false;
             }
 
-            // Si existen filas, recorre cada producto y lo elimina
-            foreach (var row in rows)
+            if (!tablePresent)
             {
-                // Obtiene el ID del producto desde el atributo "id" del <tr> 
-                string productIdAttr = row.GetAttribute("id") ?? string.Empty;
-
-                // Extrae solo el número del ID (remueve el prefijo "product-")
-                string productId = productIdAttr.Replace("product-", "").Trim();
-
-                // Localiza el botón de eliminación del producto según su ID
-                var deleteButton = row.FindElement(By.CssSelector($"a.cart_quantity_delete[data-product-id='{productId}']"));
-
-                // Hace clic en el botón de eliminar
-                deleteButton.Click();
-
-                // Espera a que la fila desaparezca del DOM
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.StalenessOf(row));
+                Console.WriteLine("No hay productos en el carrito. Ninguna acción requerida.");
+                return;
             }
+
+            // 3. Loop hasta que el carrito quede vacío.
+            while (true)
+            {
+                IReadOnlyCollection<IWebElement> rows;
+
+                // Siempre relocalizamos tabla y filas en cada iteración
+                try
+                {
+                    cartTable = _driver.FindElement(cartTableLocator);
+                    rows = cartTable.FindElements(By.CssSelector("tbody tr"));
+                }
+                catch (NoSuchElementException)
+                {
+                    // tabla ya no está -> carrito vacío
+                    Console.WriteLine("Carrito vacío (tabla ya no está presente).");
+                    break;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    // DOM cambió justo ahora -> volver a intentar el while desde arriba
+                    continue;
+                }
+
+                // ¿Quedan filas en el carrito?
+                if (rows.Count == 0)
+                {
+                    Console.WriteLine("Todos los productos han sido eliminados del carrito.");
+                    break;
+                }
+
+                // Tomamos la PRIMERA fila disponible en este momento
+                IWebElement row;
+                try
+                {
+                    row = rows.First();
+                }
+                catch (InvalidOperationException)
+                {
+                    // rows estaba vacío al final, carrera rara pero válida
+                    Console.WriteLine("Carrito ya quedó vacío (sin filas).");
+                    break;
+                }
+
+                try
+                {
+                    // Ej: <tr id="product-3">
+                    string productIdAttr = row.GetAttribute("id") ?? string.Empty;
+                    string productId = productIdAttr.Replace("product-", "").Trim();
+
+                    // Buscar el botón de delete dentro de ESTA fila
+                    var deleteButton = row.FindElement(
+                        By.CssSelector($"a.cart_quantity_delete[data-product-id='{productId}']"));
+
+                    // Intentar click normal primero
+                    try
+                    {
+                        deleteButton.Click();
+                    }
+                    catch (ElementClickInterceptedException)
+                    {
+                        // Si algo tapa el botón, forzamos con JS
+                        ((IJavaScriptExecutor)_driver)
+                            .ExecuteScript("arguments[0].click();", deleteButton);
+                    }
+
+                    // Esperar a que esa fila específica ya no exista en el DOM
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.StalenessOf(row));
+                }
+                catch (StaleElementReferenceException)
+                {
+                    // La fila cambió entre leerla y borrarla -> reintentar loop
+                    continue;
+                }
+                catch (NoSuchElementException)
+                {
+                    // Algo cambió y ya no hay botón/row -> reintentar
+                    continue;
+                }
+            }
+
+            Console.WriteLine("DeleteCartItems() terminó.");
         }
+
 
         /// <summary>
         /// Convierte una cadena que representa una cantidad monetaria en un valor decimal normalizado.
