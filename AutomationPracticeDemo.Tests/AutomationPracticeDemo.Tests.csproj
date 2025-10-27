@@ -31,6 +31,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  
+   <ItemGroup>
+    <None Update="Resource\Images\**\*">
+      <CopyToOutputDirectory>PreserveImagen</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
