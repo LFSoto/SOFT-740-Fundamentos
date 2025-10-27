@@ -24,6 +24,14 @@
   <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
+  
+   <!-- Copia los archivos de prueba al directorio de salida -->
+   <ItemGroup>
+    <None Update="Resource\DataTest\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Data;
 public static class JsonHelper
 {
     /// <summary>
@@ -9,7 +10,11 @@ public static class JsonHelper
     /// <returns>Lista de objetos del tipo T</returns>
     public static List<T> LoadListFromJson<T>(string nameFile)
     {
-        string pathJson = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\DataTest\" + nameFile));
+        string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+        string pathJson = Path.Combine(projectRoot, "Resource", "DataTest", nameFile);
+        Console.WriteLine("Ruta del archivo JSON: " + pathJson);
+        //string pathJson = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\DataTest\" + nameFile));
+        //var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Tests/Data", "UserLoginData.json");
         if (string.IsNullOrWhiteSpace(pathJson))
             throw new ArgumentException("La ruta del archivo no puede estar vacía.");
 
