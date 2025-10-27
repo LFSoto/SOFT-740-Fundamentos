@@ -26,19 +26,14 @@
   </ItemGroup>
   
    <!-- Copia los archivos de prueba al directorio de salida -->
- <ItemGroup>
-  <!-- Copiar imágenes -->
-  <None Include="Resource/Images/**">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </None>
-
-  <!-- Copiar archivos JSON -->
-  <None Include="Resource/DataTest/**">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </None>
-</ItemGroup>
-
-
+   <ItemGroup>
+    <None Update="Resource\DataTest\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+   <ItemGroup>
+     <Folder Include="Resource\Images\" />
+   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 

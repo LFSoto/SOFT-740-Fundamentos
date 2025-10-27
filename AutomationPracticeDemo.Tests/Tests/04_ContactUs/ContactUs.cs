@@ -20,10 +20,10 @@ namespace AutomationPracticeDemo.Tests.Tests._04_ContactUs
             //Declaración de variables
             var menuPage = new menuPage(Driver);
             var contactUsPage = new ContactUSPage(Driver);
-            string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+
 
             //Ruta del archivo a subir
-            string imagePath = Path.Combine(projectRoot, "Resource", "Images", "Paisaje.jpg");
+            var imagePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "Asserts", "Paisaje.jpg");
             //string rutaImagen = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\Paisaje.jpg"));
 
             // Navegación a la página de Contact Us
