@@ -13,11 +13,10 @@ namespace AutomationPracticeDemo.Tests.Utils
         {
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
-            //Si los dejo sin comentar se presenta un error, hay que revisarlo
-            //options.AddArgument("-- disable-notifications");
-            //options.AddArgument("-- disable-infobars");
-            //options.AddArgument("-- headless=new");
-            //options.AddArgument("-- window-size=1920,1080");
+            options.AddArgument("--disable-notifications");
+            options.AddArgument("--disable-infobars");
+            options.AddArgument("--headless=new");
+            options.AddArgument("--window-size=1920,1080");
             Driver = new ChromeDriver(options);
 
             // Configurar tiempo de espera implícito de 10 segundos
