@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Xml.Linq;
 
 namespace AutomationPracticeDemo.Tests.Pages
 {
@@ -141,6 +142,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         //Metodo para enviar el formulario de creación de cuenta
         public void SubmitCreateAccount()
         {
+            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", createAccountButton);
             createAccountButton.Click();
         }
 
