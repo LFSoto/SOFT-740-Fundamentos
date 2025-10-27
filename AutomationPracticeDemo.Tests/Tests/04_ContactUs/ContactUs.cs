@@ -21,10 +21,10 @@ namespace AutomationPracticeDemo.Tests.Tests._04_ContactUs
             var menuPage = new menuPage(Driver);
             var contactUsPage = new ContactUSPage(Driver);
             string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-            string pathJson = Path.Combine(projectRoot, "Resource", "Images","Paisajes");
 
             //Ruta del archivo a subir
-            string rutaImagen = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\Paisaje.jpg"));
+            string imagePath = Path.Combine(projectRoot, "Resource", "Images", "Paisaje.jpg");
+            //string rutaImagen = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Resource\Paisaje.jpg"));
 
             // Navegación a la página de Contact Us
             menuPage.ClickContactUsOption();
@@ -34,8 +34,11 @@ namespace AutomationPracticeDemo.Tests.Tests._04_ContactUs
             contactUsPage.FillContactForm(name, email, subject, message);
 
             //Subir un archivo (opcional)
-            contactUsPage.UploadFile(rutaImagen);
-            ScreenshotHelper.TakeScreenshot(Driver, "ContactUs_test.png");
+            if (!File.Exists(imagePath))
+            {
+                Console.WriteLine($"Imagen no encontrada: {imagePath}");
+            }else contactUsPage.UploadFile(imagePath);
+            ScreenshotHelper.TakeScreenshot(Driver,"ContactUs_test.png");
             contactUsPage.SubmitContactForm();
 
             //Validar mensaje de éxito

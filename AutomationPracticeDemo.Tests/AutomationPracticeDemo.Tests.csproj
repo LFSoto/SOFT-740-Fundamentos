@@ -34,7 +34,7 @@
   
    <ItemGroup>
     <None Update="Resource\Images\**\*">
-      <CopyToOutputDirectory>PreserveImagen</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewes</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
