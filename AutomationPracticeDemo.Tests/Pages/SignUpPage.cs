@@ -36,6 +36,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement PhoneInput => _driver.FindElement(By.Id("mobile_number"));
         private IWebElement CreateAccountButton => _driver.FindElement(By.CssSelector("button[data-qa='create-account']"));
         private IWebElement SuccessMessage => _driver.FindElement(By.CssSelector("h2[data-qa='account-created']"));
+        private IWebElement ConfirmationLogin => _driver.FindElement(By.XPath("//a[contains(text(), 'Logged in as')]\r\n"));
 
         //Abre la página de sign up
         public void SignupOpen()
@@ -93,6 +94,10 @@ namespace AutomationPracticeDemo.Tests.Pages
             var continueButton = _driver.FindElement(By.CssSelector("a[data-qa='continue-button']"));
             continueButton.Click();
 
+        }
+        public string GetConfirmationLogin()
+        {
+            return ConfirmationLogin.Text;
         }
     }
 }

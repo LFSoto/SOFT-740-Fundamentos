@@ -48,4 +48,12 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tests\CartProducts\Features\" />
+    <Folder Include="Tests\ContactUs\Features\" />
+    <Folder Include="Tests\Login\Features\" />
+    <Folder Include="Tests\Newsletter\Features\" />
+    <Folder Include="Tests\SignUp\Features\" />
+  </ItemGroup>
+
 </Project>

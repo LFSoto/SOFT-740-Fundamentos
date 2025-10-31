@@ -42,8 +42,12 @@ namespace AutomationPracticeDemo.Tests.Tests.SignUp.Test
 
             //clic en el botón de continuar
             page.Continue();
+
+            //validar que el usuario esté logueado
+            var confirmationLogin = page.GetConfirmationLogin();
+            Assert.That(confirmationLogin, Does.Contain("Logged in as"));
         }
- 
+
 
     }
 }
