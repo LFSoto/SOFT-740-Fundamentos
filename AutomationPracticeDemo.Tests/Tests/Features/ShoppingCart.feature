@@ -1,4 +1,4 @@
-Feature: Cart Functionality
+Feature: Shopping cart Functionality
   Scenario: Successful addition of a product to the cart
 	Given I am on the home page
 	When I navigate to the Products page
