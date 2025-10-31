@@ -1,7 +1,4 @@
 ﻿Feature: User Registration
-  In order to create a new account
-  As a visitor
-  I want to register with valid personal and address information
 
       Scenario: Successful registration of a new user
             Given I am on the start page

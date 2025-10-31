@@ -1,7 +1,4 @@
 ﻿Feature: Add Products to Cart
-  In order to purchase items
-  As a customer
-  I want to add products to the cart and verify their details and total
 
       Scenario: Add products to the cart and verify their presence and prices
             Given I am on the start page
