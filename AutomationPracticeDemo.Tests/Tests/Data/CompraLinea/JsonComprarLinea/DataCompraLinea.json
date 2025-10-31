@@ -1,0 +1,38 @@
+﻿[
+  {
+    "correo": "yeisonrojass@hotmail.com",
+    "contrasenna": "123",
+    "Idproducto1": 2,
+    "Idproducto2": 14,
+    "nombre": "Yeison Rojas S",
+    "numTarjeta": "23445576785890",
+    "cvc": "888",
+    "mes": "05",
+    "anno": "2028",
+    "valorHome": "Home",
+    "valorLogin": "Logged in as ",
+    "valorTituloFormularioProductos": "ALL PRODUCTS",
+    "valorTitleProductoAgregado": "Your product has been added to cart.",
+    "valorDescripcionproducto1": "Men Tshirt",
+    "valorDescripcionproducto2": "Full Sleeves Top Cherry - Pink",
+    "valorConfirmarOrdenFinalizada": "Congratulations! Your order has been confirmed!"
+  },
+  {
+    "correo": "yeisonrslaboral@gmail.com",
+    "contrasenna": "123",
+    "Idproducto1": 3,
+    "Idproducto2": 15,
+    "nombre": "Yeison Rojas S",
+    "numTarjeta": "23445576785890",
+    "cvc": "888",
+    "mes": "05",
+    "anno": "2028",
+    "valorHome": "Home",
+    "valorLogin": "Logged in as ",
+    "valorTituloFormularioProductos": "ALL PRODUCTS",
+    "valorTitleProductoAgregado": "Your product has been added to cart.",
+    "valorDescripcionproducto1": "Sleeveless Dress",
+    "valorDescripcionproducto2": "Printed Off Shoulder Top - White",
+    "valorConfirmarOrdenFinalizada": "Congratulations! Your order has been confirmed!"
+  }
+]
