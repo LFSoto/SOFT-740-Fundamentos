@@ -11,6 +11,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Cart
     public class CartTest : TestBase
     {
 
+        //Test para agregar al carrito:
         [Test, TestCaseSource(typeof(GetUserData), nameof(GetUserData.UserLogin))]
         public void AddToCartTest(string emailTest, string password)
         {
