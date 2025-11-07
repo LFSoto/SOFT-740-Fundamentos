@@ -1,5 +1,4 @@
 ﻿
-using AutomationPracticeDemo.Tests.Tests.Login.Asserts;
 
 namespace AutomationPracticeDemo.Tests.Tests._01_SingUp.Asserts
 {

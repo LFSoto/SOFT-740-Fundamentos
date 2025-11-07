@@ -2,10 +2,10 @@
 
   Scenario: Successful submission of Contact Us
         Given I am on the start page
-        When I navigate to the "Contact Us" page
-        Then I should see the title "CONTACT US"
+        When I navigate to the CONTACT US page
+	    Then I should see the title "CONTACT US" in page header
 
-        When I fill the contact form with:Name,Email,Subject,Message 
+        When I fill the contact form with:"Karina","KaArraya@gmail.com","Prueba Automatizada","Se realizo la practica obteniendo los datos de un Json" 
         And I upload the file "Paisaje.jpg"
         And I click on the button to submit the contact form
         Then I should see an alert with message "Press OK to proceed!"

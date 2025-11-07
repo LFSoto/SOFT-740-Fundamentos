@@ -19,7 +19,7 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
         private IWebElement productOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/products\"]")));
         private IWebElement logoutOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/logout\"]")));
         private IWebElement contactUsOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/contact_us\"]")));
-
+        private IWebElement homeOption => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("li a[href=\"/\"]")));
 
         // Declaración de metodos para interactuar con los elementos del menu de navegación
         public void ClickSignUpLogin()
@@ -33,7 +33,7 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
         public void ClickContactUsOption()
         {
             contactUsOption.Click();
-        }   
+        }
         public string validatedUserLogout()
         {
             if (logoutOption.Displayed == false)
@@ -43,5 +43,9 @@ namespace AutomationPracticeDemo.Tests.Pages.MainComponents
             return logoutOption.Text;
         }
 
+        public void ClickHomeOption()
+        {
+            homeOption.Click();
+        }
     }
 }

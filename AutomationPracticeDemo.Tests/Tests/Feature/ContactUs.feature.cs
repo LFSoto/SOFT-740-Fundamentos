@@ -132,13 +132,14 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature
         await testRunner.GivenAsync("I am on the start page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-        await testRunner.WhenAsync("I navigate to the \"Contact Us\" page", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+        await testRunner.WhenAsync("I navigate to the CONTACT US page", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
-        await testRunner.ThenAsync("I should see the title \"CONTACT US\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+     await testRunner.ThenAsync("I should see the title \"CONTACT US\" in page header", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 8
-        await testRunner.WhenAsync("I fill the contact form with:Name,Email,Subject,Message", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+        await testRunner.WhenAsync("I fill the contact form with:\"Karina\",\"KaArraya@gmail.com\",\"Prueba Automatizada\"," +
+                        "\"Se realizo la practica obteniendo los datos de un Json\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 9
         await testRunner.AndAsync("I upload the file \"Paisaje.jpg\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

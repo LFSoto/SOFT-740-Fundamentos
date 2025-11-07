@@ -132,13 +132,13 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature
         await testRunner.GivenAsync("I am on the start page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-        await testRunner.AndAsync("I navigate to the \"Login\" page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("I navigate to the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 6
         await testRunner.ThenAsync("I should see the title \"Login to your account\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 7
-        await testRunner.WhenAsync("I fill the login form with email \"<email>\" and password \"<password>\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+        await testRunner.WhenAsync("I fill the login form with email \"SOFT-740@cenfotec.com\" and password \"SOFT-740\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 8
         await testRunner.AndAsync("I click the login button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -174,13 +174,14 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature
         await testRunner.GivenAsync("I am on the start page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 13
-        await testRunner.AndAsync("I navigate to the \"Login\" page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("I navigate to the Login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
         await testRunner.ThenAsync("I should see the title \"Login to your account\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 15
-        await testRunner.WhenAsync("I fill the login form with email \"<email>\" and password \"<password>\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+        await testRunner.WhenAsync("I fill the login form with email \"PracticaAUT552@cenfotec.com\" and password \"Cont" +
+                        "raseñaErronea\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 16
         await testRunner.AndAsync("I click the login button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

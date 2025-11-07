@@ -132,10 +132,10 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature
         await testRunner.GivenAsync("I am on the start page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-        await testRunner.WhenAsync("I enter \"email\" in the newsletter subscription field", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+        await testRunner.WhenAsync("I enter \"SOFT-740@cenfotec.com\" in the newsletter subscription field", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
-        await testRunner.AndAsync("I click the \"Subscribe\" button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("I click the Subscribe button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 7
         await testRunner.ThenAsync("I should see the message \"You have been successfully subscribed!\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
