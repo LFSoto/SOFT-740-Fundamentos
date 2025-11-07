@@ -1,6 +1,6 @@
-﻿using AutomationPracticeDemo.Tests.Tests.Login.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -22,17 +22,31 @@ namespace AutomationPracticeDemo.Tests.Tests.CartProducts.Data
         public int IdProduct1 { get; init; }
         public int IdProduct2 { get; init; }
 
-
         public static IEnumerable<CartProductsData> TestCases()
         {
-            // ruta relativa desde el directorio de ejecución de las pruebas
-            var baseDir = TestContext.CurrentContext.WorkDirectory;
+            // Use AppContext.BaseDirectory for better compatibility with Reqnroll
+            var baseDir = AppContext.BaseDirectory;
             var path = Path.Combine(baseDir, "Tests", "CartProducts", "Data", "CartProducts.json");
 
             if (!File.Exists(path))
             {
-                // intenta una ruta alternativa en el proyecto (útil al ejecutar desde IDE)
+                // Fallback to current directory
                 path = Path.Combine(Directory.GetCurrentDirectory(), "Tests", "CartProducts", "Data", "CartProducts.json");
+            }
+
+            if (!File.Exists(path))
+            {
+                // Try relative path from project root
+                var projectRoot = Directory.GetParent(baseDir)?.Parent?.Parent?.Parent?.FullName;
+                if (projectRoot != null)
+                {
+                    path = Path.Combine(projectRoot, "Tests", "CartProducts", "Data", "CartProducts.json");
+                }
+            }
+
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException($"CartProducts.json not found. Searched paths: {path}");
             }
 
             var json = File.ReadAllText(path);
@@ -41,5 +55,15 @@ namespace AutomationPracticeDemo.Tests.Tests.CartProducts.Data
             return list;
         }
 
+        // Load a specific test case by index (useful for multiple scenarios)
+        public static CartProductsData GetTestCase(int index = 0)
+        {
+            var testCases = TestCases().ToList();
+            if (index >= testCases.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), $"Test case index {index} out of range. Only {testCases.Count} test cases available.");
+            }
+            return testCases[index];
+        }
     }
 }

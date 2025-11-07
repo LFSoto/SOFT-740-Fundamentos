@@ -36,11 +36,29 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
             _driver.Navigate().GoToUrl("https://automationexercise.com/login");
         }
+
         public void Login(string email, string password)
         {
             Open();
+            EnterEmail(email);
+            EnterPassword(password);
+            ClickLoginButton();
+        }
+
+        public void EnterEmail(string email)
+        {
+            LoginEmail.Clear();
             LoginEmail.SendKeys(email);
+        }
+
+        public void EnterPassword(string password)
+        {
+            LoginPassword.Clear();
             LoginPassword.SendKeys(password);
+        }
+
+        public void ClickLoginButton()
+        {
             LoginButton.Click();
         }
 
@@ -62,7 +80,6 @@ namespace AutomationPracticeDemo.Tests.Pages
             catch (NoSuchElementException)
             {
                 return string.Empty;
-         
             }
         }
     }

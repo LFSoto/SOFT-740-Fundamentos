@@ -17,10 +17,14 @@
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="ExtentReports" Version="5.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="NUnit" Version="4.4.0" />
     <PackageReference Include="NUnit.Analyzers" Version="4.4.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+    <PackageReference Include="Reqnroll" Version="3.2.0" />
+    <PackageReference Include="Reqnroll.NUnit" Version="3.2.0" />
+    <PackageReference Include="Reqnroll.SpecFlowCompatibility" Version="3.2.0" />
     <PackageReference Include="Selenium.Support" Version="4.35.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.35.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="141.0.7390.5400" />
@@ -37,22 +41,15 @@
     <None Update="Tests\CartProducts\Data\CartProducts.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Tests\ContactUs\Data\ContactUsData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Tests\Login\Data\LoginData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Tests\SignUp\Data\SignUpData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Screenshots\" />
     <Folder Include="Tests\CartProducts\Features\" />
-    <Folder Include="Tests\ContactUs\Features\" />
     <Folder Include="Tests\Login\Features\" />
-    <Folder Include="Tests\Newsletter\Features\" />
   </ItemGroup>
 
 </Project>

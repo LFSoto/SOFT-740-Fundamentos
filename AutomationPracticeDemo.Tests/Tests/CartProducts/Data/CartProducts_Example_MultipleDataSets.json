@@ -1,0 +1,28 @@
+[
+  {
+    "Email": "SOFT-740@cenfotec.com",
+    "Password": "SOFT-740",
+    "Price1": "Rs. 500",
+    "Price2": "Rs. 400",
+    "Cant1": "1",
+    "Cant2": "2",
+    "TotalProd1": "Rs. 500",
+    "TotalProd2": "Rs. 800",
+    "Total": "Rs. 1,300",
+    "IdProduct1": 1,
+    "IdProduct2": 2
+  },
+  {
+    "Email": "test@example.com",
+    "Password": "test123",
+    "Price1": "Rs. 600",
+    "Price2": "Rs. 450",
+    "Cant1": "2",
+    "Cant2": "1",
+    "TotalProd1": "Rs. 1200",
+    "TotalProd2": "Rs. 450",
+    "Total": "Rs. 1,650",
+    "IdProduct1": 3,
+    "IdProduct2": 4
+  }
+]
