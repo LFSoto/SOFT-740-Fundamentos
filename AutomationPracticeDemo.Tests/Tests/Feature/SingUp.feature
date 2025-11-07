@@ -2,7 +2,7 @@
 
       Scenario: Successful registration of a new user
             Given I am on the start page
-            when I navigate to the "Sign Up / Login" page
+            When I navigate to the "Sign Up/Login" page
             Then I should see the title "New User Signup!"
 
             When I enter "name" and "email"
