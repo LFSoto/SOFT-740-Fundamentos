@@ -18,18 +18,18 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::NUnit.Framework.TestFixtureAttribute()]
-    [global::NUnit.Framework.DescriptionAttribute("Env�o de mensaje a trav�s del formulario de contacto")]
+    [global::NUnit.Framework.DescriptionAttribute("Registro Fallido de Nuevo Usuario")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class EnvODeMensajeATravSDelFormularioDeContactoFeature
+    public partial class RegistroFallidoDeNuevoUsuarioFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "Env�o de mensaje a trav�s del formulario de contacto", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "Registro Fallido de Nuevo Usuario", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "Contacto.feature"
+#line 1 "NuevoUsuarioFallido.feature"
 #line hidden
         
         [global::NUnit.Framework.OneTimeSetUpAttribute()]
@@ -105,17 +105,17 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/Contacto.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/NuevoUsuarioFallido.feature.ndjson", 3);
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Env�o exitoso del formulario de contacto")]
-        public async global::System.Threading.Tasks.Task EnvOExitosoDelFormularioDeContacto()
+        [global::NUnit.Framework.DescriptionAttribute("Registro de nuevo usuario fallido por correo ya registrado")]
+        public async global::System.Threading.Tasks.Task RegistroDeNuevoUsuarioFallidoPorCorreoYaRegistrado()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Env�o exitoso del formulario de contacto", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de nuevo usuario fallido por correo ya registrado", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 2
@@ -129,25 +129,26 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
             {
                 await this.ScenarioStartAsync();
 #line 3
-  await testRunner.GivenAsync("El usuario realiza una solicitud de contacto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+  await testRunner.GivenAsync("El usuario realiza una solicitud de registro de nuevo usuario", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 4
-  await testRunner.WhenAsync("El usuario da click en el enlace de Contact Us", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+  await testRunner.WhenAsync("El usuario da click en registro/inicio de sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 5
-  await testRunner.ThenAsync("El usuario visualiza la p�gina de contacto", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("El usuario navega a la página de inicio de sesión", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 6
-  await testRunner.WhenAsync("El usuario completa el formulario de contacto con los campos obligatorios", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+  await testRunner.WhenAsync("El usuario digita nombre", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 7
-  await testRunner.AndAsync("El usuario da click en el bot�n de enviar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("El usuario digita el correo electrónico que si este registrado", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 8
-  await testRunner.AndAsync("El usuario  acepta la alerta de confirmaci�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+  await testRunner.AndAsync("EL usuario da click en el botón de registrarse", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 9
-  await testRunner.ThenAsync("El usuario visualiza el mensaje de confirmaci�n de env�o exitoso", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+  await testRunner.ThenAsync("El usuario visualiza un mensaje de error indicando que el correo ya está registra" +
+                        "do", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

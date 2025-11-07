@@ -27,14 +27,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "LoginFallido", @"scenario: Inicio de sesi�n fallido con credenciales inv�lidas
-	Given El usuario realiza una solicitud de inicio de sesi�n fallido con credenciales inv�lidas
-	When El usuario da click en registro/inicio de sesi�n.
-	Then El usuario navega a la p�gina de inicio de sesi�n.
-	When El usuario digita  el correo electr�nico valido ""<email>. 
-	And El usuario digita una contrase�a no valida ""<password>"".
-	And El usuario da click en el bot�n de iniciar sesi�n.
-	Then El usuario deber�a ver un mensaje de error indicando que las credenciales son inv�lidas.", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "LoginFallido", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "LoginFallido.feature"
 #line hidden
@@ -112,7 +105,54 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/LoginFallido.feature.ndjson", 2);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/LoginFallido.feature.ndjson", 3);
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("Inicio de sesi�n fallido con credenciales inv�lidas")]
+        public async global::System.Threading.Tasks.Task InicioDeSesiNFallidoConCredencialesInvLidas()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "0";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Inicio de sesi�n fallido con credenciales inv�lidas", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 2
+ this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 3
+  await testRunner.GivenAsync("El usuario realiza una solicitud de inicio de sesi�n fallido con credenciales inv" +
+                        "�lidas", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 4
+  await testRunner.WhenAsync("El usuario da click en registro inicio de sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 5
+  await testRunner.ThenAsync("El usuario navega a la p�gina de inicio de sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 6
+  await testRunner.WhenAsync("El usuario digita  el correo electr�nico valido", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 7
+  await testRunner.AndAsync("El usuario digita una contrase�a no valida", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 8
+  await testRunner.AndAsync("El usuario da click en el bot�n de iniciar sesi�n", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 9
+  await testRunner.ThenAsync("El usuario deber�a ver un mensaje de error indicando que las credenciales son inv" +
+                        "�lidas", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
         }
     }
 }
