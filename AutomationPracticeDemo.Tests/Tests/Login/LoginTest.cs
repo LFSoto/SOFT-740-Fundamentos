@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AutomationPracticeDemo.Tests.Tests.Data.GetUserData;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace AutomationPracticeDemo.Tests.Tests.Login
 {
@@ -26,8 +28,8 @@ namespace AutomationPracticeDemo.Tests.Tests.Login
 
         }
         //NewUserTest()
-        [Test, TestCaseSource(typeof(GetUserData), nameof(GetUserData.NewUserLogin))]
-        public void CreateUser_Test(string password, string dropDownDay, string dropDownMonth, string dropDownYear, string inputFirstName, string inputLastName, string inputCompanyName, string inputAddress1, string inputAddress2, string dropDownCountry, string inputState, string inputCity, string inputZipCode, string inputMobileNumb)
+        [Test, TestCaseSource(typeof(GetUserData), nameof(NewUserLoginList))] //NewUSerLoginList es la lista que contiene los datos de prueba.
+        public void CreateUser_Test(NewUserLoginData user)//NewUSerLoginData user va obtener los { get; set; }
         {
             var LoginPage = new Pages.LoginForm.LoginPage(Driver);
 
@@ -43,7 +45,9 @@ namespace AutomationPracticeDemo.Tests.Tests.Login
 
             if (LoginPage.GetTexttitleEnterAccount == "ENTER ACCOUNT INFORMATION")  // Acción si se cumple la condición.
             {              
-                LoginPage.EnterAccountInfo(password, dropDownDay, dropDownMonth, dropDownYear, inputFirstName, inputLastName, inputCompanyName, inputAddress1, inputAddress2, dropDownCountry, inputState, inputCity, inputZipCode, inputMobileNumb);
+                LoginPage.EnterAccountInfo(user.password, user.dropDownDay, user.dropDownMonth, user.dropDownYear, user.inputFirstName, user.inputLastName, user.inputCompanyName, user.inputAddress1, user.inputAddress2, user.dropDownCountry, user.inputState, user.inputCity, user.inputZipCode, user.inputMobileNumb);
+
+                LoginPage._submitCreateAccount();
 
                 var message = LoginPage.GetCreateAccountMessage();
 
@@ -60,11 +64,11 @@ namespace AutomationPracticeDemo.Tests.Tests.Login
 
         }
 
-        [Test, TestCaseSource(typeof(GetUserData), nameof(GetUserData.UserLogin))]
-        public void LoginWithExistingUser_Test(string emailTest, string password)
+        [Test, TestCaseSource(typeof(GetUserData), nameof(UserLoginList))]//UserLoginList es la lista que contiene los datos de prueba.
+        public void LoginWithExistingUser_Test(LoginData user) //user va obtener los { get; set; }
         {
             var LoginPage = new Pages.LoginForm.LoginPage(Driver);
-            LoginPage.LoginWithUserAccount(emailTest, password);
+            LoginPage.LoginWithUserAccount(user.emailText, user.password);
 
             //Verificamos que el usuario se haya logueado de forma exitosa.
             var textUserLogged = LoginPage.GetUserLoggued();

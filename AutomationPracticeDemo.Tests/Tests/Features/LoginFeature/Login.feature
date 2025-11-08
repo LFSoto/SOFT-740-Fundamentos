@@ -2,5 +2,5 @@
   Scenario: Login with existing user
 	Given I click on the Signup/login button
 	When I navigate to the Signup/login page
-	And I enter my login credentials "emailTest" "passwordTest"
+	And I enter my login credentials email and password
 	Then I should be logged in successfully

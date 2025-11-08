@@ -1,14 +1,10 @@
 ﻿Feature: CreateUser
 Scenario: Create new user account
-	Given I click on the Signup/login button
-	When I navigate to the Signup/login page
-	And I enter my login credentials "emailTest" "passwordTest"
-	Then I should be logged in successfully
-	When I enter the "email" and "password"
-	And I click on the Signup button
-	Then The title is displayed "ENTER ACCOUNT INFORMATION"
-	When I entre the account information
+	Given I click on the SignupLogin button
+	When I enter the email and password
+	Then I should see the title ENTER ACCOUNT INFORMATION
+	When I enter the account information
 	And I click on the Create Account button
-	Then I should see the message "ACCOUNT CREATED!"
+	Then I should see the message ACCOUNT CREATED!
 	When I click on the Continue button
-	Then The user's name is displayed on the “Logged in as” button.
+	Then The user name is displayed on the Logged in as button

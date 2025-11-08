@@ -6,17 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AutomationPracticeDemo.Tests.Tests.Data.GetUserData;
 
 namespace AutomationPracticeDemo.Tests.Tests.ContactUs
 {
     public class ContactUsTest : TestBase
     {
 
-        [Test, TestCaseSource(typeof(GetUserData), nameof(GetUserData.UserLogin))]
-        public void contactUsFormTest(string emailTest, string password)
+        [Test, TestCaseSource(typeof(GetUserData), nameof(UserLoginList))]
+        public void contactUsFormTest(LoginData user)
         {
             var LoginPage = new Pages.LoginForm.LoginPage(Driver);
-            LoginPage.LoginWithUserAccount(emailTest, password);
+            LoginPage.LoginWithUserAccount(user.emailText, user.password);
 
             var ContactUsPage = new Pages.ContactUsForm.ContactUsPage(Driver);
             ContactUsPage.contactUsForm();

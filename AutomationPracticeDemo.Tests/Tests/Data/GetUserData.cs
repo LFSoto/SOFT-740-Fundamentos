@@ -17,11 +17,21 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
         /*===============================================================*/
         public class LoginData
         {
-            public string? emailText { get; set; }
-            public string? password { get; set; }
+            public string emailText { get; set; } = string.Empty;
+            public string password { get; set; } = string.Empty;
         }
+        public static List<LoginData> UserLoginList
+        {
+            get
+            {
+                var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Tests/Data", "UserLoginData.json");
+                var file = File.ReadAllText(path);
+                var jsonObject = JObject.Parse(file);
 
-        public static object[] UserLogin
+                return jsonObject["ExistingUserLogin"]?.ToObject<List<LoginData>>() ?? new List<LoginData>();
+            }
+        }
+       /* public static object[] UserLogin
         {
             get
             {
@@ -36,71 +46,41 @@ namespace AutomationPracticeDemo.Tests.Tests.Data
                     .Select(x => new object[] { x.emailText ?? "", x.password ?? "" })
                     .ToArray();
             }
-        }
+        }*/
         /*===============================================================*/
         //Datos de prueba para Crerar un nuevo usuario
         /*===============================================================*/
-        public class NewUSerLoginData
+        public class NewUserLoginData
         {
-            public string? password { get; set; }
-            public string? dropDownDay { get; set; }
-            public string? dropDownMonth { get; set; }
-            public string? dropDownYear { get; set; }
-            public string? inputFirstName { get; set; }
-            public string? inputLastName { get; set; }
-            public string? inputCompanyName { get; set; }
-            public string? inputAddress1 { get; set; }
-            public string? inputAddress2 { get; set; }
-            public string? dropDownCountry { get; set; }
-            public string? inputState { get; set; }
-            public string? inputCity { get; set; }
-            public string? inputZipCode { get; set; }
-            public string? inputMobileNumb { get; set; }
+            public string password { get; set; } = string.Empty;
+            public string dropDownDay { get; set; } = string.Empty;
+            public string dropDownMonth { get; set; } = string.Empty;
+            public string dropDownYear { get; set; } = string.Empty;
+            public string inputFirstName { get; set; } = string.Empty;
+            public string inputLastName { get; set; } = string.Empty;
+            public string inputCompanyName { get; set; } = string.Empty;
+            public string inputAddress1 { get; set; } = string.Empty;
+            public string inputAddress2 { get; set; } = string.Empty;
+            public string dropDownCountry { get; set; } = string.Empty;
+            public string inputState { get; set; } = string.Empty;
+            public string inputCity { get; set; } = string.Empty;
+            public string inputZipCode { get; set; } = string.Empty;
+            public string inputMobileNumb { get; set; } = string.Empty;
         }
 
-
-        public static object[] NewUserLogin
+        public static List<NewUserLoginData> NewUserLoginList
         {
             get
             {
                 var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Tests/Data", "UserLoginData.json");
                 var file = File.ReadAllText(path);
-
                 var jsonObject = JObject.Parse(file);
-                var getUserData = jsonObject["CreateNewUser"]?.ToObject<List<NewUSerLoginData>>() ?? new List<NewUSerLoginData>();
 
-                return getUserData
-                    .Where(x => x.password != null
-                    && x.dropDownDay != null
-                    && x.dropDownMonth != null
-                    && x.dropDownYear != null
-                    && x.inputFirstName != null
-                    && x.inputLastName != null
-                    && x.inputCompanyName != null
-                    && x.inputAddress1 != null
-                    && x.inputAddress2 != null
-                    && x.dropDownCountry != null
-                    && x.inputState != null
-                    && x.inputCity != null
-                    && x.inputZipCode != null
-                    && x.inputMobileNumb != null)
-                    .Select(x => new object[] { x.password ?? "",
-                    x.dropDownDay ?? "",
-                    x.dropDownMonth ?? "",
-                    x.dropDownYear ?? "",
-                    x.inputFirstName ?? "",
-                    x.inputLastName ?? "",
-                    x.inputCompanyName ?? "",
-                    x.inputAddress1 ?? "",
-                    x.inputAddress2 ?? "",
-                    x.dropDownCountry ?? "",
-                    x.inputState ?? "",
-                    x.inputCity ?? "",
-                    x.inputZipCode ?? "" ,
-                    x.inputMobileNumb ?? ""})
-                    .ToArray();
+                return jsonObject["CreateNewUser"]?.ToObject<List<NewUserLoginData>>() ?? new List<NewUserLoginData>();
             }
         }
+
+       
 
         /*===============================================================*/
         //Datos de prueba para Contact Us

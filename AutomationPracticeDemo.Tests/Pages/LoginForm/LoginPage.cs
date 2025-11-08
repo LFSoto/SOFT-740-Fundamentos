@@ -23,16 +23,16 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
         }
 
         //SignupLoginTest()
-        private IWebElement LoginButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("li a[href=\"/login\"]")));
-        public string LoginButtonColor => _driver.FindElement(By.CssSelector("li a[href=\"/login\"]")).GetCssValue("color");
+        private IWebElement LoginButton => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("li a[href='/login']")));
+        public string LoginButtonColor => _driver.FindElement(By.CssSelector("li a[href='/login']")).GetCssValue("color");
 
         //NewUserTest() - Signup
         private IWebElement nameInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-name']"));
         private IWebElement emailInput => _driver.FindElement(By.CssSelector("input[data-qa='signup-email']"));
         private IWebElement submit => _driver.FindElement(By.CssSelector("button[data-qa='signup-button']"));
         //public string GetTexttitleEnterAccount => _driver.FindElement(By.CssSelector("#form > div > div > div > div.login-form > h2 > b")).Text;
-        public string GetTexttitleEnterAccount => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("#form > div > div > div > div.login-form > h2 > b"))).Text;
-
+        //public string GetTexttitleEnterAccount => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("#form > div > div > div > div.login-form > h2 > b"))).Text;
+        public string GetTexttitleEnterAccount => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("(//div[@class='login-form']//h2)[1]/b"))).Text;
 
         private IWebElement titleRadButton => _driver.FindElement(By.Id("id_gender2"));
         private IWebElement InputName => _driver.FindElement(By.CssSelector("input[data-qa=\"name\"]"));
@@ -54,7 +54,7 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
         private IWebElement inputMobileNumb => _driver.FindElement(By.Id("mobile_number"));
 
         private IWebElement submitCreateAccount => _driver.FindElement(By.CssSelector("button[data-qa='create-account']"));
-        private IWebElement GetSuccessMessage => _driver.FindElement(By.XPath("//b[normalize-space()='Account Created!']"));
+        private IWebElement GetSuccessMessage => _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//b[normalize-space()='Account Created!']")));
 
         private IWebElement ContinueButton => _driver.FindElement(By.CssSelector("div a[data-qa='continue-button']"));
         //private IWebElement GetuserLoggued => _driver.FindElement(By.CssSelector("#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b"));
@@ -102,8 +102,15 @@ namespace AutomationPracticeDemo.Tests.Pages.LoginForm
             inputMobileNumb.SendKeys(_inputMobileNumb);
 
             //Ubica el botón "Create Account" y se envía el formulario            
+            //submitCreateAccount.Click();
+
+
+
+        }
+        public void _submitCreateAccount()
+        {
+            //Ubica el botón "Create Account" y se envía el formulario
             submitCreateAccount.Click();
-         
         }
         public string GetCreateAccountMessage()
         {
