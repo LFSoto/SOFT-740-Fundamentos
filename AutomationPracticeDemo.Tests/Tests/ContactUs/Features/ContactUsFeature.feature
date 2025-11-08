@@ -5,7 +5,7 @@ Feature: Contact Us register
 	When The user clicks on Contact Us buttom
 	Then The contact form is displayed
 
-	When The user fills in the contact form with "name", "email", "subject", "message" and "fileName"
+	When The user fills in the contact form from testdata
 	And The user clicks the submit button
 	Then An alert is displayed for confirmation
 

@@ -138,8 +138,7 @@ namespace AutomationPracticeDemo.Tests.Tests.ContactUs.Features
  await testRunner.ThenAsync("The contact form is displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 8
- await testRunner.WhenAsync("The user fills in the contact form with \"name\", \"email\", \"subject\", \"message\" and" +
-                        " \"fileName\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("The user fills in the contact form from testdata", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 9
  await testRunner.AndAsync("The user clicks the submit button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

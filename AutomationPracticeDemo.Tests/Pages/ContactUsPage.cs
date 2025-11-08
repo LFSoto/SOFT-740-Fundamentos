@@ -28,6 +28,21 @@ namespace AutomationPracticeDemo.Tests.Pages
             ContactUsButton.Click();
         }
 
+        public bool EmailImputDisplayed()
+        {
+            return EmailImput.Displayed;
+        }
+
+        public bool NameImputDisplayed()
+        {
+            return EmailImput.Displayed;
+        }
+
+        public bool SubjectImputDisplayed()
+        {
+            return SubjectImput.Displayed;
+        }
+
         //Llena los datos del formulario
         public void FillForm(string name, string email, string subject, string message, string filePath)
         {

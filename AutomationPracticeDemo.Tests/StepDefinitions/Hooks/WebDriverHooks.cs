@@ -21,11 +21,13 @@ namespace AutomationPracticeDemo.Tests.StepDefinitions.Hooks
             options.AddArgument("--start-maximized");
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-infobars");
-            options.AddArgument("headless");
+            //options.AddArgument("headless");
 
-            var driver = new ChromeDriver(options);
+            IWebDriver driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl("https://automationexercise.com/");
-            _scenarioContext.Set(driver);
+
+            // Explicitly set as IWebDriver type to match retrieval in step definitions
+            _scenarioContext.Set<IWebDriver>(driver);
         }
 
         [AfterScenario]
