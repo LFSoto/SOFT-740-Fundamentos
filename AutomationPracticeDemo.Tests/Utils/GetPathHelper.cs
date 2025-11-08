@@ -2,23 +2,10 @@
 {
     public class GetPathHelper
     {
-        public string GetFilePathScreenShots()
+        public string GetFilePathUpload(string fileName)
         {
             string baseDirectory = AppContext.BaseDirectory;
-            string relativePath = "../../../Screenshots/";
-            string fullFilePath = Path.Combine(baseDirectory, relativePath);
-
-            if (!Directory.Exists(fullFilePath))
-            {
-                Directory.CreateDirectory(fullFilePath);
-            }
-            return fullFilePath;
-        }
-
-        public string GetFilePathUpload()
-        {
-            string baseDirectory = AppContext.BaseDirectory;
-            string relativePath = "../../../capybara.png";
+            string relativePath = "../../../"+fileName+"";
             return Path.GetFullPath(Path.Combine(baseDirectory, relativePath));
         }
     }

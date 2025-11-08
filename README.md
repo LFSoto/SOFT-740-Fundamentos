@@ -15,23 +15,8 @@ dotnet restore
 dotnet build
 dotnet test
 
-# Práctica 4 Dixon Chavarria
+# Práctica 7 Dixon Chavarria
 
-## Se agregaron las siguientes Pruebas (Carpeta Tests/Practica4)
+## Se agregaron las siguientes Pruebas: 
+- /StepDefinitions/ContactUs/ContactUsSteps.cs:
 
-- Should_RegisterNewUser()
-- Should_LoginExistingUser()
-- Should_AddItemsToCartAndVerifyTotal()
-- Should_SendContactForm()
-- Should_SubscribeToNewsletter()
-
-## Data Driven Testing
-** Se implementó en la clase Tests/Practica4/Login/LoginTest **
-
-# Práctica 5 Dixon Chavarria
-
-## Se agregó el manejo de elementos dinámicos en las siguientes clases /Pages
-- MainComponents/HeaderNav.cs
-- ContactUsPage
-- ProductsPage
-- SignUpPage
