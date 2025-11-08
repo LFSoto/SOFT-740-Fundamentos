@@ -27,14 +27,7 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "Login", @"scenario: Inicio de sesi�n exitoso
-	Given El usuario realiza una solicitud de inicio de sesi�n
-	When El usuario da click en registro/inicio de sesi�n.
-	Then El usuario visualiza la p�gina de inicio de sesi�n.
-	When El usuario digita  el correo electr�nico ""<email>"" 
-	And El usuario digita la contrase�a ""<password>"".
-	And El usuario da click en el bot�n de iniciar sesi�n.
-	Then El usuario visualiza su cuenta con el nombre ""<accountName>"".", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Features", "Login", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "Login.feature"
 #line hidden
@@ -112,7 +105,50 @@ namespace AutomationPracticeDemo.Tests.Tests.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/Login.feature.ndjson", 2);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Features/Login.feature.ndjson", 3);
+        }
+        
+        [global::NUnit.Framework.TestAttribute()]
+        [global::NUnit.Framework.DescriptionAttribute("Inicio de sesi�n exitoso")]
+        public async global::System.Threading.Tasks.Task InicioDeSesiNExitoso()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "0";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Inicio de sesi�n exitoso", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 2
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 3
+ await testRunner.GivenAsync("El usuario realiza una solicitud de inicio de sesion", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 4
+ await testRunner.WhenAsync("El Usuario da click en registro de sesion", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 5
+ await testRunner.ThenAsync("El usuario visualiza la pagina de inicio de sesion", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 6
+ await testRunner.WhenAsync("El usuario digita el correo electronico \"SOFT-740@cenfotec.com\" y contrasena \"SOF" +
+                        "T-740\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 7
+ await testRunner.AndAsync("El usuario da click en el boton de iniciar sesion", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 8
+ await testRunner.ThenAsync("El usuario visualiza su cuenta con el nombre \"SOFT-740\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
         }
     }
 }

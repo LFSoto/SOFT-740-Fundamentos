@@ -25,7 +25,7 @@ namespace AutomationPracticeDemo.Tests.Pages
         private IWebElement Loginpassword => _driver.FindElement(By.CssSelector("input[data-qa='login-password']"));
         private IWebElement Loginbutton => _driver.FindElement(By.CssSelector("button[data-qa='login-button']"));
         private IWebElement loginMessage => _driver.FindElement(By.XPath("//a[i[@class='fa fa-user']]"));
-
+        private IWebElement loginAccount => _driver.FindElement(By.XPath("//h2[contains (.,'Login to your account')]"));
         private IWebElement loginMessageError => _driver.FindElement(By.XPath("//p[contains(text(), 'Your email or password is incorrect!')]"));
 
 
@@ -44,6 +44,12 @@ namespace AutomationPracticeDemo.Tests.Pages
             //Se ingresan los datos email y password
             Loginemail.SendKeys(email);
             Loginpassword.SendKeys(password);
+            //click en Signup
+           // Loginbutton.Click();
+        }
+
+        public void clickSignup()
+        {
             //click en Signup
             Loginbutton.Click();
         }
@@ -68,6 +74,14 @@ namespace AutomationPracticeDemo.Tests.Pages
         {
 
             string texto = loginMessageError.Text;
+            return texto;
+
+        }
+
+        public string getSignuploginTexto()
+        {
+
+            string texto = loginAccount.Text;
             return texto;
 
         }
