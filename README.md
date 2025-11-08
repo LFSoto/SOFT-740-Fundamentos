@@ -1,4 +1,4 @@
-# Práctica 5 de Pruebas Automatizadas - Automation Practice Demo
+# Práctica 6 de Pruebas Automatizadas - Automation Practice Demo
 
 Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio https://automationexercise.com/
 
@@ -10,16 +10,14 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 ## Instalación
 ```bash
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout AlejandraFonseca-SeleniumPOM-DDT
+git checkout AlejandraFonseca-Gherkin
 cd AutomationPracticeDemo.Tests
 dotnet restore
 dotnet build
 dotnet test
 
 ## Ajustes realizados
-- Se implementan SeleniumExtras.WaitHelpers
-- Se corrige tema de rutas
-- Uso de commits representativos
+- Se implementan los .features de los test realizados 
 
 
 
