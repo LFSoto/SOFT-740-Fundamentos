@@ -1,6 +1,6 @@
-# Práctica 6 de Pruebas Automatizadas - Automation Practice Demo
+# Práctica 7 de Pruebas Automatizadas - Automation Practice Demo
 
-Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio https://automationexercise.com/
+Este proyecto contiene un esqueleto en .NET con NUnit y Selenium, Gherkin, POM para practicar pruebas funcionales sobre el sitio https://automationexercise.com/
 
 ## Requisitos
 - .NET 8 SDK
@@ -10,14 +10,14 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 ## Instalación
 ```bash
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout AlejandraFonseca-Gherkin
+git checkout AlejandraFonseca-Reqnroll
 cd AutomationPracticeDemo.Tests
 dotnet restore
 dotnet build
 dotnet test
 
 ## Ajustes realizados
-- Se implementan los .features de los test realizados 
+- Se implementa el ContactUsSteps.cs
 
 
 
