@@ -19,8 +19,12 @@ namespace AutomationPracticeDemo.Tests.Pages.Footer
         public void SubscribeNewsletter(string email)
         {
             wait.WaitForElementVisible(NewsletterInput).SendKeys(email);
-            wait.WaitForElementClickable(SubscribeButton).Click();
         }//SubscribeNewsletter
+
+        public void ClickSubscribeButton()
+        {
+            wait.WaitForElementClickable(SubscribeButton).Click();
+        }//ClickSubscribeButton
 
         public string GetConfirmationMessage()
         {

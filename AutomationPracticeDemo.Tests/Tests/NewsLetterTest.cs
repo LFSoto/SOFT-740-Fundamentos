@@ -12,6 +12,8 @@ namespace AutomationPracticeDemo.Tests.Tests
             var footerPage = new FooterPage(Driver);
             //Suscribirse al newsletter
             footerPage.SubscribeNewsletter(email);
+            //Hacer clic en el botón de suscripción
+            footerPage.ClickSubscribeButton();
             //Se valida el mensaje de confirmación
             Assert.That(expectedMessage, Is.EqualTo(footerPage.GetConfirmationMessage()), "El mensaje actual:" + footerPage.GetConfirmationMessage() + " no es el esperado: " + expectedMessage);
             //Tomar screenshot
