@@ -9,7 +9,7 @@ Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar 
 
 ## Instalación
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout DixonChavarria-SeleniumPOM-DDT 
+git checkout DixonChavarria-Reqnroll 
 cd AutomationPracticeDemo.Tests
 dotnet restore
 dotnet build
