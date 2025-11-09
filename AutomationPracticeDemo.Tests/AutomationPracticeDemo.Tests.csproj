@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ReqnrollFeatureFiles Remove="Tests\Features\CompletarFormulario\CompletarFormulario.feature" />
+    <ReqnrollFeatureFiles Remove="Tests\Features\CompraLinea\ComprarLinea.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
+    <PackageReference Include="NUnit" Version="4.4.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.11.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
+    <PackageReference Include="Reqnroll" Version="3.2.0" />
+    <PackageReference Include="Reqnroll.NUnit" Version="3.2.0" />
+    <PackageReference Include="Reqnroll.SpecFlowCompatibility" Version="3.2.0" />
+    <PackageReference Include="Selenium.Support" Version="4.38.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.38.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="142.0.7444.6100" />
+    <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Imagen\" />
+    <Folder Include="Tests\Data\LoginUsuario\JsonData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Tests\Features\CompletarFormulario\CompletarFormulario.feature" />
+    <None Include="Tests\Features\CompraLinea\ComprarLinea.feature" />
+  </ItemGroup>
+
+</Project>
