@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculator.Lib
+﻿namespace Calculator.Lib
 {
-    internal interface INotificationService
+    public interface INotificationService
     {
+        public string Email { get; }
     }
 }
