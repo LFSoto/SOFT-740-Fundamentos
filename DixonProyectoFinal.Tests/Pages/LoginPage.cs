@@ -1,5 +1,7 @@
 ﻿using DixonProyectoFinal.Tests.Utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V140.IndexedDB;
+using OpenQA.Selenium.Interactions;
 
 namespace DixonProyectoFinal.Tests.Pages
 {
@@ -16,6 +18,7 @@ namespace DixonProyectoFinal.Tests.Pages
         private IWebElement _userNameTextBox => _driver.FindElement(By.Id("user-name"));
         private IWebElement _passwordTextBox => _driver.FindElement(By.Id("password"));
         private IWebElement _loginButton => _driver.FindElement(By.Id("login-button"));
+        private IWebElement _invalidUser => _driver.FindElement(By.CssSelector("h3[data-test=\"error\"]"));
         #endregion
 
         #region Métodos
@@ -35,6 +38,8 @@ namespace DixonProyectoFinal.Tests.Pages
         {
             _loginButton.Click();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Pages.TimeOut);
+            //Se realiza la acción de pulsar enter en caso de que chrome muestre un pop up que sugiere cambiar la contraseña
+            new Actions(_driver).SendKeys(Keys.Enter).Perform();
         }
 
         /// <summary>
@@ -44,6 +49,19 @@ namespace DixonProyectoFinal.Tests.Pages
         {
             FillForm(userNameField, passwordField);
             SubmitForm();
+        }
+
+        /// <summary>
+        /// Retorna el text del H3 que indica que las credenciales no son válidas
+        /// </summary>
+        /// <returns></returns>
+        public string ReturnInvalidUserText()
+        {
+            if (_invalidUser is not null)
+            {
+                return _invalidUser.Text;
+            }
+            return string.Empty;
         }
         #endregion
     }

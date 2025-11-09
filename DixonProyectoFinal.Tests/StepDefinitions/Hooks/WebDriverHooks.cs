@@ -21,6 +21,7 @@ namespace DixonProyectoFinal.Tests.StepDefinitions.Hooks
             options.AddArgument("--start-maximized");
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-infobars");
+            options.AddArgument("--guest");
             //options.AddArgument("headless");
 
             IWebDriver driver = new ChromeDriver(options);

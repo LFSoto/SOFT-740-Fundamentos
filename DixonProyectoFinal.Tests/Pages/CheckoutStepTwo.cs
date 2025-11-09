@@ -22,7 +22,6 @@ namespace DixonProyectoFinal.Tests.Pages
         /// <summary>
         /// Valida que la sumatoria de los precios de los productos sea correcta
         /// </summary>
-        /// <param name="itemsLength"></param>
         public bool ValidateItemsTotalPrice(int itemsLength)
         {
             if (_itemsList.Count == itemsLength)
