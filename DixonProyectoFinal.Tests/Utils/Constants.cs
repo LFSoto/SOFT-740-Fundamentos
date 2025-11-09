@@ -10,8 +10,16 @@
         /// </summary>
         public struct Paths
         {
-            public static string Screenshots = "../../../Screenshots/";
-            public static string LoginJsonFile = "../../../Tests/Login/Data/Login.json";
+            public const string Screenshots = "../../../Screenshots/";
+            public const string LoginJsonFile = "../../../Tests/Login/Data/Login.json";
+        }
+
+        /// <summary>
+        /// Contiene las constantes que se usaran en gerenal en las Pages
+        /// </summary>
+        public struct Pages
+        {
+            public const int TimeOut = 10;
         }
     }
 }
