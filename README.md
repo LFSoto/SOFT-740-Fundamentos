@@ -1,30 +1,33 @@
-# Práctica 4 de Pruebas Automatizadas - Automation Practice Demo
+# Pruebas Automatizadas en .NET - Proyecto Final - Swag Labs
 
-Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio https://automationexercise.com/
+Este proyecto contiene un esqueleto en .NET con NUnit, Selenium y BDD de las pruebas pruebas funcionales y unitarias sobre el sitio [Swag Labs] https://www.saucedemo.com/)
+## Resumen del proyecto
+Este framework integra pruebas funcionales (BDD) y pruebas unitarias dentro de una arquitectura modular, escalable y profesional, diseñada para validar tanto la interfaz de usuario como la lógica de negocio del sistema.
+Características principales
+-	Arquitectura basada en Page Object Model (POM).
+-	Escenarios BDD legibles en Gherkin integrados con Reqnroll.
+-	Uso de datos externos en JSON para parametrizar pruebas.
+-	Mocks con Moq para simular servicios externos (pagos y notificaciones).
+-	Reportes dinámicos con Allure, con métricas, evidencias y capturas.
 
-[![.NET 9 Selenium Tests](https://github.com/LFSoto/SOFT-740-Fundamentos/actions/workflows/dotnet-tests.yml/badge.svg)](https://github.com/LFSoto/SOFT-740-Fundamentos/actions/workflows/dotnet-tests.yml)
 
 ## Requisitos
 - .NET 8 SDK
 - Google Chrome
 - ChromeDriver (instalado automáticamente por NuGet)
+- Gecko Driver
 
 ## Instalación
 ```bash
-git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout AlejandraFonseca-SeleniumPOM-DDT
-cd AutomationPracticeDemo.Tests
-dotnet restore
-dotnet build
-dotnet test
+## Instalación y ejecución de pruebas
 
-## Ajustes realizados
-- Se implementa patrón de diseño POM y DDT
-- La estructura tiene las pages y posteriormente una carpeta por cada page y funcionalidad
-- Subcarpeta data que contiene un json y cs
-- Subcarpeta test con las validaciones
-- Se agrega en el proyecto la imagen QA.jpeg utilizada en el contactUsTest
+Restaurar las dependencias
+- dotnet restore
 
-## Nota
-Se presenta un tema con la lectura de la imagen QA.jpeg pero al copiarla manual en la ruta indicada el test se ejecuta correctamente
 
+Compilar la solución
+- dotnet build
+
+
+Ejecutar las pruebas
+- dotnet test
