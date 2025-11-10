@@ -1,0 +1,16 @@
+{
+  "Cases": [
+    {
+      "Id": "TC01",
+      "UserName": "standard_user",
+      "Password": "secret_sauce",
+      "IsValid": true
+    },
+    {
+      "Id": "TC02",
+      "UserName": "locked_out_user",
+      "Password": "secret_sauce",
+      "IsValid": false
+    }
+  ]
+}

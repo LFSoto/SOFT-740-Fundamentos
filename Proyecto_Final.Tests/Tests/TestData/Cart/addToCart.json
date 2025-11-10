@@ -1,0 +1,18 @@
+{
+  "Cases": [
+    {
+      "Id": "AC01",
+      "Products": [
+        "Sauce Labs Backpack"
+      ]
+    },
+    {
+      "Id": "AC02",
+      "Products": [
+        "Sauce Labs Backpack",
+        "Sauce Labs Bike Light",
+        "Sauce Labs Onesie"
+      ]
+    }
+  ]
+}
