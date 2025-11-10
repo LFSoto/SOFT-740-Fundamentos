@@ -10,6 +10,9 @@ public class YourCartPage
     //LOCATORS
     private readonly By ButtonRemoveYourCart = By.CssSelector("button[data-test='remove-sauce-labs-backpack']"); //Remove
     private readonly By LabelProductTitle = By.ClassName("inventory_item_name"); //Sauce Labs Backpack
+    private readonly By Buttoncontinueshopping = By.Id("continue-shopping"); //Continue Shopping
+    private readonly By Buttoncheckout = By.Id("checkout"); //Checkout
+
 
     public YourCartPage(IWebDriver driver)
     {
@@ -24,6 +27,16 @@ public class YourCartPage
     public bool GetTitleProductYourCart()
         {
         return wait.WaitForElementInvisible(LabelProductTitle);
+    }//GetTitleProductYourCart
+
+    public void ClickButtoncontinueshopping()
+    {
+        wait.WaitForElementClickable(Buttoncontinueshopping).Click();
+    }//GetButtoncontinueshopping
+
+    public void ClickButtoncheckout()
+    {
+        wait.WaitForElementClickable(Buttoncheckout).Click();
     }//GetTitleProductYourCart
 
 

@@ -11,4 +11,7 @@ public static class ProjectConstants
     public const string BEFORE_REMOVING_ART_BADGE = "3";
     public const string CART_BADGE_REMOVE = "2";
     public const string TITLE_PRODUCT = "Sauce Labs Backpack";
+
+    //Checkout Your Information 
+    public const string TITLE_CHECKOUT_YOUR_INFORMATION = "Checkout: Your Information";
 }//class

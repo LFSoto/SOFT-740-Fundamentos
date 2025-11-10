@@ -17,6 +17,7 @@ public class YourCartSteps
     private LoginPage loginPage;
     private ProductsPage productsPage;
     private YourCartPage yourCartPage;
+    private CheckoutYourInfoPage checkoutYourInfoPage;
     private LoginData? loginData;
     public YourCartSteps(ScenarioContext scenarioContext)
     {
@@ -25,6 +26,7 @@ public class YourCartSteps
         this.loginPage = new LoginPage(driver);
         this.productsPage = new ProductsPage(driver);
         this.yourCartPage = new YourCartPage(driver);
+        this.checkoutYourInfoPage = new CheckoutYourInfoPage(driver);
 
 
     }//ctor
@@ -87,6 +89,48 @@ public class YourCartSteps
         ScreenshotHelper.TakeScreenshot(driver, "ProductRemovedFromCart.png");
 
     }//TheProductShouldBeRemovedFromTheYourCartPage
+
+
+    /********************************************************
+        Scenario: Functionality: Continue shopping button
+     ********************************************************/
+
+    [When(@"I click the continue shopping button")]
+    public void WhenIClickThecontinueshoppingbutton()
+    {
+        yourCartPage.ClickButtoncontinueshopping();
+    }//WhenIClickTheRemovebutton
+
+
+    [Then(@"You should see the products page")]
+    public void TheProductShoulseetheproductspage()
+    {
+        var productsPageText = productsPage.GetProductsPageText();
+        Assert.That(productsPageText, Is.EqualTo(ProjectConstants.PAGE_TITLE_LOGIN), "The login page text does not match the expected value.");
+        // Tomar captura de pantalla
+        ScreenshotHelper.TakeScreenshot(driver, "Testfunctionalityofthecontinueshoppingbutton.png");
+    }//TheProductShoulseetheproductspage
+
+
+    /********************************************************
+      Scenario: Functionality: Checkout button
+   ********************************************************/
+
+    [When(@"I click the Checkout button")]
+    public void WhenIClickTheCheckoutbutton()
+    {
+        yourCartPage.ClickButtoncheckout();
+    }//WhenIClickTheCheckoutbutton
+
+
+    [Then(@"You should see the Checkout: Your Information page")]
+    public void TheProductShoulseetheCheckoutYourInformationpage()
+        {
+        var checkoutYourInfoPageText = checkoutYourInfoPage.GetTitleCheckoutYourInformation();
+        Assert.That(checkoutYourInfoPageText, Is.EqualTo(ProjectConstants.TITLE_CHECKOUT_YOUR_INFORMATION), "The Checkout: Your Information page text does not match the expected value.");
+        // Tomar captura de pantalla
+        ScreenshotHelper.TakeScreenshot(driver, "TestfunctionalityoftheCheckoutbutton.png");
+    }//TheProductShoulseetheCheckoutYourInformationpage
 
 
 }
