@@ -1,0 +1,7 @@
+{
+  "Cases": [
+    { "Products": "1,2,3" },
+    { "Products": "1,2,3,1,11" },
+    { "Products": "1" }
+  ]
+}

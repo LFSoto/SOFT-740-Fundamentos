@@ -1,0 +1,22 @@
+{
+  "Cases": [
+    {
+      "Email": "jmata@testQA.com",
+      "Password": "123456Aa",
+      "Products": "1,2,1",
+      "Name": "Johan Test QA",
+      "Card": "1234567890123456",
+      "Cvc": "123",
+      "Date": "12/2030"
+    },
+    {
+      "Email": "emata@testQA.com",
+      "Password": "123456Aa",
+      "Products": "2,4",
+      "Name": "Enrique Test QA",
+      "Card": "1234567890123456",
+      "Cvc": "456",
+      "Date": "10/2031"
+    }
+  ]
+}
