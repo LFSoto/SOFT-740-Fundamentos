@@ -36,6 +36,8 @@
 
   <ItemGroup>
     <Folder Include="Pages\Cart\" />
+    <Folder Include="Tests\Features\Checkout\" />
+    <Folder Include="Tests\Features\Products\" />
   </ItemGroup>
 
 </Project>
