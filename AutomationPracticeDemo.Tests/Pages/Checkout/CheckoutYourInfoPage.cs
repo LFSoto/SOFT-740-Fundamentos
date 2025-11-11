@@ -12,6 +12,9 @@ public class CheckoutYourInfoPage
     private readonly By InputFirstName = By.Id("first-name"); //First Name
     private readonly By InputLastName = By.Id("last-name"); //Last Name
     private readonly By InputPostalCode = By.Id("postal-code"); //Postal Code
+    private readonly By Buttoncontinue= By.CssSelector("input[data-test='continue']"); //Continue Button (data-test selector)
+    private readonly By ButtonCancel = By.CssSelector("button[data-test='cancel']"); //Cancel Button (data-test selector)
+    private readonly By LabelErrorMessage = By.CssSelector("h3[data-test='error']"); //Error Message (data-test selector)
     public CheckoutYourInfoPage(IWebDriver driver)
     {
         this.driver = driver;
@@ -27,7 +30,23 @@ public class CheckoutYourInfoPage
         wait.WaitForElementVisible(InputFirstName).SendKeys(firstName);
         wait.WaitForElementVisible(InputLastName).SendKeys(lastName);
         wait.WaitForElementVisible(InputPostalCode).SendKeys(postalCode);
-    }//LoginExistingUser
+    }//CheckoutExisting
+
+    public void ClickButtonContinue()
+    {
+        wait.WaitForElementClickable(Buttoncontinue).Click();
+
+    }//ClickButtonContinue
+    public void ClickButtonCacel()
+    {
+        wait.WaitForElementClickable(ButtonCancel).Click();
+
+    }//ClickButtonCancel
+
+    public string GetLabelErrorMessage()
+    {
+        return wait.WaitForElementVisible(LabelErrorMessage).Text;
+    }//GetTitleCheckoutYourInformation
 
 
 

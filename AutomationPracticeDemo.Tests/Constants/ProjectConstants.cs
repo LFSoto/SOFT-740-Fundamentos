@@ -12,6 +12,18 @@ public static class ProjectConstants
     public const string CART_BADGE_REMOVE = "2";
     public const string TITLE_PRODUCT = "Sauce Labs Backpack";
 
+    //YOUR CART
+    public const string TITLE_YOUR_CART = "Your Cart";
+
     //Checkout Your Information 
     public const string TITLE_CHECKOUT_YOUR_INFORMATION = "Checkout: Your Information";
+    public const string ERROR_MESSAGE_CHECKOUT_YOUR_INFORMATION = "Error: First Name is required";
+
+    //Checkout Overview
+    public const string TITLE_CHECKOUT_OVERVIEW = "Checkout: Overview";
+
+    //Checkout Complete
+    public const string TITLE_CHECKOUT_COMPLETE = "Checkout: Complete!";
+    public const string COMPLETE_HEADER_MESSAGE = "THANK YOU FOR YOUR ORDER";
+
 }//class

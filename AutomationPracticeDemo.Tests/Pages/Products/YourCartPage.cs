@@ -12,6 +12,7 @@ public class YourCartPage
     private readonly By LabelProductTitle = By.ClassName("inventory_item_name"); //Sauce Labs Backpack
     private readonly By Buttoncontinueshopping = By.Id("continue-shopping"); //Continue Shopping
     private readonly By Buttoncheckout = By.Id("checkout"); //Checkout
+    private readonly By LabelYourCartTitle = By.ClassName("title"); //Your Cart
 
 
     public YourCartPage(IWebDriver driver)
@@ -39,6 +40,10 @@ public class YourCartPage
         wait.WaitForElementClickable(Buttoncheckout).Click();
     }//GetTitleProductYourCart
 
+    public string GetLabelYourCartTitle()
+    {
+        return wait.WaitForElementVisible(LabelYourCartTitle).Text;
+    }//GetTitleCheckoutYourInformation
 
 
 }//class
