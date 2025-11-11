@@ -1,6 +1,7 @@
-using AutomationPracticeDemo.Tests.Pages;
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using AutomationPracticeDemo.Tests.Pages;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
@@ -14,11 +15,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         protected IWebDriver Driver;
 
         // Instancias compartidas de las diferentes páginas del sitio.
-        protected ContactUsPage contactPage;
-        protected FooterPage footerPage;
-        protected ProductPage productPage;
         protected LoginPage loginPage;
-        protected PurchasePage purchasePage;
 
 
         /// <summary>
@@ -29,7 +26,7 @@ namespace AutomationPracticeDemo.Tests.Utils
         public void Setup()
         {
             // URL base de la aplicación bajo prueba
-            var url = "https://automationexercise.com/";
+            var url = "https://automationexercise.com/login";
 
             // Configura el navegador (modo maximizado)
             var options = new ChromeOptions();
@@ -42,11 +39,7 @@ namespace AutomationPracticeDemo.Tests.Utils
             Driver.Navigate().GoToUrl(url);
 
             // Inicializa las páginas con el mismo controlador WebDriver
-            contactPage = new ContactUsPage(Driver);
-            footerPage = new FooterPage(Driver);
-            productPage = new ProductPage(Driver);
             loginPage = new LoginPage(Driver);
-            purchasePage = new PurchasePage(Driver);
         }
 
         /// <summary>

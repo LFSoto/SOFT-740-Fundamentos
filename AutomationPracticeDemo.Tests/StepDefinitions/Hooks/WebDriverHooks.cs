@@ -1,11 +1,15 @@
-﻿using Reqnroll;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using Reqnroll;
 
-namespace AutomationPracticeDemo.Tests.StepDefinitions.Hooks
+namespace Proyecto_SwagLabs.Tests.StepDefinitions.Hooks
 {
+    /// <summary>
+    /// Hooks de Reqnroll para inicializar y finalizar el WebDriver
+    /// antes y después de cada escenario. Usa Firefox.
+    /// </summary>
     [Binding]
-    public sealed class WebDriverHooks
+    public class WebDriverHooks
     {
         private readonly ScenarioContext _scenarioContext;
 
@@ -17,24 +21,44 @@ namespace AutomationPracticeDemo.Tests.StepDefinitions.Hooks
         [BeforeScenario]
         public void BeforeScenario()
         {
-            var options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-            options.AddArgument("--disable-notifications");
-            options.AddArgument("--disable-infobars");
-            options.AddArgument("headless");
+            // ==============================
+            // CONFIGURACIÓN FIREFOX
+            // ==============================
+            var options = new FirefoxOptions();
 
-            var driver = new ChromeDriver(options);
+            // Tamaño de ventana / maximizado
+            options.AddArgument("--width=1920");
+            options.AddArgument("--height=1080");
+
+            // Si quieres modo privado en cada ejecución:
+            // options.AddArgument("-private");
+
+            // ==============================
+            // INICIALIZAR DRIVER
+            // ==============================
+            var driver = new FirefoxDriver(options);
+            driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://automationexercise.com/");
-            _scenarioContext.Set(driver);
+
+            // Guardamos el driver en el contexto del escenario
+            _scenarioContext["WebDriver"] = driver;
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            if (_scenarioContext.TryGetValue<IWebDriver>(out var driver))
+            if (_scenarioContext.TryGetValue("WebDriver", out IWebDriver? driver) && driver != null)
             {
-                driver.Quit();
-                driver.Dispose();
+                try
+                {
+                    // Pequeña pausa opcional para ver el resultado
+                    // Thread.Sleep(2000);
+                    driver.Quit();
+                }
+                finally
+                {
+                    driver.Dispose();
+                }
             }
         }
     }

@@ -1,15 +1,18 @@
 ﻿{
   "Cases": [
     {
+      "Id": "TC01",
       "Email": "jmata@testQA.com",
       "Password": "123456Aa",
       "Usuario": "Johan"
     },
     {
+      "Id": "TC02",
       "Email": "emata@testQA.com",
       "Password": "123456Aa",
       "Usuario": "Enrique"
     }
   ]
 }
+
 

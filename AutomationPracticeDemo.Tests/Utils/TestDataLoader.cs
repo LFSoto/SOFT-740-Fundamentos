@@ -3,26 +3,26 @@
 namespace AutomationPracticeDemo.Tests.Utils
 {
     /// <summary>
-    /// Clase auxiliar para la carga de datos de prueba desde archivos JSON.
+    /// Utilidad para cargar archivos JSON de la carpeta Tests/TestData.
     /// </summary>
     public static class TestDataLoader
     {
-        // Ruta relativa al archivo TestData.json dentro del proyecto
-        private static readonly string _filePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Tests\TestData\TestData.json");
+        private static readonly string BasePath = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory,
+            @"..\..\..\Tests\TestData");
 
         /// <summary>
-        /// Carga el archivo <c>TestData.json</c> y devuelve su contenido como un objeto dinámico.
+        /// Carga un archivo JSON relativo a la carpeta TestData y lo devuelve como <see cref="JObject"/>.
         /// </summary>
-        /// <returns>Objeto <see cref="JObject"/> con los datos del archivo JSON.</returns>
-        /// <exception cref="FileNotFoundException">Si el archivo no existe en la ruta indicada.</exception>
-        /// <exception cref="JsonReaderException">Si el contenido del archivo no tiene formato JSON válido.</exception>
-        public static dynamic LoadTestData()
+        /// <param name="relativePath">Ruta relativa al JSON, por ejemplo <c>"Login/loginUser.json"</c>.</param>
+        public static JObject Load(string relativePath)
         {
-            // Lee el contenido del archivo
-            var json = File.ReadAllText(_filePath);
+            var fullPath = Path.Combine(BasePath, relativePath);
 
-            // Convierte el texto JSON en un objeto dinámico
+            if (!File.Exists(fullPath))
+                throw new FileNotFoundException($"No se encontró el archivo JSON: {fullPath}", fullPath);
+
+            var json = File.ReadAllText(fullPath);
             return JObject.Parse(json);
         }
     }

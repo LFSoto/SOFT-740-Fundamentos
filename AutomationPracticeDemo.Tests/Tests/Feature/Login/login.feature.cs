@@ -18,16 +18,17 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature.Login
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::NUnit.Framework.TestFixtureAttribute()]
-    [global::NUnit.Framework.DescriptionAttribute("Inicio de sesión")]
+    [global::NUnit.Framework.DescriptionAttribute("Login de usuarios en AutomationExercise")]
     [global::NUnit.Framework.FixtureLifeCycleAttribute(global::NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class InicioDeSesionFeature
+    public partial class LoginDeUsuariosEnAutomationExerciseFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Feature/Login", "Inicio de sesión", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Tests/Feature/Login", "Login de usuarios en AutomationExercise", "  Como usuario registrado\r\n  Quiero iniciar sesion con mis credenciales\r\n  Para v" +
+                "er mi nombre autenticado en la pagina", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
 #line 1 "login.feature"
 #line hidden
@@ -105,21 +106,31 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature.Login
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Feature/Login/login.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Tests/Feature/Login/login.feature.ndjson", 4);
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Inicio de sesión exitoso con usuario existente")]
-        public async global::System.Threading.Tasks.Task InicioDeSesionExitosoConUsuarioExistente()
+        [global::NUnit.Framework.DescriptionAttribute("Login exitoso con credenciales validas (dataset <CaseId>)")]
+        [global::NUnit.Framework.CategoryAttribute("login_exitoso")]
+        [global::NUnit.Framework.TestCaseAttribute("TC01", "0", null)]
+        [global::NUnit.Framework.TestCaseAttribute("TC02", "1", null)]
+        public async global::System.Threading.Tasks.Task LoginExitosoConCredencialesValidasDatasetCaseId(string caseId, string @__pickleIndex, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] @__tags = new string[] {
+                    "login_exitoso"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Inicio de sesión exitoso con usuario existente", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            argumentsOfScenario.Add("CaseId", caseId);
+            string pickleIndex = @__pickleIndex;
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login exitoso con credenciales validas (dataset <CaseId>)", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 3
-    this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line 7
+  this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -128,14 +139,17 @@ namespace AutomationPracticeDemo.Tests.Tests.Feature.Login
             else
             {
                 await this.ScenarioStartAsync();
-#line 4
-        await testRunner.GivenAsync("que estoy en la página de login", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 8
+    await testRunner.GivenAsync(string.Format("que tengo los datos de login del caso \"{0}\"", caseId), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 5
-        await testRunner.WhenAsync("inicio sesión con el email \"<email>\" y la contraseña \"<password>\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 9
+    await testRunner.AndAsync("que estoy en la pagina de login", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 6
-        await testRunner.ThenAsync("debería mostrarse \"Logged in as <usuario>\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 10
+    await testRunner.WhenAsync("inicio sesion con esas credenciales", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 11
+    await testRunner.ThenAsync("el sistema debe mostrar el nombre del usuario autenticado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

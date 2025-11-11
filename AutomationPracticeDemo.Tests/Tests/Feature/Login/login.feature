@@ -1,7 +1,19 @@
-﻿Feature: Inicio de sesión
+﻿Feature: Login de usuarios en AutomationExercise
+  Como usuario registrado
+  Quiero iniciar sesion con mis credenciales
+  Para ver mi nombre autenticado en la pagina
 
-    Scenario Outline: Inicio de sesión exitoso con usuario existente
-        Given que estoy en la página de login
-        When inicio sesión con el email "<email>" y la contraseña "<password>"
-        Then debería mostrarse "Logged in as <usuario>"
+  @login_exitoso
+  Scenario Outline: Login exitoso con credenciales validas (dataset <CaseId>)
+    Given que tengo los datos de login del caso "<CaseId>"
+    And que estoy en la pagina de login
+    When inicio sesion con esas credenciales
+    Then el sistema debe mostrar el nombre del usuario autenticado
+
+    Examples:
+      | CaseId |
+      | TC01   |
+      | TC02   |
+
+
 
