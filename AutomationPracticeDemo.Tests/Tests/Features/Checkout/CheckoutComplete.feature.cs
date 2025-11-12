@@ -129,10 +129,10 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 3
- await testRunner.GivenAsync("Product page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("Fill Product page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 4
- await testRunner.AndAsync("Cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Fill Cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 5
  await testRunner.AndAsync("I am on the Checkout Your Information page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -174,10 +174,10 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 12
- await testRunner.GivenAsync("Product page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("Fill Product page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 13
- await testRunner.AndAsync("Cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Fill Cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
  await testRunner.AndAsync("I am on the Checkout Your Information page", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -189,9 +189,12 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.AndAsync("Click continue button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 17
- await testRunner.AndAsync("Click Homepage button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Click finish button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 18
+ await testRunner.AndAsync("Click Homepage button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 19
  await testRunner.ThenAsync("You should be redirected to the homepage", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

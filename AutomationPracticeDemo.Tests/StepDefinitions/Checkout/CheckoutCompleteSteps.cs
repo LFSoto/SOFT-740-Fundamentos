@@ -48,7 +48,7 @@ public class CheckoutCompleteSteps
     Scenario: Checkout: Complete
     ********************************************************/
 
-    [Given(@"Product page")]
+    [Given(@"Fill Product page")]
     public void GivenTheUserIsOnTheProductsPage()
     {
         driver.Navigate().GoToUrl(ProjectConstants.BASE_URL);
@@ -69,7 +69,7 @@ public class CheckoutCompleteSteps
         ScreenshotHelper.TakeScreenshot(driver, "SuccessfulLoginWithValidCredentialsTest.png");
     }//GivenTheUserIsOnTheProductsPage
 
-    [Given(@"Cart page")]
+    [Given(@"Fill Cart page")]
     // Add product to cart
     public void GivenTheUserIsOnTheYourCartPage()
     {

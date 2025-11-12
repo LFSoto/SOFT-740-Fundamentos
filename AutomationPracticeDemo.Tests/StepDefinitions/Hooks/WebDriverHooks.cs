@@ -37,8 +37,8 @@ public sealed class WebDriverHooks
     {
         if (scenarioContext.TryGetValue<IWebDriver>(out var driver))
         {
-            driver.Quit();
-            driver.Dispose();
+            //driver.Quit();
+           //driver.Dispose();
         }//if
     }//AfterScenario
 }//WebDriverHooks
