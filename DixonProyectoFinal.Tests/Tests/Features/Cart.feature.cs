@@ -129,16 +129,16 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 3
- await testRunner.GivenAsync("I logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("I logged in with valid credentials: \"standard_user\", \"secret_sauce\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 4
- await testRunner.AndAsync("I\'m on the \"cart page\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 5
  await testRunner.AndAsync("I validate that there\'s at least one item in the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+#line 5
+ await testRunner.WhenAsync("I navigate to the Cart Page: \"/cart\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
 #line 6
- await testRunner.WhenAsync("I remove all the items from the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.AndAsync("I remove all the items from the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 7
  await testRunner.ThenAsync("There\'s no items in the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

@@ -20,18 +20,24 @@ namespace DixonProyectoFinal.Tests.Pages
 
         #region Elementos
         private IWebElement _shoppingCartButton => _driver.FindElement(By.ClassName("shopping_cart_link"));
-        private IWebElement? _addItemButton;
         #endregion
 
         #region Métodos
         /// <summary>
         /// Agrega items al carrito según el parámetro recibido
         /// </summary>
-        public void AddItemToCart(int productPosition)
+        public void AddItemsToCart(string[] itemsPositions)
         {
-            _addItemButton = _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@class=\"inventory_list\"]/div[" + productPosition + "]/div[2]/div[2]/button")));
-            _addItemButton.Click();
-            ValidateItemAdded();
+            string addItemButtonXpath = string.Empty;
+
+            foreach (var itemPosition in itemsPositions)
+            {
+                addItemButtonXpath = "//*[@class=\"inventory_list\"]/div[" + itemPosition + "]/div[2]/div[2]/button";
+                _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(addItemButtonXpath))).Click();
+
+                string buttonText = _wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(addItemButtonXpath))).Text;
+                ValidateItemAdded(buttonText);
+            }
         }
 
         /// <summary>
@@ -58,14 +64,11 @@ namespace DixonProyectoFinal.Tests.Pages
         /// <summary>
         /// Valida si el item fue agregado al carrito
         /// </summary>
-        private void ValidateItemAdded()
+        private void ValidateItemAdded(string buttonText)
         {
-            if (_addItemButton is not null)
+            if (buttonText.Equals("Remove"))
             {
-                if (_addItemButton.Text.Equals("Removed"))
-                {
-                    _itemsAdded++;
-                }
+                _itemsAdded++;
             }
         }
         #endregion

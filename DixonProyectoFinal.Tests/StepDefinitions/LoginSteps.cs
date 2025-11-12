@@ -1,11 +1,6 @@
 ﻿using DixonProyectoFinal.Tests.Pages;
 using OpenQA.Selenium;
 using Reqnroll;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DixonProyectoFinal.Tests.StepDefinitions
 {
@@ -23,17 +18,11 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
             _loginPage = new LoginPage(_driver);
         }
 
-        #region Scenario: Successful Login with valid credentials
+        #region Métodos en común
         [Given(@"I am on the Login Page: ""(.*)""")]
         public void GivenIAmOnTheLoginPage(string url)
         {
             Assert.That(_driver.Url.Contains(url), "Not navigated to login page");
-        }
-
-        [When(@"I enter a valid username: ""(.*)"" and a valid ""(.*)""")]
-        public void FillLoginForm(string username, string password)
-        {
-            _loginPage.FillForm(username, password);
         }
 
         [When(@"I click the Login button")]
@@ -41,15 +30,28 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
         {
             _loginPage.SubmitForm();
         }
+        #endregion
 
-        [Then(@"I'm on the Inventory Page: ""(.*)""")]
-        public void ValidateLogin(string url)
+        #region Scenario: Successful Login with valid credentials
+        [When(@"I enter a valid username: ""(.*)"" and a valid ""(.*)""")]
+        public void FillLoginFormWithValidCredentials(string username, string password)
         {
-            Assert.That(_driver.Url.Contains(url), "Not navigated to inventory page");
+            _loginPage.FillForm(username, password);
         }
         #endregion
 
         #region Scenario: Unsuccessful Login with invalid credentials
+        [When(@"I enter an invalid ""(.*)"" and a invalid ""(.*)""")]
+        public void FillLoginFormWithInvalidCredentials(string username, string password)
+        {
+            _loginPage.FillForm(username, password);
+        }
+
+        [Then(@"It shows that the credentials are not valid")]
+        public void ValidateInvalidUser()
+        {
+            Assert.That(_loginPage.ReturnInvalidUserText, Does.Contain("Username and password do not match any user in this service"));
+        }
         #endregion
     }
 }

@@ -43,6 +43,18 @@ namespace DixonProyectoFinal.Tests.Pages
             }
         }
 
+        public bool ValidateTheresItemsInTheCart()
+        {
+            if (_itemList.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Presiona el botón para ir al checkout
         /// </summary>

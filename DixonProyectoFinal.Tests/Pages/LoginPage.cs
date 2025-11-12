@@ -38,8 +38,6 @@ namespace DixonProyectoFinal.Tests.Pages
         {
             _loginButton.Click();
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Pages.TimeOut);
-            //Se realiza la acción de pulsar enter en caso de que chrome muestre un pop up que sugiere cambiar la contraseña
-            new Actions(_driver).SendKeys(Keys.Enter).Perform();
         }
 
         /// <summary>

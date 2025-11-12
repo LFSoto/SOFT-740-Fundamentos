@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 
-namespace DixonProyectoFinal.Tests.Pages
+namespace DixonProyectoFinal.Tests.Pages.Checkout
 {
-    public class CheckoutComplete
+    public class CheckoutCompletePage
     {
         private readonly IWebDriver _driver;
 
-        public CheckoutComplete(IWebDriver driver)
+        public CheckoutCompletePage(IWebDriver driver)
         {
             _driver = driver;
         }

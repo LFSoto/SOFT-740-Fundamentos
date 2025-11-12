@@ -21,5 +21,10 @@
         {
             public const int TimeOut = 10;
         }
+
+        public struct ItemsPositions
+        {
+            public static readonly string[] ThreeItems =  ["1","2","3"];
+        }
     }
 }
