@@ -10,6 +10,7 @@ using Reqnroll;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace AutomationSauceDemo.StepDefinitions.Products;
 
 [Binding]
@@ -33,8 +34,6 @@ public class CheckoutYourInformationSteps
         this.yourCartPage = new YourCartPage(driver);
         this.checkoutYourInfoPage = new CheckoutYourInfoPage(driver);
         this.checkoutOVerviewPage = new CheckoutOVerviewPage(driver);
-
-
     }//ctor
 
     public void LoadLoginData(int index)
@@ -43,7 +42,6 @@ public class CheckoutYourInformationSteps
         // Store in ScenarioContext so other steps can access it
         scenarioContext.Set(loginData, "LoginData");
     }//LoadLoginData
-
 
     /********************************************************
     Scenario: Steps to complete purchase with valid data
@@ -78,7 +76,6 @@ public class CheckoutYourInformationSteps
         productsPage.ClickButtonShoppingCart();
     }//GivenTheUserIsOnTheYourCartPage
 
-
     [Given(@"I am on the Checkout: Your Information page")]
     public void GivenTheUserIsOnTheCheckoutYourInformationPage()
     {
@@ -107,7 +104,6 @@ public class CheckoutYourInformationSteps
     public void WhenIclickContinuebutton()
     {
         checkoutYourInfoPage.ClickButtonContinue();
-
     }//WhenIclicktheContinuebutton
 
     [Then(@"I should be redirected to the Checkout: Overview page")]
@@ -118,7 +114,6 @@ public class CheckoutYourInformationSteps
         // Take screenshot
         ScreenshotHelper.TakeScreenshot(driver, "CheckoutOverviewPage.png");
     }//ThefollowingCheckoutSummaryscreenshouldbedisplayed
-
 
     /********************************************************
     Scenario:Valid information (cancel button)
@@ -139,7 +134,6 @@ public class CheckoutYourInformationSteps
         ScreenshotHelper.TakeScreenshot(driver, "YourCartPageAfterCancel.png");
     }//IShoulRedirectedToTheCartScreen
 
-
     /********************************************************
     Steps to complete purchase with invalid data
     ********************************************************/
@@ -152,4 +146,4 @@ public class CheckoutYourInformationSteps
         // Take screenshot
         ScreenshotHelper.TakeScreenshot(driver, "ErrorMessageCheckoutYourInformation.png");
     }//AnErrorMessageShouldBeDisplayedOnTheScreen
-}
+}//class

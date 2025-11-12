@@ -8,17 +8,19 @@ public class CheckoutOVerviewPage
     private readonly WaitHelper wait;
     //LOCATORS
     private readonly By LabelCheckoutOverviewTitle = By.ClassName("title"); //Checkout: Overview
-    private readonly By ButtonFinish = By.CssSelector("button[data-test='finish']"); //Finish Button (data-test selector)
-    private readonly By ButtonCancel = By.CssSelector("button[data-test='cancel']"); //Cancel Button (data-test selector)
+    private readonly By ButtonFinish = By.CssSelector("button[data-test='finish']"); //Finish
+    private readonly By ButtonCancel = By.CssSelector("button[data-test='cancel']"); //Cancel
     public CheckoutOVerviewPage(IWebDriver driver)
     {
         this.driver = driver;
         wait = new WaitHelper(driver);
     }//ctor
+
     public string GetTitleCheckoutOverview()
     {
         return wait.WaitForElementVisible(LabelCheckoutOverviewTitle).Text;
     }//GetTitleCheckoutOverview
+
     public void ClickButtonFinish()
     {
         wait.WaitForElementClickable(ButtonFinish).Click();
@@ -30,4 +32,4 @@ public class CheckoutOVerviewPage
         wait.WaitForElementClickable(ButtonCancel).Click();
 
     }//ClickButtonCancelh
-}
+}//class

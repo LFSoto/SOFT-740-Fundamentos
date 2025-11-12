@@ -33,7 +33,6 @@ public class ProductSteps
         scenarioContext.Set(loginData, "LoginData");
     }//LoadLoginData
 
-
     /********************************************************
     Scenario: Add Products
     ********************************************************/
@@ -57,7 +56,7 @@ public class ProductSteps
 
         // Tomar captura de pantalla
         ScreenshotHelper.TakeScreenshot(driver, "SuccessfulLoginWithValidCredentialsTest.png");
-    }
+    }//GivenTheUserIsOnTheproductsPage
 
     [When(@"I Click Add Product")]
     public void WhenIClickTheAddProductbutton()
@@ -89,7 +88,6 @@ public class ProductSteps
    Scenario: Remove Products
    ********************************************************/
 
-
     [When(@"I click Add three products")]
     public void WhenIClickTheAddProducstbutton()
     {
@@ -116,6 +114,4 @@ public class ProductSteps
         var cartBadge = productsPage.GetCartBadge();
         Assert.That(cartBadge, Is.EqualTo(ProjectConstants.CART_BADGE_REMOVE), "The cart badge does not match the expected value after removing a product.");
     }//TheProductsAreThenUpdatedInTheCart
-
-
-}
+}//Class

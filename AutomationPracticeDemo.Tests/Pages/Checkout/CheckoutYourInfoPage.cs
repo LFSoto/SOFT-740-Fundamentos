@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using AutomationPracticeDemo.Tests.Utils;
 
 namespace AutomationSauceDemo.Pages.Products;
@@ -12,14 +11,15 @@ public class CheckoutYourInfoPage
     private readonly By InputFirstName = By.Id("first-name"); //First Name
     private readonly By InputLastName = By.Id("last-name"); //Last Name
     private readonly By InputPostalCode = By.Id("postal-code"); //Postal Code
-    private readonly By Buttoncontinue= By.CssSelector("input[data-test='continue']"); //Continue Button (data-test selector)
-    private readonly By ButtonCancel = By.CssSelector("button[data-test='cancel']"); //Cancel Button (data-test selector)
-    private readonly By LabelErrorMessage = By.CssSelector("h3[data-test='error']"); //Error Message (data-test selector)
+    private readonly By Buttoncontinue= By.CssSelector("input[data-test='continue']"); //Continue
+    private readonly By ButtonCancel = By.CssSelector("button[data-test='cancel']"); //Cancel
+    private readonly By LabelErrorMessage = By.CssSelector("h3[data-test='error']"); //Error Message
     public CheckoutYourInfoPage(IWebDriver driver)
     {
         this.driver = driver;
         wait = new WaitHelper(driver);
     }//ctor
+
     public string GetTitleCheckoutYourInformation()
     {
         return wait.WaitForElementVisible(LabelCheckoutYourInformationTitle).Text;
@@ -47,7 +47,4 @@ public class CheckoutYourInfoPage
     {
         return wait.WaitForElementVisible(LabelErrorMessage).Text;
     }//GetTitleCheckoutYourInformation
-
-
-
-}
+}//class

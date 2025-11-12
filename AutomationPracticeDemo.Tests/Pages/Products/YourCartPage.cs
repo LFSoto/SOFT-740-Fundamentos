@@ -1,5 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using AutomationPracticeDemo.Tests.Utils;
 
 namespace AutomationSauceDemo.Pages.Products;
@@ -13,7 +12,6 @@ public class YourCartPage
     private readonly By Buttoncontinueshopping = By.Id("continue-shopping"); //Continue Shopping
     private readonly By Buttoncheckout = By.Id("checkout"); //Checkout
     private readonly By LabelYourCartTitle = By.ClassName("title"); //Your Cart
-
 
     public YourCartPage(IWebDriver driver)
     {
@@ -44,6 +42,4 @@ public class YourCartPage
     {
         return wait.WaitForElementVisible(LabelYourCartTitle).Text;
     }//GetTitleCheckoutYourInformation
-
-
 }//class

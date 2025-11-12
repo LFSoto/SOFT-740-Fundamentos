@@ -8,7 +8,6 @@ namespace AutomationPracticeDemo.Tests.StepDefinitions.Hooks;
 public sealed class WebDriverHooks
 {
     private readonly ScenarioContext scenarioContext;
-
     public WebDriverHooks(ScenarioContext scenarioContext)
     {
         this.scenarioContext = scenarioContext;
@@ -38,8 +37,8 @@ public sealed class WebDriverHooks
     {
         if (scenarioContext.TryGetValue<IWebDriver>(out var driver))
         {
-            //driver.Quit();
-            //driver.Dispose();
+            driver.Quit();
+            driver.Dispose();
         }//if
     }//AfterScenario
 }//WebDriverHooks

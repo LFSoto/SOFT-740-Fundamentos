@@ -24,6 +24,4 @@ public class CheckoutCompletePage
     {
         wait.WaitForElementClickable(ButtonBackHome).Click();
     }//ClickBackHomeButton
-
-
 } //class

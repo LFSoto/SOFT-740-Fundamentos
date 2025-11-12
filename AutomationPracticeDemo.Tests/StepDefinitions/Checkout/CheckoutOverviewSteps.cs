@@ -31,8 +31,6 @@ public class CheckoutOverviewSteps
         this.checkoutYourInfoPage = new CheckoutYourInfoPage(driver);
         this.checkoutOVerviewPage = new CheckoutOVerviewPage(driver);
         this.checkoutCompletePage = new CheckoutCompletePage(driver);
-
-
     }//ctor
 
     public void LoadLoginData(int index)
@@ -41,7 +39,6 @@ public class CheckoutOverviewSteps
         // Store in ScenarioContext so other steps can access it
         scenarioContext.Set(loginData, "LoginData");
     }//LoadLoginData
-
 
     /********************************************************
     Scenario: Complete the checkout summary
@@ -75,7 +72,6 @@ public class CheckoutOverviewSteps
         productsPage.ClickButtonAddToCart();
         productsPage.ClickButtonShoppingCart();
     }//GivenTheUserIsOnTheYourCartPage
-
 
     [Given(@"I am on the Checkout:Your Information page")]
     public void GivenTheUserIsOnTheCheckoutYourInformationPage()
@@ -125,8 +121,8 @@ public class CheckoutOverviewSteps
     }//TheFollowingCheckoutCompletionScreenShouldBeDisplayed
 
     /********************************************************
-   Scenario: Cancel the checkout summary
-   ********************************************************/
+    Scenario: Cancel the checkout summary
+    ********************************************************/
 
     [When(@"Click Cancel button")]
     public void WhenIclickCancelbutton()
@@ -142,4 +138,4 @@ public class CheckoutOverviewSteps
         // Tomar captura de pantalla
         ScreenshotHelper.TakeScreenshot(driver, "CancelTheCheckoutSummaryTest.png");
     }//TheProductScreenShouldBeDisplayed
-}
+}//class

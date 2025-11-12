@@ -27,8 +27,6 @@ public class YourCartSteps
         this.productsPage = new ProductsPage(driver);
         this.yourCartPage = new YourCartPage(driver);
         this.checkoutYourInfoPage = new CheckoutYourInfoPage(driver);
-
-
     }//ctor
 
     public void LoadLoginData(int index)
@@ -37,7 +35,6 @@ public class YourCartSteps
         // Store in ScenarioContext so other steps can access it
         scenarioContext.Set(loginData, "LoginData");
     }//LoadLoginData
-
 
     /********************************************************
     Scenario: Remove Products from Your Cart
@@ -72,7 +69,6 @@ public class YourCartSteps
         productsPage.ClickButtonShoppingCart();
     }//GivenTheUserIsOnTheYourCartPage
 
-
     [When(@"I click the Remove button")]
     public void WhenIClickTheRemovebutton()
     {
@@ -87,9 +83,7 @@ public class YourCartSteps
         Assert.That(isRemoved, Is.True, "El producto NO fue removido del carrito.");
         // Captura opcional para evidencias
         ScreenshotHelper.TakeScreenshot(driver, "ProductRemovedFromCart.png");
-
     }//TheProductShouldBeRemovedFromTheYourCartPage
-
 
     /********************************************************
         Scenario: Functionality: Continue shopping button
@@ -101,7 +95,6 @@ public class YourCartSteps
         yourCartPage.ClickButtoncontinueshopping();
     }//WhenIClickTheRemovebutton
 
-
     [Then(@"You should see the products page")]
     public void TheProductShoulseetheproductspage()
     {
@@ -110,7 +103,6 @@ public class YourCartSteps
         // Tomar captura de pantalla
         ScreenshotHelper.TakeScreenshot(driver, "Testfunctionalityofthecontinueshoppingbutton.png");
     }//TheProductShoulseetheproductspage
-
 
     /********************************************************
       Scenario: Functionality: Checkout button
@@ -122,7 +114,6 @@ public class YourCartSteps
         yourCartPage.ClickButtoncheckout();
     }//WhenIClickTheCheckoutbutton
 
-
     [Then(@"You should see the Checkout: Your Information page")]
     public void TheProductShoulseetheCheckoutYourInformationpage()
         {
@@ -131,6 +122,4 @@ public class YourCartSteps
         // Tomar captura de pantalla
         ScreenshotHelper.TakeScreenshot(driver, "TestfunctionalityoftheCheckoutbutton.png");
     }//TheProductShoulseetheCheckoutYourInformationpage
-
-
-}
+}//class

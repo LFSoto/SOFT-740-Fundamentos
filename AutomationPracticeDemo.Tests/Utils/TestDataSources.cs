@@ -1,9 +1,6 @@
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
 using AutomationPracticeDemo.Tests.Models.Login;
 using AutomationPracticeDemo.Tests.Models.CheckoutYourInformation;
-using NUnit.Framework;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {

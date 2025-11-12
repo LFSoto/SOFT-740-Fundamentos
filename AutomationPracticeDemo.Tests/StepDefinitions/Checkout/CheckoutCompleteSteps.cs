@@ -77,7 +77,6 @@ public class CheckoutCompleteSteps
         productsPage.ClickButtonShoppingCart();
     }//GivenTheUserIsOnTheYourCartPage
 
-
     [Given(@"I am on the Checkout Your Information page")]
     public void GivenTheUserIsOnTheCheckoutYourInformationPage()
     {
@@ -143,4 +142,4 @@ public class CheckoutCompleteSteps
         // Tomar captura de pantalla
         ScreenshotHelper.TakeScreenshot(driver, "RedirectToHomepageTest.png");
     }//YouShouldBeRedirectedToTheHomepage
-}
+}//class

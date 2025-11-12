@@ -23,7 +23,6 @@ public class LoginSteps
         this.loginPage = new LoginPage(driver);
         this.productsPage = new ProductsPage(driver);
     }//ctor
-
     public void LoadLoginData(int index)
     {
         this.loginData = TestDataSources.GetTestCaseByIndex(index);
