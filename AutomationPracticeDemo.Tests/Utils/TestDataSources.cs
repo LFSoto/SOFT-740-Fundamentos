@@ -1,6 +1,9 @@
-using System.Text.Json;
-using AutomationPracticeDemo.Tests.Models.Login;
+using AutomationPracticeDemo.Tests.Models.Cart;
 using AutomationPracticeDemo.Tests.Models.CheckoutYourInformation;
+using AutomationPracticeDemo.Tests.Models.Login;
+using OpenQA.Selenium.DevTools.V137.Debugger;
+using System;
+using System.Text.Json;
 
 namespace AutomationPracticeDemo.Tests.Utils
 {
@@ -132,5 +135,28 @@ namespace AutomationPracticeDemo.Tests.Utils
             throw new IndexOutOfRangeException($"No test case found at index {index}.");
         }//GetTestCaseByIndexCheckout
 
+        /// <summary>
+        /// Devuelve casos de prueba para Cart Products. Soporta:
+        /// - Un único objeto JSON { "productName": "..."}
+        /// - Un array JSON [{ "productName":"..." }, ...]
+        /// </summary> 
+        public static List<ProductsData> GetCartProductsDataCases()
+        {
+            var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Tests", "DataFiles", "Cart", "ProductsDataSet.json"));
+            if (!File.Exists(path))
+                throw new FileNotFoundException($"The file at path {path} was not found.");
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var json = File.ReadAllText(path);
+            List<ProductsData>? list = null;
+            try
+            {
+                list = JsonSerializer.Deserialize<List<ProductsData>>(json, options);
+            }
+            catch { }
+            if (list != null && list.Count >0)
+                return list;
+            else
+                throw new Exception("No test cases found in the JSON file.");
+        }//CartProductsDataCases
     }//class
 }//namespace

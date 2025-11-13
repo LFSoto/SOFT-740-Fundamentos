@@ -1,4 +1,5 @@
 ﻿using AutomationPracticeDemo.Tests.Constants;
+using AutomationPracticeDemo.Tests.Models.Cart;
 using AutomationPracticeDemo.Tests.Models.Login;
 using AutomationPracticeDemo.Tests.Pages.Login;
 using AutomationPracticeDemo.Tests.Pages.Products;
@@ -17,6 +18,7 @@ public class ProductSteps
     private LoginPage loginPage;
     private ProductsPage productsPage;
     private LoginData? loginData;
+    private List<ProductsData> productsData;
     public ProductSteps(ScenarioContext scenarioContext)
     {
         this.scenarioContext = scenarioContext;
@@ -32,6 +34,13 @@ public class ProductSteps
         // Store in ScenarioContext so other steps can access it
         scenarioContext.Set(loginData, "LoginData");
     }//LoadLoginData
+
+    public void LoadProductsData()
+    {
+        this.productsData = TestDataSources.GetCartProductsDataCases();
+        // Store in ScenarioContext so other steps can access it
+        scenarioContext.Set(productsData, "ProductsData");
+    }//LoadProductsData
 
     /********************************************************
     Scenario: Add Products
@@ -91,7 +100,9 @@ public class ProductSteps
     [When(@"I click Add three products")]
     public void WhenIClickTheAddProducstbutton()
     {
-        productsPage.ClickTheAddMultipleProductsToCartButton();
+        LoadProductsData();
+        //productsPage.ClickTheAddMultipleProductsToCartButton();
+        productsPage.AddMultipleProductsToShoppingCart(productsData);
     }//WhenIClickTheAddProducstbutton
 
 

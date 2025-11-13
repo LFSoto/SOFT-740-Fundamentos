@@ -21,7 +21,8 @@ public sealed class WebDriverHooks
         options.AddArgument("--disable-notifications");
         options.AddArgument("--disable-infobars");
         options.AddArgument("--disable-extensions");
-        //options.AddArgument("headless");
+        // Coment the next line to see the browser during test execution 
+        options.AddArgument("headless");
         // Disable Chrome password manager and save-password prompts
         options.AddUserProfilePreference("credentials_enable_service", false);
         options.AddUserProfilePreference("profile.password_manager_enabled", false);
@@ -37,8 +38,8 @@ public sealed class WebDriverHooks
     {
         if (scenarioContext.TryGetValue<IWebDriver>(out var driver))
         {
-            //driver.Quit();
-           //driver.Dispose();
+           driver.Quit();
+           driver.Dispose();
         }//if
     }//AfterScenario
 }//WebDriverHooks
