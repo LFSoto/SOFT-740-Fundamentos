@@ -1,6 +1,6 @@
-# Proyecto Final - Suacedemo
+# Proyecto Final - Saucedemo
 
-Este proyecto contiene un framework de pruebas en .NET con NUnit y Selenium para reaalizar pruebas funcionales sobre el sitio [Suacedemo](https://www.saucedemo.com/). y también pruebas unitarias para el proyecto Calculator.Lib
+Este proyecto contiene un framework de pruebas en .NET con NUnit y Selenium para realizar pruebas funcionales sobre el sitio [Saucedemo](https://www.saucedemo.com/). y también pruebas unitarias para el proyecto Calculator.Lib
 
 ## Requisitos
 - .NET 8 SDK
@@ -16,15 +16,15 @@ Este proyecto contiene un framework de pruebas en .NET con NUnit y Selenium para
 - Selenium.WebDriver.ChromeDriver
 
 ## Instalación
-git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout DixonChavarria-ProyectoFinal 
-cd DixonProyectoFinal.Tests
-dotnet restore
-dotnet build
-dotnet test
+ -git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
+- git checkout DixonChavarria-ProyectoFinal 
+- cd DixonProyectoFinal.Tests
+- dotnet restore
+- dotnet build
+- dotnet test
 
 ## Data Driven Testing
-** Se implementó en la clase StepDefinitions/Login/LoginSteps.cs **
+**Se implementó en la clase StepDefinitions/Login/LoginSteps.cs**
 
 ## Resumen
 - La carpeta **/Pages** contiene la implementación de POM
