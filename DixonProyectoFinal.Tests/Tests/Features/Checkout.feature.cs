@@ -156,16 +156,16 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.ThenAsync("I\'m on the Checkout step two page: \"/checkout-step-two\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 12
- await testRunner.WhenAsync("I validate the \'total price of the items\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("I validate the total price of the items", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 13
  await testRunner.AndAsync("I click the Finish button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
- await testRunner.ThenAsync("I\'m on the \"check out complete page\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("I\'m on the check out complete page: \"/checkout-complete\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 15
- await testRunner.AndAsync("I see the \'Checkout complete text\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("I see the Checkout complete text", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

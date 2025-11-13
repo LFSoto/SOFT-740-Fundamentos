@@ -1,0 +1,12 @@
+{
+  "loginData": [
+    {
+      "userName": "standard_user",
+      "password": "secret_sauce"
+    },
+    {
+      "userName": "test_user",
+      "password": "test_password"
+    }
+  ]
+}

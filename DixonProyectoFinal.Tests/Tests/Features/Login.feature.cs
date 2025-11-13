@@ -132,7 +132,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.GivenAsync("I am on the Login Page: \"https://www.saucedemo.com/\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
- await testRunner.WhenAsync("I enter a valid username: \"standard_user\" and a valid \"secret_sauce\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("I enter valid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
  await testRunner.AndAsync("I click the Login button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -168,7 +168,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.GivenAsync("I am on the Login Page: \"https://www.saucedemo.com/\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 11
- await testRunner.WhenAsync("I enter an invalid \"username\" and a invalid \"password\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("I enter invalid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 12
  await testRunner.AndAsync("I click the Login button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

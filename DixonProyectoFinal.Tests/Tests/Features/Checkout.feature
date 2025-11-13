@@ -9,7 +9,7 @@ Scenario: Complete a checkout successfuly
 	And I enter my "first name", my "last name" and my "postal code"
 	And I click the Continue button
 	Then I'm on the Checkout step two page: "/checkout-step-two"
-	When I validate the 'total price of the items'
+	When I validate the total price of the items
 	And I click the Finish button
-	Then I'm on the "check out complete page"
-	And I see the 'Checkout complete text'
+	Then I'm on the check out complete page: "/checkout-complete"
+	And I see the Checkout complete text

@@ -1,8 +1,9 @@
 ﻿using DixonProyectoFinal.Tests.Pages;
+using DixonProyectoFinal.Tests.Utils;
 using OpenQA.Selenium;
 using Reqnroll;
 
-namespace DixonProyectoFinal.Tests.StepDefinitions
+namespace DixonProyectoFinal.Tests.StepDefinitions.Login
 {
     [Binding]
     public class LoginSteps
@@ -10,12 +11,14 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
         private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _driver;
         private LoginPage _loginPage;
+        private LoginDataResult _loginDataResult;
 
         public LoginSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = _scenarioContext.Get<IWebDriver>();
             _loginPage = new LoginPage(_driver);
+            _loginDataResult = JsonLoaderDataHelper.LoadLoginData();
         }
 
         #region Métodos en común
@@ -33,18 +36,34 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
         #endregion
 
         #region Scenario: Successful Login with valid credentials
-        [When(@"I enter a valid username: ""(.*)"" and a valid ""(.*)""")]
-        public void FillLoginFormWithValidCredentials(string username, string password)
+        [When(@"I enter valid credentials")]
+        public void FillLoginFormWithValidCredentials()
         {
-            _loginPage.FillForm(username, password);
+            if (_loginDataResult.LoginData.ElementAt(0) is not null)
+            {
+                LoginData loginData = _loginDataResult.LoginData.ElementAt(0);
+                _loginPage.FillForm(loginData.UserName, loginData.Password);
+            }
+            else
+            {
+                Assert.Throws<ArgumentException>(() => throw new ArgumentException());
+            }
         }
         #endregion
 
         #region Scenario: Unsuccessful Login with invalid credentials
-        [When(@"I enter an invalid ""(.*)"" and a invalid ""(.*)""")]
-        public void FillLoginFormWithInvalidCredentials(string username, string password)
+        [When(@"I enter invalid credentials")]
+        public void FillLoginFormWithInvalidCredentials()
         {
-            _loginPage.FillForm(username, password);
+            if (_loginDataResult.LoginData.ElementAt(1) is not null)
+            {
+                LoginData loginData = _loginDataResult.LoginData.ElementAt(1);
+                _loginPage.FillForm(loginData.UserName, loginData.Password);
+            }
+            else
+            {
+                Assert.Throws<ArgumentException>(() => throw new ArgumentException());
+            }
         }
 
         [Then(@"It shows that the credentials are not valid")]

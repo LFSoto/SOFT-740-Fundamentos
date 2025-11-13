@@ -1,37 +1,34 @@
-# Proyecto de Pruebas Automatizadas - Automation Practice Demo
+# Proyecto Final - Suacedemo
 
-Este proyecto contiene un esqueleto en .NET con NUnit y Selenium para practicar pruebas funcionales sobre el sitio [Automation Testing Practice](https://testautomationpractice.blogspot.com/).
+Este proyecto contiene un framework de pruebas en .NET con NUnit y Selenium para reaalizar pruebas funcionales sobre el sitio [Suacedemo](https://www.saucedemo.com/). y también pruebas unitarias para el proyecto Calculator.Lib
 
 ## Requisitos
 - .NET 8 SDK
 - Google Chrome (La versión más reciente)
-- ChromeDriver (instalado automáticamente por NuGet)
+- Los siguientes son instalados automáticamente por Nuget:
+- DotNetSeleniumExtras.WaitHelpers
+- Gherkin
+- Reqnroll
+- Reqnroll.NUnit
+- Reqnroll.SpecFlowCompatibility
+- Selenium.Support
+- Selenium.WebDriver
+- Selenium.WebDriver.ChromeDriver
 
 ## Instalación
 git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
-git checkout DixonChavarria-SeleniumPOM-DDT 
-cd AutomationPracticeDemo.Tests
+git checkout DixonChavarria-ProyectoFinal 
+cd DixonProyectoFinal.Tests
 dotnet restore
 dotnet build
 dotnet test
 
-# Práctica 4 Dixon Chavarria
-
-## Se agregaron las siguientes Pruebas (Carpeta Tests/Practica4)
-
-- Should_RegisterNewUser()
-- Should_LoginExistingUser()
-- Should_AddItemsToCartAndVerifyTotal()
-- Should_SendContactForm()
-- Should_SubscribeToNewsletter()
-
 ## Data Driven Testing
-** Se implementó en la clase Tests/Practica4/Login/LoginTest **
+** Se implementó en la clase StepDefinitions/Login/LoginSteps.cs **
 
-# Práctica 5 Dixon Chavarria
-
-## Se agregó el manejo de elementos dinámicos en las siguientes clases /Pages
-- MainComponents/HeaderNav.cs
-- ContactUsPage
-- ProductsPage
-- SignUpPage
+## Resumen
+- La carpeta **/Pages** contiene la implementación de POM
+- La carpeta **/StepDefinitions** contiene las pruebas funcionales
+- La carpeta **/Tests/Features** contiene la defición de las pruebas usando BDD
+- La carpeta **/UnitTests** contiene las pruebas unitarias
+- La carpeta **/Utils** contiene las clases de Helpers y constantes

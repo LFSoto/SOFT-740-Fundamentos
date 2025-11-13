@@ -14,7 +14,7 @@ namespace DixonProyectoFinal.Tests.Pages.Checkout
 
         #region Elementos
         private IList<IWebElement> _itemsList => _driver.FindElements(By.ClassName("inventory_item_price"));
-        private double _itemsTotalPrice => Convert.ToDouble(_driver.FindElement(By.ClassName("summary_subtotal_label")).Text);
+        private double _itemsTotalPrice => Convert.ToDouble(_driver.FindElement(By.ClassName("summary_subtotal_label")).Text.Remove(0,13));
         private IWebElement _finishButton => _driver.FindElement(By.CssSelector("button[data-test=\"finish\"]"));
         #endregion
 
@@ -22,20 +22,17 @@ namespace DixonProyectoFinal.Tests.Pages.Checkout
         /// <summary>
         /// Valida que la sumatoria de los precios de los productos sea correcta
         /// </summary>
-        public bool ValidateItemsTotalPrice(int itemsLength)
+        public bool ValidateItemsTotalPrice()
         {
-            if (_itemsList.Count == itemsLength)
+            double itemsTotalPrice = 0.00;
+            foreach (var item in _itemsList)
             {
-                double itemsTotalPrice = 0.00;
-                foreach (var item in _itemsList)
-                {
-                    itemsTotalPrice += Convert.ToDouble(item.Text);
-                }
+                itemsTotalPrice += Convert.ToDouble(item.Text.Remove(0,1));
+            }
 
-                if (_itemsTotalPrice == itemsTotalPrice)
-                {
-                    return true;
-                }
+            if (_itemsTotalPrice == itemsTotalPrice)
+            {
+                return true;
             }
 
             return false;

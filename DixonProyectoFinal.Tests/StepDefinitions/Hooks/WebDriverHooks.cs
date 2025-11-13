@@ -22,7 +22,6 @@ namespace DixonProyectoFinal.Tests.StepDefinitions.Hooks
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-infobars");
             options.AddArgument("--guest");
-            //options.AddArgument("headless");
 
             IWebDriver driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
@@ -34,8 +33,8 @@ namespace DixonProyectoFinal.Tests.StepDefinitions.Hooks
         {
             if (_scenarioContext.TryGetValue<IWebDriver>(out var driver))
             {
-                //driver.Quit();
-                //driver.Dispose();
+                driver.Quit();
+                driver.Dispose();
             }
         }
     }

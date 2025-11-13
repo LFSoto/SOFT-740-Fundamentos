@@ -10,8 +10,7 @@
         /// </summary>
         public struct Paths
         {
-            public const string Screenshots = "../../../Screenshots/";
-            public const string LoginJsonFile = "../../../Tests/Login/Data/Login.json";
+            public const string LoginJsonFile = "../../../StepDefinitions/Login/Login.json";
         }
 
         /// <summary>

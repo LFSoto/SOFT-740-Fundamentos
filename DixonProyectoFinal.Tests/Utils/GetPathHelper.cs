@@ -6,21 +6,6 @@
     public class GetPathHelper
     {
         /// <summary>
-        /// Obtiene la ruta donde se guardan las capturas de pantalla
-        /// </summary>
-        /// <returns>La ruta completa</returns>
-        public string GetFilePathScreenShots()
-        {
-            string fullFilePath = Path.Combine(AppContext.BaseDirectory, Constants.Paths.Screenshots);
-
-            if (!Directory.Exists(fullFilePath))
-            {
-                Directory.CreateDirectory(fullFilePath);
-            }
-            return fullFilePath;
-        }
-
-        /// <summary>
         /// Obtiene la ruta donde está almacenado el archivo .json según la ruta relativa que reciba
         /// </summary>
         /// <param name="relativeFilePath"></param>

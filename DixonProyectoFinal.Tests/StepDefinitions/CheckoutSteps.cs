@@ -2,11 +2,6 @@
 using DixonProyectoFinal.Tests.Pages.Checkout;
 using OpenQA.Selenium;
 using Reqnroll;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DixonProyectoFinal.Tests.StepDefinitions
 {
@@ -17,6 +12,8 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
         private readonly IWebDriver _driver;
         private CartPage _cartPage;
         private CheckoutStepOnePage _checkoutStepOnePage;
+        private CheckoutStepTwoPage _checkoutStepTwoPage;
+        private CheckoutCompletePage _checkoutCompletePage;
 
         public CheckoutSteps(ScenarioContext scenarioContext)
         {
@@ -24,6 +21,8 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
             _driver = _scenarioContext.Get<IWebDriver>();
             _cartPage = new CartPage(_driver);
             _checkoutStepOnePage = new CheckoutStepOnePage(_driver);
+            _checkoutStepTwoPage = new CheckoutStepTwoPage(_driver);
+            _checkoutCompletePage = new CheckoutCompletePage(_driver);
         }
 
         [When(@"I navigate to the Checkout step one page: ""(.*)""")]
@@ -51,5 +50,28 @@ namespace DixonProyectoFinal.Tests.StepDefinitions
             Assert.That(_driver.Url.Contains(url), "Not navigated to check out step two page");
         }
 
+        [When(@"I validate the total price of the items")]
+        public void ValidateItemsTotalPrice()
+        {
+            Assert.IsTrue(_checkoutStepTwoPage.ValidateItemsTotalPrice(), "The total price of the items is not correct");
+        }
+
+        [When(@"I click the Finish button")]
+        public void FinishCheckOut()
+        {
+            _checkoutStepTwoPage.FinishCheckOut();
+        }
+
+        [Then(@"I'm on the check out complete page: ""(.*)""")]
+        public void ValidatePageUrl(string url)
+        {
+            Assert.That(_driver.Url.Contains(url), "Not navigated to check out complete page");
+        }
+
+        [Then(@"I see the Checkout complete text")]
+        public void ValidateCheckoutCompleteText()
+        {
+            Assert.That(_checkoutCompletePage.ValidateCheckOutComplete(), "Checkout: Complete!");
+        }
     }
 }

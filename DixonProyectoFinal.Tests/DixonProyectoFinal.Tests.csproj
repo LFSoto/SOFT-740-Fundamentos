@@ -31,12 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Screenshots\" />
     <Folder Include="Tests\Features\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OrderCalculator.Lib\Calculator.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="StepDefinitions\Login\Login.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
