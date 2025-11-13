@@ -16,7 +16,7 @@ Este proyecto contiene un framework de pruebas en .NET con NUnit y Selenium para
 - Selenium.WebDriver.ChromeDriver
 
 ## Instalación
- -git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
+- git clone https://github.com/LFSoto/SOFT-740-Fundamentos.git
 - git checkout DixonChavarria-ProyectoFinal 
 - cd DixonProyectoFinal.Tests
 - dotnet restore
